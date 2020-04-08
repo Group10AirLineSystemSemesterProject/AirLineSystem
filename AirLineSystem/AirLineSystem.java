@@ -1,5 +1,5 @@
-class AirLineSystem{  
+class AirPortSystem{  
     public static void main(String args[]){  
-     System.out.println("let's make our own Airline System :)");  
+     System.out.println("let's make our own Airport System :)");  
     }  
 } 
