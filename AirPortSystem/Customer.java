@@ -1,5 +1,9 @@
 import java.util.Scanner;
-
+/**
+* Biletli musteri 
+* User
+* Farklı olarak Ticket bilgisi var
+*/
 public class Customer implements User
     {
         String name = null;
