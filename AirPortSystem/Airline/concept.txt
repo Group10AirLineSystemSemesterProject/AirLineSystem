@@ -1,0 +1,21 @@
+ 
+Syntax a uygun eklemeyi unutmayalim.
+
+--------------------
+nevzat
+=
++ Destinasyonda aircraft lara ait kontainer.
+
++ Her bir destinasyona ozel coordinat sistemi ,
+flightradar24 ten yardim alinabilir.
+
++ Yeni tip personal turetilmesi.
+
++ PNR
+
++ Aircraft in icinde ait oldugu airline tutulabilir 
+veya direk ' UAID ' kullanilabilir.
+
++ Koordinat bazli mesafe tahmini.
+~end
+-----------------------
