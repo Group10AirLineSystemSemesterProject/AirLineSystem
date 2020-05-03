@@ -1,4 +1,6 @@
-import java.util.stream.StreamSupport;
+package AirportPackage;
+
+import AirportPackage.AirlinePackage.AirlinePersonnel;
 
 public class Flight {
 
@@ -8,18 +10,18 @@ public class Flight {
     Time time;
     int capacity;
     int price;
-    Ailrline_Personal[] pilots;
-    Ailrline_Personal[] cabin_crew;
+    AirlinePersonnel[] pilots;
+    AirlinePersonnel[] cabin_crew;
 
-    public Flight(String company,String plane_type, String destination, int hour, int minute, int capacity, int price, Ailrline_Personal[] pilots, Ailrline_Personal[] cabin_crew){
+    public Flight(String company,String plane_type, String destination, int hour, int minute, int capacity, int price, AirlinePersonnel[] pilots, AirlinePersonnel[] cabin_crew){
         this.company = company;
         this.plane_type=plane_type;
         this.destination=destination;
         this.time = new Time(hour,minute);
         this.capacity=capacity;
         this.price=price;
-        this.pilots=pilots;
-        this.cabin_crew=cabin_crew;
+//        this.pilots=pilots;// array copy should be performed
+//        this.cabin_crew=cabin_crew; // array copy should be performed
     }
 
     public String getPlane_type() {
@@ -46,11 +48,11 @@ public class Flight {
         return price;
     }
 
-    public Ailrline_Personal[] getCabin_crew() {
+    public AirlinePersonnel[] getCabin_crew() {
         return cabin_crew;
     }
 
-    public Ailrline_Personal[] getPilots() {
+    public AirlinePersonnel[] getPilots() {
         return pilots;
     }
 
@@ -72,10 +74,10 @@ public class Flight {
     public void setPrice(int price) {
         this.price = price;
     }
-    public void setPilots(Ailrline_Personal[] pilots) {
+    public void setPilots(AirlinePersonnel[] pilots) {
         this.pilots = pilots;
     }
-    public void setCabin_crew(Ailrline_Personal[] cabin_crew) {
+    public void setCabin_crew(AirlinePersonnel[] cabin_crew) {
         this.cabin_crew = cabin_crew;
     }
 
