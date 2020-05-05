@@ -19,3 +19,17 @@ veya direk ' UAID ' kullanilabilir.
 + Koordinat bazli mesafe tahmini.
 ~end
 -----------------------
+
+-----------------------
+nevzat
+=
+
++ Container i doldururken , herhangi iki data arasina metada konuabilir
+sort veya searh yaparken faydasi olabilir.
+
++ Data lari direk sort( bizim belirledigimiz herhangi bir  tayine gore) lanmis 
+sekilde koymak da verimli olabilir , searh yaparken daha
+az verinin taranmasi saglanir.
+
+~end
+-----------------------
