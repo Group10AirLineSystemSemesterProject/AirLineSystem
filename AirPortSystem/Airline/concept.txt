@@ -24,7 +24,7 @@ veya direk ' UAID ' kullanilabilir.
 nevzat
 =
 
-+ Container i doldururken , herhangi iki data arasina metada konuabilir
++ Container i doldururken , herhangi iki data arasina metadata konuabilir
 sort veya searh yaparken faydasi olabilir.
 
 + Data lari direk sort( bizim belirledigimiz herhangi bir  tayine gore) lanmis 
