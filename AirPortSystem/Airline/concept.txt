@@ -39,7 +39,7 @@ az verinin taranmasi saglanir.
 nevzat
 =
 
-+ Immutable container lar Arrays.asList() ile olusturabilir.
++ Fixed-size containerlar Arrays.asList() ile olusturabilir.
 + concerning of efficiency
 
 +Source : 
