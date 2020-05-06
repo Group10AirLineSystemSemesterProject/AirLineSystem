@@ -33,3 +33,18 @@ az verinin taranmasi saglanir.
 
 ~end
 -----------------------
+
+
+-----------------------
+nevzat
+=
+
++ Immutable container lar Arrays.asList() ile olusturabilir.
++ concerning of efficiency
+
++Source : 
+https://docs.oracle.com/javase/tutorial/collections/implementations/convenience.html
+
+~end
+-----------------------
+
