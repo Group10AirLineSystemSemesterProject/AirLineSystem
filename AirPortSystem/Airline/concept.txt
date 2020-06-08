@@ -47,4 +47,62 @@ https://docs.oracle.com/javase/tutorial/collections/implementations/convenience.
 
 ~end
 -----------------------
+bilal
+=
+Uçak Örnekleri
 
+Özelliklerin Sıralaması
+
+ Brand
+ Model
+	Origin Country
+	Wingspan
+	Passenger Capacity
+	Empty WeightasTon
+	max fuel capacity
+
+Airbus:
+	
+	A320neo
+	France
+	35.80
+	165
+	64.30
+	26,730
+	
+	A220
+	Spain
+	35.1
+	135
+	50.4
+	21,805
+	
+	A350
+	Germany
+	64.75
+	440
+	195.70
+	141,000
+	
+	Boeing:
+	
+	737
+	USA
+	35.8
+	189
+	41,413 
+	26,022
+	
+	737-MAX8
+	USA
+	35.9
+	210
+	45.070
+	25.816
+	
+	787-8
+	USA
+	60
+	250
+	110
+	126,903
