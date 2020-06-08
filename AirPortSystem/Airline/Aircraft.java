@@ -2,27 +2,28 @@ package Airline;
 
 /**
  * Informative class which has several properties about Aircraft.
- * @author Nevzat Seferoglu
- * @version 1.0
+ * @author Nevzat Seferoglu && Bilal Bayrakdar
+ * @version 1.2
  */
 public class Aircraft {
 
     /* --------------------------- */
     /* Properties */
-    final String typeInfo;
-    final String originAsCountry;
-    final String registrationInfo;
-    final String manufacturingDate;
-    final String serialInfo;
-    final String manufacturerInfo;
-    final short wingspan;
-    final short passengerCapacity;
-    final short emptyWeightAsKg;
+    final String typeInfo;          // uçak tipi
+    final String originAsCountry;   // üretim yeri
+    final String registrationInfo;  // kayıt numarası
+    final String manufacturingDate; // üretim tarihi
+    final String serialInfo;        // seri numarası
+    final String manufacturerInfo;  // üreten firme
+    final short wingspan;           // kanat genişliği
+    final short passengerCapacity;  // yolcu kapasitesi
+    final short emptyWeightAsKg;    // boş ağırlık
+    final int maxFuelCapacity;      // maksimum benzin kapasitesi
     /*-----------------------------*/
 
-    private Aircraft(String typeInfo, String originAsCountry, String registrationInfo, String manufacturingDate,
-                     String serialKey, String manufacturerInfo, short wingspan, short passengerCapacity, short emptyWeightAsKg) {
-
+    Aircraft(String typeInfo, String originAsCountry, String registrationInfo, String manufacturingDate,
+             String serialKey, String manufacturerInfo, short wingspan, short passengerCapacity, short emptyWeightAsKg, int maxFuelCapacity) {
+        // negatif değerler için exception handling eklenecek
         this.typeInfo = typeInfo;
         this.originAsCountry = originAsCountry;
         this.registrationInfo = registrationInfo;
@@ -32,8 +33,9 @@ public class Aircraft {
         this.wingspan = wingspan;
         this.passengerCapacity = passengerCapacity;
         this.emptyWeightAsKg = emptyWeightAsKg;
-
+        this.maxFuelCapacity = maxFuelCapacity;
     }
+
 
     public short getEmptyWeightAsKg() {
         return emptyWeightAsKg;
@@ -69,6 +71,16 @@ public class Aircraft {
 
     public String getTypeInfo() {
         return typeInfo;
+    }
+
+    public int getMaxFuelCapacity() {
+        return maxFuelCapacity;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Aircraft temp = (Aircraft)obj;
+        return this.registrationInfo.equals(temp.registrationInfo);
     }
 
     @Override
