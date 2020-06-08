@@ -2,28 +2,28 @@ package Airline;
 
 /**
  * Informative class which has several properties about Aircraft.
- * @author Nevzat Seferoglu && Bilal Bayrakdar
- * @version 1.2
+ * @author Nevzat Seferoglu
+ * @version 1.1
  */
 public class Aircraft {
 
     /* --------------------------- */
     /* Properties */
-    final String typeInfo;          // uçak tipi
-    final String originAsCountry;   // üretim yeri
-    final String registrationInfo;  // kayıt numarası
-    final String manufacturingDate; // üretim tarihi
-    final String serialInfo;        // seri numarası
-    final String manufacturerInfo;  // üreten firme
-    final short wingspan;           // kanat genişliği
-    final short passengerCapacity;  // yolcu kapasitesi
-    final short emptyWeightAsKg;    // boş ağırlık
-    final int maxFuelCapacity;      // maksimum benzin kapasitesi
+    final String typeInfo;
+    final String originAsCountry;
+    final Integer registrationInfo;
+    final String manufacturingDate;
+    final String serialInfo;
+    final String manufacturerInfo;
+    final Double wingspan;
+    final Double passengerCapacity;
+    final Double emptyWeightAsKg;
+    final Double maxFuelCapacity;
     /*-----------------------------*/
 
-    Aircraft(String typeInfo, String originAsCountry, String registrationInfo, String manufacturingDate,
-             String serialKey, String manufacturerInfo, short wingspan, short passengerCapacity, short emptyWeightAsKg, int maxFuelCapacity) {
-        // negatif değerler için exception handling eklenecek
+    Aircraft(String typeInfo, String originAsCountry, int registrationInfo, String manufacturingDate,
+             String serialKey, String manufacturerInfo, Double wingspan, Double passengerCapacity, Double emptyWeightAsKg, Double maxFuelCapacity) {
+
         this.typeInfo = typeInfo;
         this.originAsCountry = originAsCountry;
         this.registrationInfo = registrationInfo;
@@ -34,18 +34,18 @@ public class Aircraft {
         this.passengerCapacity = passengerCapacity;
         this.emptyWeightAsKg = emptyWeightAsKg;
         this.maxFuelCapacity = maxFuelCapacity;
+
     }
 
-
-    public short getEmptyWeightAsKg() {
+    public Double getEmptyWeightAsKg() {
         return emptyWeightAsKg;
     }
 
-    public short getPassengerCapacity() {
+    public Double getPassengerCapacity() {
         return passengerCapacity;
     }
 
-    public short getWingspan() {
+    public Double getWingspan() {
         return wingspan;
     }
 
@@ -65,7 +65,7 @@ public class Aircraft {
         return manufacturingDate;
     }
 
-    public String getRegistrationInfo() {
+    public int getRegistrationInfo() {
         return registrationInfo;
     }
 
@@ -73,31 +73,39 @@ public class Aircraft {
         return typeInfo;
     }
 
-    public int getMaxFuelCapacity() {
-        return maxFuelCapacity;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        Aircraft temp = (Aircraft)obj;
-        return this.registrationInfo.equals(temp.registrationInfo);
-    }
-
     @Override
     public String toString() {
 
-        StringBuilder sb =  new StringBuilder();
+        return " Type : " + getTypeInfo() + '\n' +
+                " Registration : " + getRegistrationInfo() + '\n' +
+                " Country of region : " + getOriginAsCountry() + '\n' +
+                " Trademark of Manufacturer : " + getManufacturerInfo() + '\n' +
+                " Manufacturing Date : " + getManufacturingDate() + '\n' +
+                " Serial Number : " + getSerialInfo() + '\n' +
+                " Wingspan length : " + getWingspan() + '\n' +
+                " Passenger capacity : " + getPassengerCapacity() + '\n' +
+                " Empty weight : " + getEmptyWeightAsKg() + '\n';
+    }
 
-        sb.append(" Type : ").append( getTypeInfo() ).append('\n');
-        sb.append(" Registration : ").append( getRegistrationInfo() ).append('\n');
-        sb.append(" Country of region : ").append( getOriginAsCountry() ).append('\n');
-        sb.append(" Trademark of Manufacturer : ").append( getManufacturerInfo() ).append('\n');
-        sb.append(" Manufacturing Date : ").append( getManufacturingDate() ).append('\n');
-        sb.append(" Serial Number : ").append( getSerialInfo() ).append('\n');
-        sb.append(" Wingspan length : ").append( getWingspan() ).append('\n');
-        sb.append(" Passenger capacity : ").append( getPassengerCapacity() ).append('\n');
-        sb.append(" Empty weight : ").append( getEmptyWeightAsKg() ).append('\n');
 
-        return sb.toString();
+    @Override
+    public boolean equals(Object obj) {
+        if( obj ==  this ) {
+            return true;
+        } else if( !(obj instanceof Aircraft) ) {
+            return true;
+        }
+
+        return ((Aircraft) obj).typeInfo.equals( this.typeInfo ) &&
+                ((Aircraft) obj).originAsCountry.equals( this.originAsCountry ) &&
+                ((Aircraft) obj).registrationInfo.equals( this.registrationInfo ) &&
+                ((Aircraft) obj).manufacturingDate.equals( this.manufacturingDate ) &&
+                ((Aircraft) obj).serialInfo.equals( this.serialInfo ) &&
+                ((Aircraft) obj).manufacturerInfo.equals( this.manufacturerInfo ) &&
+                ((Aircraft) obj).wingspan.equals( this.wingspan ) &&
+                ((Aircraft) obj).passengerCapacity.equals( this.passengerCapacity ) &&
+                ((Aircraft) obj).emptyWeightAsKg.equals( this.emptyWeightAsKg ) &&
+                ((Aircraft) obj).manufacturingDate.equals( this.manufacturingDate ) &&
+                ((Aircraft) obj).maxFuelCapacity.equals( this.maxFuelCapacity );
     }
 }

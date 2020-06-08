@@ -1,7 +1,5 @@
 package Airline;
 
-import AirportPackage.AirlinePackage.AirlinePersonnel;
-
 import java.util.Collection;
 
 /**
@@ -11,8 +9,8 @@ import java.util.Collection;
  */
 public class Flight {
 
-    String plane_type;
-    String destination;
+    Aircraft aircraft;
+    Destination destination;
     String company;
     Time time;
     int capacity;
@@ -22,8 +20,8 @@ public class Flight {
 
     /**
      * Flight Constructor which requires all parameters
-     * @param company   company name
-     * @param plane_type
+     * @param company company name
+     * @param aircraft
      * @param destination
      * @param hour
      * @param minute
@@ -32,22 +30,24 @@ public class Flight {
      * @param pilots    
      * @param cabin_crew
      */
-    public Flight(String company,String plane_type, String destination, int hour, int minute, int capacity, int price, Collection<AirlinePersonnel> pilots, Collection<AirlinePersonnel> cabin_crew){
+    public Flight(String company,Aircraft aircraft, Destination destination, int hour, int minute, int capacity, int price, Collection<AirlinePersonnel> pilots, Collection<AirlinePersonnel> cabin_crew){
+
         this.company = company;
-        this.plane_type=plane_type;
+        this.aircraft=aircraft;
         this.destination=destination;
         this.time = new Time(hour,minute);
         this.capacity=capacity;
         this.price=price;
-//        this.pilots=pilots;// array copy should be performed
-//        this.cabin_crew=cabin_crew; // array copy should be performed
+
+        // this.pilots=pilots;// array copy should be performed
+        // this.cabin_crew=cabin_crew; // array copy should be performed
     }
 
-    public String getPlane_type() {
-        return plane_type;
+    public Aircraft getAircraft() {
+        return aircraft;
     }
 
-    public String getDestination() {
+    public Destination getDestination() {
         return destination;
     }
 
@@ -78,10 +78,10 @@ public class Flight {
     public void setCompany(String company) {
         this.company = company;
     }
-    public void setPlane_type(String plane_type){
-        this.plane_type=plane_type;
+    public void setAircraft(Aircraft aircraft){
+        this.aircraft = aircraft;
     }
-    public void setDestination(String destination) {
+    public void setDestination(Destination destination) {
         this.destination = destination;
     }
     public void setTime(Time time) {
@@ -104,7 +104,7 @@ public class Flight {
     public boolean equals(Object obj) {
         try{
             Flight temp = (Flight)obj;
-            if(temp.company.equals(company) && temp.plane_type.equals(plane_type) && temp.capacity ==capacity && temp.time.equals(time))
+            if(temp.company.equals(company) && temp.aircraft.equals(aircraft) && temp.capacity ==capacity && temp.time.equals(time))
                 return true;
             return false;
         }catch (Exception e){
@@ -116,7 +116,7 @@ public class Flight {
     @Override
     public String toString() {
         return "Company:\t" + company + "\n" +
-                "Plane type:\t" + plane_type + "\n" +
+                "Plane type:\t" + aircraft + "\n" +
                 "Destination:\t" + destination + "\n" +
                 "Time:\t" + time + "\n" +
                 "Capacity:\t" + capacity + "\n" +
