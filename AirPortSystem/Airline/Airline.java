@@ -10,6 +10,16 @@ import java.util.Collection;
 public class Airline {
 
     /**
+     * Current airport.
+     */
+    Destination localAirport;
+
+    /**
+     * General data storage of airline
+     */
+    private AirlineSystemStorage airlineSystemStorage;
+
+    /**
      * <p> Unique Airline Identifier Key. </p>
      * <p> Each airline company has matchless one for each Airport.</p>
      */
@@ -21,49 +31,17 @@ public class Airline {
     private String nameOfTrademarkAsIdentifier;
 
     /**
-     * Aircraft Container.
-     */
-    private Collection< Aircraft > listOfAirCraft;
-
-    /**
-     * Destination Container.
-     */
-    private Collection< Destination > listOfDestination;
-
-    /**
-     * AirlinePersonnel Container.
-     */
-    private Collection< AirlinePersonnel > personnelList;
-
-    /**
      * No parameter constructor.
      * @param nameOfTrademarkAsIdentifier trademark of airline.
      * @param uaid_key UUAD key value.
      */
-    public Airline( String nameOfTrademarkAsIdentifier , final String uaid_key ) {
+    public Airline( String nameOfTrademarkAsIdentifier , final String uaid_key , Destination localAirport ) {
+
         UAID_KEY = uaid_key;
+        this.localAirport = localAirport;
+        airlineSystemStorage = new AirlineSystemStorage();
+
     }
-
-    /**
-     * Get a new aircraft.
-     * @param ac Aircraft
-     * @return Not clear and specified.
-     */
-    private boolean purchaseAnAircraft( final Aircraft ac ) { return true; }
-
-    /**
-     * Recruit a personnel.
-     * @param personnel Airline Personnel.
-     * @return Not clear and specified.
-     */
-    private boolean recruitPersonnel( AirlinePersonnel personnel ) { return true; }
-
-    /**
-     * Add a new Destination.
-     * @param destination a new destination.
-     * @return Not clear and specified.
-     */
-    private boolean addDestination( Destination destination ) { return true; }
 
 
     @Override
@@ -79,6 +57,18 @@ public class Airline {
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
+    }
+
+
+    private AirlineSystemStorage getAirlineSystemStorage() {
+        return airlineSystemStorage;
+    }
+    private void setAirlineSystemStorage( AirlineSystemStorage airlineSystemStorage) {
+        this.airlineSystemStorage = airlineSystemStorage;
+    }
+
+    public String getUAID_KEY() {
+        return UAID_KEY;
     }
 
 }

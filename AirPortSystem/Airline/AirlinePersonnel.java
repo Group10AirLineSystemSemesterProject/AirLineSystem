@@ -6,4 +6,4 @@ package Airline;
  * @author Nevzat Seferoglu
  * @version 1.0
  */
-public class AirlinePersonnel { }
+public class AirlinePersonnel {}
