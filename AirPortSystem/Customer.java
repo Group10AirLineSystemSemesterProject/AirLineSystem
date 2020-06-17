@@ -13,6 +13,11 @@ public class Customer implements User
         int capacity; //şirket, havaalani belirlesin.
                         // kapasite doluysa bilet alma seçeneklerinde o uçuş gösterilmesin.
 
+        //Ticketed Container
+        private Collection< Ticketed > listOfTicketed; //biletli müşteri
+        //Guest Container.
+        private Collection< Guest > listOfGuest; //muhtemel müşteri
+
         @Override
         public void menu()
         {
