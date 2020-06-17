@@ -70,6 +70,8 @@ public class Shop {
         fee = newFee;
     }
     
+    /**toString method to print out shop's information
+     * @return string format */
     public String toString(){
         return "Name : " + shopName "\nID: " + id + "\nFee: " + fee + "\n"; 
     }
