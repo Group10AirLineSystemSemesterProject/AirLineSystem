@@ -1,10 +1,15 @@
 import java.util.Scanner;
 
 public class Guest implements User
-    {   //müşteri kaydı burada alınacak.
+    {
         String name = null;
         String surname = null;
-        int idt = 0;
+        String idt = 0;
+
+        Guest()
+        {
+            this.idt = UUId.randomUUID().toString();
+        }
 
         @Override
         public void menu()
@@ -15,16 +20,34 @@ public class Guest implements User
         @Override
         public void login()
         {
+            System.out.println("****************");
+            System.out.println("**** Log In ****");
+            System.out.println("****************");
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter user name:");
             setName(sc.nextLine());
             System.out.println("Enter user surname:");
             setSurname(sc.nextLine());
-            System.out.println("Enter user id:");
-            setIdt(sc.nextInt());
+            //System.out.println("Enter user id:");
+            //setIdt(sc.nextInt());
             System.out.println("User: "+name+" "+surname);
             System.out.println("User Id: "+idt);
         }
+
+        private Customer customer;
+
+        /**
+         * Get ticked converts a guest to a customer
+         * @return
+         */
+        public Customer getTicket()
+        {
+            //getName, surname
+            customer = new Customer();
+
+            return customer;
+        }
+
 
         @Override
         public boolean add() {
