@@ -6,22 +6,31 @@ import java.util.Scanner;
 */
 public class Customer implements User
     {
-        String name = null;
-        String surname = null;
-        int idt = 0;
-        static int ticket = 0; // hash map düşünülebilir
-        int capacity; //şirket, havaalani belirlesin.
-                        // kapasite doluysa bilet alma seçeneklerinde o uçuş gösterilmesin.
+        AirlineSystemStorage airlineSystemStorage;
 
-        //Ticketed Container
-        private Collection< Ticketed > listOfTicketed; //biletli müşteri
-        //Guest Container.
-        private Collection< Guest > listOfGuest; //muhtemel müşteri
+        private String name = null;
+        private String surname = null;
+        private String idt; // hash set will be used
+        private static int ticket = 0;
+        private Flight fligth;
+        private Ticket ticket;
+
+        public Customer()
+        {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter user name:");
+            this.setName(sc.nextLine());
+            System.out.println("Enter user surname:");
+            this.setSurname(sc.nextLine());
+            this.idt = UUId.randomUUID().toString();
+            Ticket ticket = new Ticket();
+        }
 
         @Override
         public void menu()
         {
             System.out.println("Menu:");
+
         }
 
         @Override
