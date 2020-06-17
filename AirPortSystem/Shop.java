@@ -66,8 +66,13 @@ public class Shop {
 
     /**set method for fee
      * @param newFee to change old fee*/
-    public void setName(int newFee) {
+    public void setFee(int newFee) {
         fee = newFee;
     }
+    
+    public String toString(){
+        return "Name : " + shopName "\nID: " + id + "\nFee: " + fee + "\n"; 
+    }
+    
 
 }
