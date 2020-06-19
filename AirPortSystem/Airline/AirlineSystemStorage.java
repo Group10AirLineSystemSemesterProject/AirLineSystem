@@ -49,19 +49,6 @@ public class AirlineSystemStorage {
      */
     private Collection< AirlinePersonnel > personnelList;
 
-    /*
-    Customer Container.
-     */
-    public Collection< Customer > listOfCustomer;
-    /*
-    Guest Container.
-     */
-    private Collection< Guest > listOfGuest;
-    /*
-    Ticketed Container
-     */
-    private Collection< Ticketed > listOfTicketed;
-
     /**
      * Get aircraft List
      * @return list of aircraft.
@@ -85,24 +72,6 @@ public class AirlineSystemStorage {
     public Collection<Destination> getListOfDestination() {
         return listOfDestination;
     }
-
-    /**
-     * Get Customer List
-     * @return list of customer.
-     */
-    public Collection<Customer> getListOfCustomer() { return listOfCustomer; }
-    
-    /**
-     * Get Guest List
-     * @return list of guest.
-     */
-    public Collection<Guest> getListOfGuest() { return listOfGuest; }
-    
-    /**
-     * Get Ticketed List
-     * @return list of ticketed.
-     */
-    public Collection<Ticketed> getListOfTicketed() { return listOfTicketed; }
 
     /**
      * Set list of aircraft.
@@ -135,24 +104,6 @@ public class AirlineSystemStorage {
     public void setPersonnelList(Collection<AirlinePersonnel> personnelList) {
         this.personnelList = personnelList;
     }
-
-    /**
-     * Set list of Customer.
-     * @param listOfCustomer Customer list.
-     */
-    public void setListOfCustomer(Collection<Customer> listOfCustomer) { this.listOfCustomer = listOfCustomer; }
-
-    /**
-     * Set list of Guest.
-     * @param listOfGuest Guest list.
-     */
-    public void setListOfGuest(Collection<Guest> listOfGuest) { this.listOfGuest = listOfGuest; }
-
-    /**
-     * Set list of Ticketed.
-     * @param listOfTicketed Ticketed list.
-     */
-    public void setListOfTicketed(Collection<Ticketed> listOfTicketed) { this.listOfTicketed = listOfTicketed; }
 
     public Collection<Aircraft> getListOfTicket() {
         return listOfTicket;
