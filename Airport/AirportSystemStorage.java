@@ -1,5 +1,8 @@
 package Airport;
 import Airline.*;
+import DataStructures.Edge;
+import DataStructures.MapGraph;
+
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -18,6 +21,12 @@ public class AirportSystemStorage {
 
         airportFund = 0;
 
+       destinations = new ArrayList<Destination>();
+       destinations.add(new Destination("Istanbul",0.0,0.0));
+       destinations.add(new Destination("Ankara",50.0,25.0));
+       destinations.add(new Destination("Izmir",80.0,10.0));
+
+       ways = new MapGraph(15,false);
     }
 
     /**airportFund, represents airport's total money.*/
@@ -30,8 +39,14 @@ public class AirportSystemStorage {
     ArrayList<Place>                places;         /* included shops */
     PriorityQueue<ShopManager>      shopManagers;
 
-    /* Destination  MapGraph */
+    ArrayList<Destination> destinations;
+    MapGraph ways;
 
+    public boolean isWay(Destination destination){
+        return ways.isEdge(0,destinations.indexOf(destination));
+    }
+
+    /* Destination  MapGraph */
 
     public boolean isValidSSN( String SSN ){
 
@@ -44,7 +59,6 @@ public class AirportSystemStorage {
         return a.getPlain();
 
     }
-
 
     public double getAirportFund() {
         return airportFund;

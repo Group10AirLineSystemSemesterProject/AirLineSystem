@@ -3,6 +3,7 @@ package Airport;
 import Airline.*;
 import Client.Person;
 import Client.UserInterface;
+import DataStructures.Edge;
 
 import java.util.Objects;
 
@@ -37,6 +38,11 @@ public class AirportAdmin extends Person implements UserInterface , AirportAdmin
 
         this.airportSystemStorage = airportSystemStorage;
 
+    }
+
+    public void addWay(Destination destination) throws Exception {
+        Edge e = new Edge(0,airportSystemStorage.destinations.indexOf(destination));
+        airportSystemStorage.ways.insertEdge(e);
     }
 
     @Override
@@ -174,6 +180,7 @@ public class AirportAdmin extends Person implements UserInterface , AirportAdmin
             throw new Exception("Destination cannot be null.");
         }
         else {
+            airportSystemStorage.destinations.add(destination);
             return true;
         }
 
@@ -186,6 +193,7 @@ public class AirportAdmin extends Person implements UserInterface , AirportAdmin
             throw new Exception("Destination cannot be null.");
         }
         else {
+            airportSystemStorage.destinations.remove(destination);
             return true;
         }
     }
