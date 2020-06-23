@@ -18,7 +18,7 @@ public class TerminalInterface {
 
     public static void main(String[] args) {
         try{
-            Airport airport = new Airport(AirportName);
+           // Airport airport = new Airport(AirportName);
             AirportSystemStorage portStorage = new AirportSystemStorage();
             AirportAdmin portAdmin = new AirportAdmin(portAdminName,portAdminSurname,portAdmiSSN,portAdminPassword,portStorage);
             

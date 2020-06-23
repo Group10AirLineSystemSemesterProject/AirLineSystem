@@ -6,6 +6,7 @@ import Client.UserInterface;
 import DataStructures.Edge;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 /** AirportAdmin class for Admins of airport. Extended from Person Class.
  * This class administrates Airport business as flights, shops.. */
@@ -38,6 +39,115 @@ public class AirportAdmin extends Person implements UserInterface , AirportAdmin
 
         this.airportSystemStorage = airportSystemStorage;
 
+    }
+
+    public void menu(){
+
+        int choice;
+        Scanner in = new Scanner(System.in);
+        boolean loop = true, loop2 = true;
+
+
+        while(loop){
+
+            System.out.printf("\nWelcome to %s Airport's administration page.\n",getName());
+            System.out.printf("Airport's funding = %d",airportSystemStorage.getAirportFund());
+
+            System.out.printf("1- Personal info menu \n");
+            System.out.printf("2- Set SSN\n");
+            System.out.printf("3- Set password.\n");
+            System.out.printf("4- Airline administration.\n");
+            System.out.printf("5- Airport Personnel administration.\n");
+            System.out.printf("6- Shop administration.\n");
+            System.out.printf("7- Destination administration.\n");
+            System.out.printf("8- Exit.\n");
+
+            choice = in.nextInt();
+
+            switch (choice){
+                case 1: super.menu(); // person's menu
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    loop2 = true;
+                    while (loop2){
+                        System.out.printf("1- See all airlines.\n");
+                        System.out.printf("2- Add an airline.\n");
+                        System.out.printf("3- Remonve an airline.\n");
+                        System.out.printf("4- SetCommision.\n");
+                        System.out.printf("5- Exit.\n");
+
+                        choice = in.nextInt();
+
+                        switch (choice){
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                break;
+                            case 5: loop2 = false;
+                                break;
+                            default: System.out.printf("Error. Your input is invalid..\n");
+                        }
+                    }
+                    break;
+                case 5:
+                    loop2 = true;
+                    while (loop2){
+                        System.out.printf("1- Add an airport personnel.\n");
+                        System.out.printf("2- Remove an airport personnel.\n");
+                        System.out.printf("3- See all airport personnels.\n"); // eğer hepsini göstermek istemiyorsanız çıkarın.
+                        System.out.printf("4- Exit.\n");
+
+                        choice = in.nextInt();
+
+                        switch (choice){
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4: loop2 = false;
+                                break;
+                            default: System.out.printf("Error. Your input is invalid..\n");
+                        }
+                    }
+                    break;
+                case 6:
+                    loop2 = true;
+                    while (loop2){
+                        System.out.printf("1- See all shops.\n");
+                        System.out.printf("2- Add a shop.\n");
+                        System.out.printf("3- Remove a shop.\n");
+                        System.out.printf("4- Exit.\n");
+
+                        choice = in.nextInt();
+
+                        switch (choice){
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4: loop2 = false;
+                                break;
+                            default: System.out.printf("Error. Your input is invalid..\n");
+                        }
+                    }
+                    break;
+                case 7: loop = false;
+                    break;
+                default: System.out.printf("Error. Your input is invalid..\n");
+            }
+        }
     }
 
     public void addWay(Destination destination) throws Exception {

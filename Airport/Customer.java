@@ -55,7 +55,68 @@ public class Customer extends Person
         }
 
         customerCompareTo = CustomerCompareTo.ACCORDING_TO_NAME;
+    }
 
+    public void menu(){
+
+        int choice;
+        Scanner in = new Scanner(System.in);
+        boolean loop = true,loop2 = true;
+
+
+        while(loop){
+
+            System.out.printf("\nWelcome to our airport page, %s.\n",getName());
+
+            System.out.printf("1- Personal info menu \n");
+            System.out.printf("2- Change ssn\n");
+            System.out.printf("3- Change password.\n");
+            System.out.printf("4- Buy Tickets.\n");
+            System.out.printf("5- See your Tickets.\n");
+            System.out.printf("6- See all shops.\n");
+            System.out.printf("7- Exit.\n");
+
+            choice = in.nextInt();
+
+            switch (choice){
+                case 1: super.menu();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    loop2 = true;
+                    while (loop2){
+                        System.out.printf("1- See all flights.\n");
+                        System.out.printf("2- Search a flight using PNR.\n");
+                        System.out.printf("3- Buy a ticket.\n");
+                        System.out.printf("4- Exit.\n");
+
+                        choice = in.nextInt();
+
+                        switch (choice){
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4: loop2 = false;
+                                break;
+                            default: System.out.printf("Error. Your input is invalid..\n");
+                        }
+                    }
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7: loop = false;
+                    break;
+                default: System.out.printf("Error. Your input is invalid..\n");
+            }
+        }
     }
 
     /**get Method for tickets.

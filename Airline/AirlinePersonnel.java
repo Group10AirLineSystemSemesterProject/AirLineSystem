@@ -4,6 +4,7 @@ import Client.Person;
 import Client.UserInterface;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  * Backbone of airline personnel .
@@ -21,6 +22,38 @@ public class AirlinePersonnel extends Person implements UserInterface {
     public AirlinePersonnel(String name, String surname , boolean isPilot) {
         super(name, surname);
         this.isPilot = isPilot;
+    }
+
+    public void menu(){
+
+        int choice;
+        Scanner in = new Scanner(System.in);
+        boolean loop = true;
+
+
+        while(loop){
+
+            System.out.printf("\nWelcome to airline personnel page, %s.\n",getName());
+
+            System.out.printf("1- Personal info menu \n");
+            System.out.printf("2- Change ssn\n");
+            System.out.printf("3- Change password.\n");
+            System.out.printf("4- Exit.\n");
+
+            choice = in.nextInt();
+
+            switch (choice){
+                case 1: super.menu();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4: loop = false;
+                    break;
+                default: System.out.printf("Error. Your input is invalid..\n");
+            }
+        }
     }
 
     @Override

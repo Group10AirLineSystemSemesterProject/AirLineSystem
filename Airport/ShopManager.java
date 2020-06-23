@@ -4,6 +4,7 @@ import Client.Person;
 import Client.UserInterface;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 /**ShopManager class, Manager of shops uses this class' methods.*/
 public class ShopManager extends Person
@@ -55,6 +56,51 @@ public class ShopManager extends Person
             this.managedFee = managedFee;
         }
     }
+
+    public void menu(){
+
+        int choice;
+        Scanner in = new Scanner(System.in);
+        boolean loop = true;
+
+
+        while(loop){
+
+            System.out.printf("\nWelcome to airline personnel page, %s.\n",getName());
+
+            System.out.printf("1- Personal info menu \n");
+            System.out.printf("2- Change ssn\n");
+            System.out.printf("3- Change password.\n");
+            System.out.printf("4- Get managed total fee.\n");
+            System.out.printf("5- See all shops.\n");
+            System.out.printf("6- Open a shop.\n");
+            System.out.printf("7- Close a shop.\n");
+            System.out.printf("8- Exit.\n");
+
+            choice = in.nextInt();
+
+            switch (choice){
+                case 1: super.menu();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8: loop = false;
+                    break;
+                default: System.out.printf("Error. Your input is invalid..\n");
+            }
+        }
+    }
+
 
     /**get method for managedFee.
      * @return double value of managedFee.*/

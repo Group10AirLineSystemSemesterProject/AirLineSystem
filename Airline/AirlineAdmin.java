@@ -3,10 +3,7 @@ package Airline;
 import Airport.AirportSystemStorage;
 import Client.UserInterface;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class AirlineAdmin extends AirlinePersonnel implements AirlineAdminDomain , UserInterface {
 
@@ -21,6 +18,53 @@ public class AirlineAdmin extends AirlinePersonnel implements AirlineAdminDomain
         this.airlineSystemStorage = airlineSystemStorage;
     }
 
+    public void menu(){
+
+        int choice;
+        Scanner in = new Scanner(System.in);
+        boolean loop = true;
+
+        while(loop){
+
+            System.out.printf("\nWelcome to %s's administration page.\n",airlineSystemStorage.getNameOfTrademarkAsIdentifier());
+
+            System.out.printf("1- Recruit Personnel.\n");
+            System.out.printf("2- Dismiss Personnel\n");
+            System.out.printf("3- Add Destination.\n");
+            System.out.printf("4- Remove Destination.\n");
+            System.out.printf("5- Add Aircraft.\n");
+            System.out.printf("6- Remove Aircraft\n");
+            System.out.printf("7- Add Flight.\n");
+            System.out.printf("8- Remove Flight.\n");
+            System.out.printf("9 -Exit from administration page.\n");
+
+            choice = in.nextInt();
+
+            switch (choice){
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9: loop = false;
+                    break;
+                default: System.out.printf("Error. Your input is invalid..\n");
+
+            }
+        }
+        System.out.printf("Exiting...\n");
+    }
 
     public boolean dismissPersonnel( AirlinePersonnel airlinePersonnel ) throws Exception {
 

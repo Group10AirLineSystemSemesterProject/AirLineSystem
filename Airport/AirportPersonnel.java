@@ -4,6 +4,7 @@ import Client.Person;
 import Client.UserInterface;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 /**AirportPersonnel class, The class that administrates users.*/
 public class AirportPersonnel extends Person implements UserInterface , AirportPersonnelInterface {
@@ -33,6 +34,43 @@ public class AirportPersonnel extends Person implements UserInterface , AirportP
         this.password = password;
 
         this.airportSystemStorage = airportSystemStorage;
+    }
+
+
+    public void menu(){
+
+        int choice;
+        Scanner in = new Scanner(System.in);
+        boolean loop = true;
+
+
+        while(loop){
+
+            System.out.printf("\nWelcome to airport personnel page, %s.\n",getName());
+
+            System.out.printf("1- Personal info menu \n");
+            System.out.printf("2- Change ssn\n");
+            System.out.printf("3- Change password.\n");
+            System.out.printf("4- Dismiss a customer.\n");
+            System.out.printf("5- Exit.\n");
+
+            choice = in.nextInt();
+
+            switch (choice){
+                case 1: super.menu();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5: loop = false;
+                    break;
+                default:
+
+            }
+        }
     }
 
     @Override
