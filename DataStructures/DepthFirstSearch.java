@@ -1,4 +1,4 @@
-package DataStructures.Graphs;
+package DataStructures;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
