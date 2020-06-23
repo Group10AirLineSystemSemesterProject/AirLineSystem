@@ -127,14 +127,17 @@ public class AirlineAdmin extends AirlinePersonnel implements AirlineAdminDomain
     /**
      * @inheritDoc
      */
-    public void addFlight(Destination source, Destination target,int capacity,int price) {
+    public void addFlight(Destination target,int capacity,int price) {
+
+        if( airlineSystemStorage.ways.isEdge(0,airlineSystemStorage.dests.indexOf(target)));
+
         String company = airlineSystemStorage.getNameOfTrademarkAsIdentifier();
         String UAID_KEY = airlineSystemStorage.getUAID_KEY();
         DateTime dateTime = new DateTime();
         Aircraft aircraft;
         // Collection<AirlinePersonnel> pilots, cabin_crew;
 
-        Flight flight = new Flight(company,UAID_KEY,source,target,dateTime,capacity,price,assignPilot(),assingCabincrew());
+        Flight flight = new Flight(company,UAID_KEY,airlineSystemStorage.dests.get(0),target,dateTime,capacity,price,assignPilot(),assingCabincrew());
         try {
             flight.setAircraft(assignAircraft(flight));
         }catch (Exception e){

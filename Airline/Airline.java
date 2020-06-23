@@ -1,6 +1,7 @@
 package Airline;
 
 import Airport.Customer;
+import DataStructures.MapGraph;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,10 +38,11 @@ public class Airline {
     /**
      * No parameter constructor.
      */
-    public Airline( Destination localAirport , double commissionRate, AirlineAdmin admin , String nameOfTrademarkAsIdentifier, final String uaid_key) {
+    public Airline(Destination localAirport , double commissionRate, AirlineAdmin admin , String nameOfTrademarkAsIdentifier, final String uaid_key,
+                   MapGraph ways, ArrayList<Destination> dests) {
 
         this.localAirport = localAirport;
-        airlineSystemStorage = new AirlineSystemStorage(admin,nameOfTrademarkAsIdentifier,uaid_key);
+        airlineSystemStorage = new AirlineSystemStorage(admin,nameOfTrademarkAsIdentifier,uaid_key,ways,dests);
         this.commissionRate = commissionRate;
 
     }

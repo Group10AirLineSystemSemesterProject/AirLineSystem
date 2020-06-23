@@ -47,12 +47,11 @@ public interface AirlineAdminDomain {
      * Adds new flight with given parameters
      * Assigns the most optimum available aircraft
      * to flight automatically.
-     * @param source Source destination of the flight
      * @param target Target destination of the flight
      * @param capacity Maximum passenger capacity of the flight
      * @param price Price of a ticket for this flight
      */
-    public void addFlight(Destination source, Destination target,int capacity,int price);
+    public void addFlight(Destination target,int capacity,int price);
 
     /**
      * Removes the given flight from

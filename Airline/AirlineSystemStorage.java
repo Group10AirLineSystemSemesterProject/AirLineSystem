@@ -1,4 +1,6 @@
 package Airline;
+import DataStructures.MapGraph;
+
 import java.util.*;
 
 public class AirlineSystemStorage {
@@ -9,7 +11,7 @@ public class AirlineSystemStorage {
         return ++aircraft_counter;
     }
 
-    public AirlineSystemStorage( AirlineAdmin admin , String nameOfTrademarkAsIdentifier , final String uaid_key  )  {
+    public AirlineSystemStorage( AirlineAdmin admin , String nameOfTrademarkAsIdentifier , final String uaid_key , MapGraph ways , ArrayList<Destination> dests)  {
 
         this.admin = admin;
         aircraft_counter = 0;
@@ -22,7 +24,12 @@ public class AirlineSystemStorage {
         this.UAID_KEY = uaid_key;
         this.nameOfTrademarkAsIdentifier = nameOfTrademarkAsIdentifier;
 
+        this.ways = ways;
+        this.dests = dests;
     }
+
+    public ArrayList<Destination> dests;
+    public MapGraph ways;
 
     /**
      * <p> Unique Airline Identifier Key. </p>
