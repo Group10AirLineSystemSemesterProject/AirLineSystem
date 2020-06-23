@@ -1,4 +1,4 @@
-package DataStructures.Graphs;
+package DataStructures;
 import java.util.Iterator;
 
 /** Interface to specify a Graph ADT. A graph is a set of vertices and
