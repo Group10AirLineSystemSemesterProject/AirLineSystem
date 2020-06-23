@@ -89,7 +89,7 @@ public class SkipList<E extends Comparable<E>> {
 	 * @param item The item to add
 	 * @return true as the item is added
 	 */
-	boolean add(E item){
+	public boolean add(E item){
 		size++;
 		SLNode<E>[] pred = search(item);
 		if(size > maxCap){
@@ -112,7 +112,7 @@ public class SkipList<E extends Comparable<E>> {
 	 * @param item The item to remove
 	 * @return true if the item is removed, false if the item is not in the list
 	 */
-	boolean remove(E item){
+	public boolean remove(E item){
 		SLNode<E>[] pred = search(item);
 		if(pred[0].links != null &&
 				pred[0].links[0].data.compareTo(item) != 0){

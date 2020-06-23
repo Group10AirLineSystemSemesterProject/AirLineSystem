@@ -8,6 +8,7 @@ public class Edge {
 
     private int dest;
     private int source;
+
     private double weight;
 
     public Edge(int source , int dest ) throws Exception {
