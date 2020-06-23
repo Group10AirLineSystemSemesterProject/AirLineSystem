@@ -1,7 +1,6 @@
 package Client;
 
 import java.util.Objects;
-import java.util.Scanner;
 
 /**Person class that is comparable.*/
 public class Person implements PersonInterface , Comparable<Person> {
@@ -20,34 +19,6 @@ public class Person implements PersonInterface , Comparable<Person> {
         this.name = name;
         this.surname = surname;
 
-    }
-
-    public void menu(){
-
-        int choice;
-        Scanner in = new Scanner(System.in);
-        boolean loop = true;
-
-        System.out.printf("\n%s 's Page.\n",this.toString());
-        while(loop){
-
-            System.out.printf("1- Change name.\n");
-            System.out.printf("2- Change surname.\n");
-            System.out.printf("3- Exit from this page..\n");
-
-            choice = in.nextInt();
-
-            switch (choice){
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3: loop = false;
-                    break;
-                default: System.out.printf("Error. Your input is invalid..\n");
-
-            }
-        }
     }
 
     @Override
