@@ -4,7 +4,7 @@ import Client.UserInterface;
 import Client.User;
 import java.util.*;
 
-public class AirlineAdmin extends User implements AirlineAdminDomain , UserInterface {
+public class AirlineAdmin extends User implements AirlineAdminInterface, UserInterface {
 
     Airline airline;
 
@@ -64,7 +64,7 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
                 case 2:
                     System.out.println("Is the employee who will be removed pilot ?(Y/N)");
                     String ans = in.nextLine();
-                    if(ans == "Y" ||ans=="y"){
+                    if(ans.equals("Y") || ans.equals("y")){
                         for(AirlinePersonnel ele:getAirline().getAirlineSystemStorage().getCabin_crew())
                             System.out.println(ele);
                         System.out.print("Please enter the SSN of the employee who is gonna be removed: ");
@@ -88,28 +88,76 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
                             System.out.println(e);
                         }
                     }
-
-
                     break;
                 case 3:
+                    System.out.print("Enter the name of the destination: ");
+                    String destName = in.nextLine();
+                    System.out.print("Enter the latitude of destination: ");
+                    Double destLat = in.nextDouble();
+                    System.out.print("Enter the longtitude of destination: ");
+                    Double destLong = in.nextDouble();
+                    Destination dst = new Destination(destName,destLat,destLong);
+                    if(!getAirline().getAirlineSystemStorage().getListOfDestination().contains(dst))
+                        getAirline().getAirlineSystemStorage().getListOfDestination().add(dst);
                     break;
                 case 4:
+                    System.out.println("Destinations are showed in below, please select an index:\n");
+                    for(int i=0; i< getAirline().getAirlineSystemStorage().getListOfDestination().size(); i++)
+                        System.out.println(i+"- "+getAirline().getAirlineSystemStorage().getListOfDestination().get(i));
+                        getAirline().getAirlineSystemStorage().getListOfDestination().removeIf(k->(k.equals(getAirline().getAirlineSystemStorage().getListOfDestination().get(in.nextInt()))));
                     break;
                 case 5:
+                    System.out.print("Enter wingspan of aircraft: ");
+                    Double craftWingSpan = in.nextDouble();
+                    System.out.print("Enter passenger of aircraft: ");
+                    Double craftPassengerCap = in.nextDouble();
+                    System.out.print("Enter empty weight of aircraft: ");
+                    Double  craftEmpty= in.nextDouble();
+                    System.out.print("Enter max fuel capacity of aircraft: ");
+                    Double  crafFuelCap= in.nextDouble();
+                    getAirline().getAirlineSystemStorage().getListOfAirCraft().add(new Aircraft(craftWingSpan,craftPassengerCap,craftEmpty,crafFuelCap));
                     break;
                 case 6:
+                    System.out.println("Aircrafts are showed in below, please select an index:\n");
+                    for(int i=0; i< getAirline().getAirlineSystemStorage().getListOfAirCraft().size(); i++)
+                        System.out.println(i+"- "+getAirline().getAirlineSystemStorage().getListOfAirCraft().get(i));
+                    if(getAirline().getAirlineSystemStorage().getListOfAirCraft().removeIf(k->(k.equals(getAirline().getAirlineSystemStorage().getListOfAirCraft().get(in.nextInt())))))
+                        System.out.println("Removal completed successfully.");
+                    else
+                        System.out.println("Entered index is wrong!");
                     break;
                 case 7:
+                    System.out.println("Destinations are showed in below, please select an index:\n");
+                    Destination target=null;
+                    while (target==null){
+                        for(int i=0; i<getAirline().getAirlineSystemStorage().getListOfDestination().size(); i++)
+                            System.out.print(i+"- "+getAirline().getAirlineSystemStorage().getListOfDestination().get(i));
+                        int ind = in.nextInt();
+                        if(ind>0 && ind<getAirline().getAirlineSystemStorage().getListOfDestination().size())
+                            target=getAirline().getAirlineSystemStorage().getListOfDestination().get(ind);
+                    }
+                    System.out.print("Enter the capacity of the flight: ");
+                    int capacity = in.nextInt();
+                    System.out.print("Enter the price of the flight: ");
+                    int price = in.nextInt();
+                    addFlight(target,capacity,price);
                     break;
                 case 8:
+                    System.out.println("Flights are showed in below, please select an index:\n");
+                    for(int i=0; i< getAirline().getAirlineSystemStorage().getListOfFlight().size(); i++)
+                        System.out.println(i+"- "+getAirline().getAirlineSystemStorage().getListOfFlight().get(i));
+                    if(getAirline().getAirlineSystemStorage().getListOfFlight().removeIf(k->(k.equals(getAirline().getAirlineSystemStorage().getListOfFlight().get(in.nextInt())))))
+                        System.out.print("Removal completed successfully!");
+                    else
+                        System.out.print("Entered index is wrong!");
                     break;
                 case 9: loop = false;
                     break;
-                default: System.out.printf("Error. Your input is invalid..\n");
+                default: System.out.println("Error. Your input is invalid.");
 
             }
         }
-        System.out.printf("Exiting...\n");
+        System.out.println("Exiting...");
     }
 
     public Airline getAirline() {
@@ -192,14 +240,12 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
 
     /**
      * Get a new aircraft.
-     * @param originAsCountry
      * @return Not clear and specified.
      */
     @Override
-    public boolean add_aircraft( String originAsCountry ,Double wingspan,Double passengerCapacity,Double emptyWeightAsKg , Double maxFuelCapacity ) {
+    public boolean add_aircraft( Double wingspan,Double passengerCapacity,Double emptyWeightAsKg , Double maxFuelCapacity ) {
 
-        Aircraft temp = new Aircraft(null, originAsCountry, airline.getAirlineSystemStorage().increment_Aircraft_counter()
-                ,  null,null, null,wingspan,passengerCapacity, emptyWeightAsKg, maxFuelCapacity);
+        Aircraft temp = new Aircraft(wingspan, passengerCapacity, emptyWeightAsKg, maxFuelCapacity);
 
         if(passengerCapacity<0 || emptyWeightAsKg<0 || maxFuelCapacity>0)
             return false;

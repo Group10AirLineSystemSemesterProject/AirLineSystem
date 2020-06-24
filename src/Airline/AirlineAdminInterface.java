@@ -1,6 +1,6 @@
 package Airline;
 
-public interface AirlineAdminDomain {
+public interface AirlineAdminInterface {
 
     /**
      * Recruit a personnel.
@@ -32,10 +32,9 @@ public interface AirlineAdminDomain {
 
     /**
      * Get a new aircraft.
-     * @param originAsCountry
      * @return Not clear and specified.
      */
-    public boolean add_aircraft( String originAsCountry ,Double wingspan,Double passengerCapacity,Double emptyWeightAsKg , Double maxFuelCapacity );
+    public boolean add_aircraft( Double wingspan,Double passengerCapacity,Double emptyWeightAsKg , Double maxFuelCapacity );
 
     /**
      * Remove an aircraft from the system.
