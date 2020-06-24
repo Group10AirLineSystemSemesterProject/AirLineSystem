@@ -8,9 +8,9 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
 
     Airline airline;
 
-    public AirlineAdmin( String name , String surname , Airline airline ) throws Exception {
+    public AirlineAdmin( User user , Airline airline ) throws Exception {
 
-        super( name , surname );
+        super(user.getName(),user.getSurname(),user.getSSN(),user.getPassword());
         if( airline == null ) {
             throw new Exception("Airline cannot be null.");
         }
@@ -67,6 +67,7 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
                         System.out.println(ele);
                     getAirline().getAirlineSystemStorage().getCabin_crew().removeIf(k->{
 
+                        return false;
                     });
 
                     break;
