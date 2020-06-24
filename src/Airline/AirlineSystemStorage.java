@@ -51,15 +51,17 @@ public class AirlineSystemStorage {
      */
     public ArrayList<Destination> dests;
 
-    /**
-     * Trademark of airline.
-     */
-    private String nameOfTrademarkAsIdentifier;
 
     /**
      * MapGraph of destinations.
      * */
     public MapGraph ways;
+
+    /**
+     * Trademark of airline.
+     */
+    private String nameOfTrademarkAsIdentifier;
+
 
     /**
      * <p> Unique Airline Identifier Key. </p>
@@ -103,7 +105,6 @@ public class AirlineSystemStorage {
     /*------------------------------------------ Getters -------------------------------------*/
 
 
-
     /**
      * Get aircraft List
      * @return list of aircraft.
@@ -112,14 +113,6 @@ public class AirlineSystemStorage {
         return listOfAirCraft;
     }
 
-
-    /**
-     * Ticket container.
-     * @return Ticket container.
-     */
-    public Map<Integer,Ticket> getMaphOfTicket() {
-        return mapOfTicket;
-    }
 
     /**
      * Aircraft counter.
@@ -186,4 +179,35 @@ public class AirlineSystemStorage {
         return admin;
     }
 
+    /**
+     * Destinations List.
+     * @return
+     */
+    public ArrayList<Destination> getDests() {
+        return dests;
+    }
+
+    /**
+     * Map of ticket.
+     * @return
+     */
+    public Map<Integer, Ticket> getMapOfTicket() {
+        return mapOfTicket;
+    }
+
+    /**
+     * Return aircraft counter.
+     * @return
+     */
+    public int getAircraft_counter() {
+        return aircraft_counter;
+    }
+
+    /**
+     * Ways.
+     * @return ways.
+     */
+    public MapGraph getWays() {
+        return ways;
+    }
 }
