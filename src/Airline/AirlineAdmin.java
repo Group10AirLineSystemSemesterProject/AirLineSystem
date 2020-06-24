@@ -182,6 +182,7 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
         Flight flight = new Flight(company,UAID_KEY,airlineSystemStorage.dests.get(0),target,dateTime,capacity,price,assignPilot(),assingCabincrew());
         try {
             flight.setAircraft(assignAircraft(flight));
+
         }catch (Exception e){
             System.out.println(e);
             removeFlight(flight);

@@ -3,6 +3,9 @@ package Airport;
 import Client.Person;
 import Client.UserInterface;
 import Client.User;
+import DataStructures.MapGraph;
+
+import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -64,6 +67,21 @@ public class AirportPersonnel extends User implements UserInterface , AirportPer
                     airportSystemStorage.changePasswordwithMenu(in);
                     break;
                 case 4:
+                    for(Map.Entry<String,Customer> ele :airportSystemStorage.getCustomers().entrySet())
+                        System.out.println(ele.getValue());
+                    System.out.print("Entern SSN of the customer: ");
+                    String removeSSN = in.nextLine();
+                    User temp = airportSystemStorage.getUserWithSSN(removeSSN);
+                    if(temp!=null){
+                        if(temp instanceof Customer)
+                            airportSystemStorage.getCustomers().remove(removeSSN);
+                        else{
+                            System.out.println("This SSN does not belong a customer!");
+                        }
+                    }
+                    else
+                        System.out.println("This SSN is not proper!");
+
                     break;
                 case 5: loop = false;
                     break;
