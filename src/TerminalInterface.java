@@ -1,9 +1,13 @@
 import Airport.*;
 import Airline.*;
-import Client.Person;
 import Client.User;
-import Client.UserInterface;
 
+import javax.swing.JFrame;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -161,6 +165,8 @@ public class TerminalInterface {
                         break;
 
                     case 3:
+                        ShowPicture.main(new String[12]);
+
                         break;
 
                     case 4: loginPageLoop = false;
@@ -172,6 +178,19 @@ public class TerminalInterface {
 
         } catch ( Throwable overAllException ){
             overAllException.printStackTrace();
+        }
+    }
+
+    public static class ShowPicture {
+        public static void main(String args[]) {
+            JFrame frame = new JFrame();
+            ImageIcon icon = new ImageIcon("C:/Users/bilal/Desktop/airport-1.jp123g");
+            JLabel label = new JLabel(icon);
+            frame.add(label);
+            frame.setDefaultCloseOperation
+                    (JFrame.EXIT_ON_CLOSE);
+            frame.pack();
+            frame.setVisible(true);
         }
     }
 }

@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d95e066-8bbd-473b-8c74-038d965b8ca4" name="Default Changelist" comment="">
-<<<<<<< HEAD
-=======
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
->>>>>>> 56fd7a2287c9be165c664bc4c0c65bf6b329b0f5
       <change beforePath="$PROJECT_DIR$/src/Airport/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Airport/Customer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="27550" />
+    <option name="totalTimeSeconds" value="27646" />
     <option name="naggedAbout" value="1" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -68,12 +65,9 @@
       <workItem from="1592999966662" duration="1879000" />
       <workItem from="1593004799782" duration="2021000" />
       <workItem from="1593006860415" duration="5150000" />
-<<<<<<< HEAD
       <workItem from="1593013664491" duration="1041000" />
       <workItem from="1593015072727" duration="2961000" />
-=======
       <workItem from="1593013664491" duration="3514000" />
->>>>>>> 56fd7a2287c9be165c664bc4c0c65bf6b329b0f5
     </task>
     <servers />
   </component>
