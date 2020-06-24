@@ -1,10 +1,10 @@
 package Airport;
 
 import Airline.*;
-import Client.Person;
 import Client.User;
 import Client.UserInterface;
 import DataStructures.Edge;
+import DataStructures.MapGraph;
 
 import java.util.Map;
 import java.util.Objects;
@@ -31,19 +31,14 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
      * @param SSN As the SSN of the user.
      * */
     public AirportAdmin(String name , String surname , final String SSN , final String password
-            , final AirportSystemStorage airportSystemStorage  ) {
+            , final AirportSystemStorage airportSystemStorage  ) throws Exception {
 
-        super(name, surname);
-
-
-        this.SSN = SSN;
-        this.password = password;
-
+        super(name, surname , SSN , password );
         this.airportSystemStorage = airportSystemStorage;
 
     }
 
-    public void menu(){
+    public void menu() throws Exception {
 
         int choice;
         Scanner in = new Scanner(System.in);
@@ -88,13 +83,118 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                                 for(Map.Entry<String,Airline> ele:airportSystemStorage.getAirlines().entrySet())
                                     System.out.println(ele);
                             case 2:
-                                for(Map.Entry<String,Airline> ele:airportSystemStorage.getAirlines().entrySet())
-                                    System.out.println(ele);
+
+
+                                System.out.print("Enter the name of admin : ");
+                                String nameOfAdmin = in.nextLine();
+
+                                while (  nameOfAdmin == null || nameOfAdmin.equals("") ) {
+                                    System.out.print("Enter the name of admin : ");
+                                    nameOfAdmin = in.nextLine();
+                                }
+
+                                System.out.print("Enter the surname of admin : ");
+                                String surnameOfAdmin = in.nextLine();
+
+                                while (  surnameOfAdmin == null || surnameOfAdmin.equals("") ) {
+                                    System.out.print("Enter the surname of admin : ");
+                                    surnameOfAdmin = in.nextLine();
+                                }
+
+                                System.out.print("Enter the SSN of admin : ");
+                                String SSN = in.nextLine();
+
+                                while (  SSN == null || SSN.equals("") ) {
+                                    System.out.print("Enter the SSN of admin : ");
+                                    SSN = in.nextLine();
+                                }
+
+                                User isExist = airportSystemStorage.getUserWithSSN( SSN );
+
+                                if( isExist != null ) {
+                                    System.out.println("There already exists an given SSN !");
+                                    System.out.print("Enter the SSN of admin : ");
+                                    SSN = in.nextLine();
+                                    while (  SSN == null || SSN.equals("") ) {
+                                        System.out.print("Enter the SSN of admin : ");
+                                        SSN = in.nextLine();
+                                    }
+                                }
+
+                                System.out.print("Enter the password of admin : ");
+                                String password = in.nextLine();
+
+                                while (  password == null || password.equals("") ) {
+                                    System.out.print("Enter the password of admin : ");
+                                    password = in.nextLine();
+                                }
+
+                                System.out.print("Enter the name of trademark of airline : ");
+                                String nameOfAirline = in.nextLine();
+
+                                while (  nameOfAirline == null || nameOfAirline.equals("") ) {
+                                    System.out.print("Enter the name of trademark of airline : ");
+                                    nameOfAirline = in.nextLine();
+                                }
+
+                                while ( airportSystemStorage.getAirlines().containsKey( nameOfAirline ) ) {
+                                    System.out.println("There is already an airline with this trademark.");
+                                    System.out.print("Enter the name of trademark of airline : ");
+                                    nameOfAirline = in.nextLine();
+                                }
+
+                                System.out.print("Enter the commission rateof airline : ");
+                                double comissionRate = in.nextDouble();
+
+                                Airline newAirline = new Airline( airportSystemStorage.destinations.get(0) , comissionRate , null
+                                    , nameOfAirline , airportSystemStorage.ways , airportSystemStorage.destinations , airportSystemStorage );
+
+                                newAirline.getAirlineSystemStorage().setAdmin( new AirlineAdmin(new User( nameOfAdmin , surnameOfAdmin, SSN , password ) , newAirline ));
                                 break;
+
                             case 3:
+                                System.out.print("Enter the name of trademark of airline : ");
+                                String removedAirlineName = in.nextLine();
+
+                                while (  removedAirlineName == null || removedAirlineName.equals("") ) {
+                                    System.out.print("Enter the name of trademark of airline : ");
+                                    removedAirlineName = in.nextLine();
+                                }
+
+                                Airline tempAirline1 = new Airline( airportSystemStorage.destinations.get(0) , 0 , null
+                                        , removedAirlineName , airportSystemStorage.ways , airportSystemStorage.destinations , airportSystemStorage );
+
+                                if( airportSystemStorage.getAirlines().containsKey( removedAirlineName ) ) {
+                                    airportSystemStorage.getAirlines().remove( tempAirline1 );
+                                } else {
+                                    System.out.println("There is no airline with this name.");
+                                }
                                 break;
+
                             case 4:
+
+                                System.out.print("Commission rate : ");
+                                Double commissionRate = in.nextDouble();
+
+                                System.out.print("Enter the name of trademark of airline : ");
+                                String forNewCommissionRate = in.nextLine();
+
+                                while (  forNewCommissionRate == null || forNewCommissionRate.equals("") ) {
+                                    System.out.print("Enter the name of trademark of airline : ");
+                                    forNewCommissionRate = in.nextLine();
+                                }
+
+                                Airline tempAirline2 = new Airline( airportSystemStorage.destinations.get(0) , 0 , null
+                                        , forNewCommissionRate , airportSystemStorage.ways , airportSystemStorage.destinations , airportSystemStorage );
+
+                                if( airportSystemStorage.getAirlines().containsKey( forNewCommissionRate ) ) {
+                                    airportSystemStorage.getAirlines().remove( tempAirline2 );
+                                } else {
+                                    System.out.println("There is no airline with this name.");
+                                }
+
                                 break;
+
                             case 5: loop2 = false;
                                 break;
                             default: System.out.printf("Error. Your input is invalid..\n");
@@ -106,20 +206,92 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                     while (loop2){
                         System.out.printf("1- Add an airport personnel.\n");
                         System.out.printf("2- Remove an airport personnel.\n");
-                        System.out.printf("3- See all airport personnels.\n"); // eğer hepsini göstermek istemiyorsanız çıkarın.
+                        System.out.printf("3- See all airport personals.\n");
                         System.out.printf("4- Exit.\n");
 
                         choice = in.nextInt();
 
                         switch (choice){
                             case 1:
+                                System.out.print("Enter the name of Airport Personnel : ");
+                                String nameOfAirportPersonnel = in.nextLine();
+
+                                while (  nameOfAirportPersonnel == null || nameOfAirportPersonnel.equals("") ) {
+                                    System.out.print("Enter the name of Airport Personnel : ");
+                                    nameOfAirportPersonnel = in.nextLine();
+                                }
+
+                                System.out.print("Enter the surname of Airport Personnel : ");
+                                String surnameOfAirportPersonnel = in.nextLine();
+
+                                while (  surnameOfAirportPersonnel == null || surnameOfAirportPersonnel.equals("") ) {
+                                    System.out.print("Enter the surname of Airport Personnel : ");
+                                    surnameOfAirportPersonnel = in.nextLine();
+                                }
+
+                                System.out.print("Enter the SSN of Airport Personnel : ");
+                                String SSN = in.nextLine();
+
+                                while (  SSN == null || SSN.equals("") ) {
+                                    System.out.print("Enter the SSN of Airport Personnel : ");
+                                    SSN = in.nextLine();
+                                }
+
+                                User isExist = airportSystemStorage.getUserWithSSN( SSN );
+
+                                if( isExist != null ) {
+                                    System.out.println("There already exists an given SSN !");
+                                    System.out.print("Enter the SSN of Airport Personnel : ");
+                                    SSN = in.nextLine();
+                                    while (  SSN == null || SSN.equals("") ) {
+                                        System.out.print("Enter the SSN of Airport Personnel : ");
+                                        SSN = in.nextLine();
+                                    }
+                                }
+
+                                System.out.print("Enter the password of Airport Personnel : ");
+                                String password = in.nextLine();
+
+                                while (  password == null || password.equals("") ) {
+                                    System.out.print("Enter the password of Airport Personnel : ");
+                                    password = in.nextLine();
+                                }
+
+                                airportSystemStorage.getAirportPersonnel().add( new AirportPersonnel( nameOfAirportPersonnel , surnameOfAirportPersonnel
+                                        , SSN , password , airportSystemStorage ) );
                                 break;
+
                             case 2:
+
+                                System.out.print("Enter the SSN of Airport Personnel : ");
+                                String dismissSSN = in.nextLine();
+
+                                while (  dismissSSN == null || dismissSSN.equals("") ) {
+                                    System.out.print("Enter the SSN of Airport Personnel : ");
+                                    dismissSSN = in.nextLine();
+                                }
+
+                                AirportPersonnel removedPersonnel = new AirportPersonnel("null" , "null" ,dismissSSN
+                                        , "null" ,airportSystemStorage);
+
+                                if( airportSystemStorage.getAirportPersonnel().remove( removedPersonnel ) ) {
+                                    System.out.println("Airport personnel have been removed.");
+                                } else {
+                                    System.out.println("There is no Airport personnel with given name.");
+                                }
                                 break;
+
                             case 3:
+
+                                for( AirportPersonnel airportPersonnel : airportSystemStorage.getAirportPersonnel() ) {
+                                    System.out.println( airportPersonnel );
+                                }
+                                System.out.println();
                                 break;
+
                             case 4: loop2 = false;
                                 break;
+
                             default: System.out.printf("Error. Your input is invalid..\n");
                         }
                     }
@@ -136,6 +308,12 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
 
                         switch (choice){
                             case 1:
+                                for( Place shop : airportSystemStorage.getPlaces() ) {
+                                    if( shop instanceof Shop ) {
+                                        System.out.println( shop );
+                                    }
+                                }
+                                System.out.println();
                                 break;
                             case 2:
                                 break;
@@ -157,32 +335,6 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
     public void addWay(Destination destination) throws Exception {
         Edge e = new Edge(0,airportSystemStorage.destinations.indexOf(destination));
         airportSystemStorage.ways.insertEdge(e);
-    }
-
-    @Override
-    public String getSSN() {
-        return SSN;
-    }
-
-    @Override
-    public void setSSN(String SSN) throws Exception {
-        if( SSN == null || SSN.equals( "" ) ) {
-            throw new Exception("SSN cannot be empty or null.");
-        }
-        this.SSN = SSN;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public void setPassword(String password) throws Exception {
-        if( password == null || password.equals( "" ) ) {
-            throw new Exception("password cannot be empty or null.");
-        }
-        this.password = password;
     }
 
     @Override

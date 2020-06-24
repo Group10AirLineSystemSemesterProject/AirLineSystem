@@ -189,5 +189,17 @@ public class AirlineSystemStorage {
         return password;
 
     }
-    
+
+    /**
+     * Set the admin of the airline.
+     * @param admin admin
+     */
+    public void setAdmin(AirlineAdmin admin) throws Exception {
+
+        if( admin == null ) {
+            throw new Exception("admin cannot be null.");
+        }
+
+        this.admin = admin;
+    }
 }
