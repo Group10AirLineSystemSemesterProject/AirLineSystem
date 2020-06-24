@@ -37,7 +37,9 @@ public class AirportSystemStorage {
        this.airportAdmin = airportAdmin;
     }
 
-
+    /**
+     * Airport Admin
+     */
     AirportAdmin airportAdmin;
 
     /**airportFund, represents airport's total money.*/
@@ -48,11 +50,20 @@ public class AirportSystemStorage {
     TreeMap< String , Customer >    customers;
     ArrayList<Place>                places;         /* included shops */
     PriorityQueue<ShopManager>      shopManagers;
-
     ArrayList<Destination> destinations;
     MapGraph ways;
 
-    public boolean isWay(Destination destination){
+    /**
+     * Check the existence of given way.
+     * @param destination destianation.
+     * @return
+     */
+    public boolean isWay(Destination destination) throws Exception {
+
+        if( destination == null ) {
+            throw new Exception("destination cannot be null.");
+        }
+
         return ways.isEdge(0,destinations.indexOf(destination));
     }
 
