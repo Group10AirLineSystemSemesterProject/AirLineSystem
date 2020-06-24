@@ -1,4 +1,4 @@
-# Foobar
+# Airport-Management-System
 It is a group project (Group 10) of CSE222 course of Gebze Technical University.
 
 ## Installation
