@@ -6,6 +6,11 @@ import Airline.*;
  * This interface has various methods that Admins should have.*/
 public interface AirportAdminInterface {
 
+    /**Method that adds way to MapGraph.
+     * @param destination to add destination for graph.
+     * */
+    public void addWay(Destination destination) throws Exception;
+
     /** Method that adds an Airport Personnel from AirportPersonnel class.
      * @param airportPersonnel The personnel is going to be added.
      * @return boolean value,based on if adding was succesfull(true) or not(false).
