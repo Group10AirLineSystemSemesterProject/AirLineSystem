@@ -150,10 +150,6 @@ public class Customer extends User
 
                                 System.out.print("Company Name : ");
                                 String companyName =  in.nextLine();
-
-
-
-
                                 break;
 
                             case 4:

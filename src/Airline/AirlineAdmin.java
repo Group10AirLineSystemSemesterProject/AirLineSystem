@@ -40,6 +40,19 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
 
             switch (choice){
                 case 1:
+                    System.out.print("Please enter personnel name: ");
+                    String perName = in.nextLine();
+                    System.out.print("Please enter personnel surname: ");
+                    String perSurname = in.nextLine();
+                    System.out.print("Please enter an SSN: ");
+                    String perSSN = in.nextLine();
+                    System.out.println("Please enter a password: ");
+                    String perPass = in.nextLine();
+                    if(perName != null && perSurname!=null && !perName.equals("") && !perSurname.equals("")&& )
+                        AirlinePersonnel airlinePersonnel = new(perName,perSurname,)
+
+
+                    recruitPersonnel();
                     break;
                 case 2:
                     break;
