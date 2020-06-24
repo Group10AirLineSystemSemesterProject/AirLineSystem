@@ -55,10 +55,13 @@ public class AirportPersonnel extends User implements UserInterface , AirportPer
 
             switch (choice){
                 case 1:
+                    System.out.println(this);
                     break;
                 case 2:
+                    airportSystemStorage.changeSSNwithMenu(in);
                     break;
                 case 3:
+                    airportSystemStorage.changePasswordwithMenu(in);
                     break;
                 case 4:
                     break;
@@ -139,11 +142,7 @@ public class AirportPersonnel extends User implements UserInterface , AirportPer
 
     @Override
     public String toString() {
-        return "AirportPersonnel{" +
-                "SSN='" + SSN + '\'' +
-                ", password='" + password + '\'' +
-                ", airportSystemStorage=" + airportSystemStorage +
-                '}';
+        return super.toString();
     }
 
 }

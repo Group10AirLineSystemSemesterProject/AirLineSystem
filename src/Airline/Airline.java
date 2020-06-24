@@ -121,7 +121,7 @@ public class Airline {
      * @return airline admin exists with matching SSN otherwise return null.
      * @throws Exception
      */
-    public AirlineAdmin getAdminWithSSN(String SSN) throws Exception {
+    public AirlineAdmin getAdminWithSSN(String SSN){
         if(getAdmin().getSSN().equals(SSN))
             return getAdmin();
         else

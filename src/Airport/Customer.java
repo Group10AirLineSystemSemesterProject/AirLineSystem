@@ -82,20 +82,10 @@ public class Customer extends User
                     System.out.println(this);
                     break;
                 case 2:
-                    System.out.println("Enter the new SSN value:");
-                    String newSSN = in.nextLine();
-                    if(airportSystemStorage.getUserWithSSN(newSSN)==null)
-                        setSSN(newSSN);
-                    else
-                        System.out.println("Given SSN is currently hold by someone!.");
+                    airportSystemStorage.changeSSNwithMenu(in);
                     break;
                 case 3:
-                    System.out.println("Enter the new password");
-                    String newPassword = in.nextLine();
-                    if(newPassword!=null && !newPassword.equals(""))
-                        setPassword(newPassword);
-                    else
-                        System.out.println("Given password is empty!");
+                    airportSystemStorage.changePasswordwithMenu(in);
                 case 4:
                     loop2 = true;
                     while (loop2){
