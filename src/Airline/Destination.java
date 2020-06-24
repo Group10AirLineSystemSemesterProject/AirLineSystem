@@ -61,8 +61,7 @@ public class Destination {
             return false;
         }
 
-        return ((Destination) obj).name.equals(name) &&
-                ((Destination) obj).latitude.equals(latitude) &&
+        return ((Destination) obj).latitude.equals(latitude) &&
                 ((Destination) obj).longitude.equals(longitude);
 
     }
