@@ -89,13 +89,10 @@ public class User extends Person implements UserInterface  {
         return SSN.equals(user.SSN);
     }
 
-<<<<<<< HEAD
     /**
      * Hash Code.
      * @return hashCode of user.
      */
-=======
->>>>>>> 2a23692f43fbddcde39abf823013ba43961c94de
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), SSN);
