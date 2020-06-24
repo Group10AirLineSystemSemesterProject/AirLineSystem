@@ -77,18 +77,31 @@ public class Customer extends User
 
             switch (choice){
                 case 1:
+                    System.out.println(this);
                     break;
                 case 2:
+                    System.out.println("Enter the new SSN value:");
+                    String newSSN = in.nextLine();
+                    if(airportSystemStorage.getUserWithSSN(newSSN)==null)
+                        setSSN(newSSN);
+                    else
+                        System.out.println("Given SSN is currently hold by someone!.");
                     break;
                 case 3:
+                    System.out.println("Enter the new password");
+                    String newPassword = in.nextLine();
+                    if(newPassword!=null && !newPassword.equals(""))
+                        setPassword(newPassword);
+                    else
+                        System.out.println("Given password is empty!");
                     break;
                 case 4:
                     loop2 = true;
                     while (loop2){
-                        System.out.printf("1- See all flights.\n");
-                        System.out.printf("2- Search a ticket using PNR.\n");
-                        System.out.printf("3- Buy a ticket.\n");
-                        System.out.printf("4- Exit.\n");
+                        System.out.println("1- See all flights.");
+                        System.out.println("2- Search a ticket using PNR.");
+                        System.out.println("3- Buy a ticket.");
+                        System.out.println("4- Exit.");
 
                         choice = in.nextInt();
 
