@@ -139,10 +139,24 @@ public class Customer extends User
                                 break;
 
                             case 3:
+                                for(Map.Entry<String, Airline> ele: airportSystemStorage.getAirlines().entrySet()) {
+                                    System.out.println( "" + ele.getValue().getAirlineSystemStorage().getNameOfTrademarkAsIdentifier()
+                                            + " Flights List : ");
+                                    for( int i = 0 ; i < ele.getValue().getAirlineSystemStorage().getListOfFlight().size() ; ++i ) {
+                                        System.out.println( ele.getValue().getAirlineSystemStorage().getListOfFlight().get(i) );
+                                    }
+                                    System.out.println();
+                                }
+
+                                System.out.print("Company Name : ");
+                                String companyName =  in.nextLine();
+
+
+
+
                                 break;
 
                             case 4:
-
                                 loop2 = false;
                                 break;
 
