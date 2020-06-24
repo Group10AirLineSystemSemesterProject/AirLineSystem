@@ -3,6 +3,8 @@ package Airport;
 import Client.Person;
 import Client.UserInterface;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -57,7 +59,7 @@ public class ShopManager extends Person
         }
     }
 
-    public void menu(){
+    public void menu() throws Exception {
 
         int choice;
         Scanner in = new Scanner(System.in);
@@ -80,19 +82,37 @@ public class ShopManager extends Person
             choice = in.nextInt();
 
             switch (choice){
-                case 1:
+                case 1: System.out.print(super.toString());
                     break;
-                case 2:
+                case 2: airportSystemStorage.changeSSNwithMenu(in);
                     break;
-                case 3:
+                case 3: airportSystemStorage.changePasswordwithMenu(in);
                     break;
-                case 4:
+                case 4: System.out.printf("Managed total fee= %f",getManagedFee());
                     break;
                 case 5:
+                    int i = 0;
+                    Iterator<Place> it = airportSystemStorage.getPlaces().iterator();
+                    while (it.hasNext()){
+                        System.out.printf("%d : %s.",i,it.toString());
+                        i++;
+                    }
                     break;
                 case 6:
+                        do{
+                          System.out.printf("Enter a shop index to open it.");
+                          choice = in.nextInt();
+                        }while(choice > airportSystemStorage.getPlaces().size() || choice < 0);
+                        openShop((Shop)airportSystemStorage.getPlaces().get(choice));
+
                     break;
                 case 7:
+                        do{
+                            System.out.printf("Enter a shop index to close it.");
+                            choice = in.nextInt();
+                        }while(choice > airportSystemStorage.getPlaces().size() || choice < 0);
+                        closeShop((Shop)airportSystemStorage.getPlaces().get(choice));
+
                     break;
                 case 8: loop = false;
                     break;
@@ -100,7 +120,6 @@ public class ShopManager extends Person
             }
         }
     }
-
 
     /**get method for managedFee.
      * @return double value of managedFee.*/
