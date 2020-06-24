@@ -62,18 +62,31 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
                         }
                     break;
                 case 2:
-                    System.out.println("Is the employee who will be removed pilot ?");
-                    for(AirlinePersonnel ele:getAirline().getAirlineSystemStorage().getCabin_crew())
-                        System.out.println(ele);
-                    System.out.print("Please enter the SSN of the employee who is gonna be removed: ");
-                    String remSSN = in.nextLine();
-                    try{
-                        AirlinePersonnel airTemp = new AirlinePersonnel("","",false,remSSN,"");
-                        getAirline().getAirlineSystemStorage().getCabin_crew().removeIf( k-> {
-
-                        });
-                    }catch (Exception e){
-                        System.out.println(e);
+                    System.out.println("Is the employee who will be removed pilot ?(Y/N)");
+                    String ans = in.nextLine();
+                    if(ans == "Y" ||ans=="y"){
+                        for(AirlinePersonnel ele:getAirline().getAirlineSystemStorage().getCabin_crew())
+                            System.out.println(ele);
+                        System.out.print("Please enter the SSN of the employee who is gonna be removed: ");
+                        String remSSN = in.nextLine();
+                        try{
+                            AirlinePersonnel airTemp = new AirlinePersonnel("","",false,remSSN,"");
+                            getAirline().getAirlineSystemStorage().getCabin_crew().removeIf( k-> (k.equals(airTemp)));
+                        }catch (Exception e){
+                            System.out.println(e);
+                        }
+                    }
+                    else{
+                        for(AirlinePersonnel ele:getAirline().getAirlineSystemStorage().getPilots())
+                            System.out.println(ele);
+                        System.out.print("Please enter the SSN of the employee who is gonna be removed: ");
+                        String remSSN = in.nextLine();
+                        try{
+                            AirlinePersonnel airTemp = new AirlinePersonnel("","",true,remSSN,"");
+                            getAirline().getAirlineSystemStorage().getCabin_crew().removeIf( k-> (k.equals(airTemp)));
+                        }catch (Exception e){
+                            System.out.println(e);
+                        }
                     }
 
 
