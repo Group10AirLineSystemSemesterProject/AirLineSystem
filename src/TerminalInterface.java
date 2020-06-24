@@ -79,8 +79,9 @@ public class TerminalInterface {
 
                 System.out.println("1- Login ");
                 System.out.println("2- Enroll the system.");
-                System.out.println("3- View Airport-Map");
-                System.out.println("4- Exit");
+                System.out.println("3- View Airport-Map-Floor1");
+                System.out.println("4- View Airport-Map-Floor2");
+                System.out.println("5- Exit");
 
                 int loginPageChoice = in.nextInt();
 
@@ -161,15 +162,17 @@ public class TerminalInterface {
 
                         airport.getAirportSystemStorage().getCustomers().put( SSN , new Customer( name ,surname , SSN , password , airport.getAirportSystemStorage()));
                         System.out.println("Enrollment have been done.");
-
                         break;
 
                     case 3:
-                        ShowPicture.main(new String[12]);
-
+                        ShowPicture.viewStorey( 1 );
                         break;
 
-                    case 4: loginPageLoop = false;
+                    case 4:
+                        ShowPicture.viewStorey( 2 );
+                        break;
+
+                    case 5: loginPageLoop = false;
                         break;
                     default: System.out.println("Error. Your input is invalid..");
                 }
@@ -182,9 +185,17 @@ public class TerminalInterface {
     }
 
     public static class ShowPicture {
-        public static void main(String args[]) {
+        public static void viewStorey( int floor ) {
             JFrame frame = new JFrame();
-            ImageIcon icon = new ImageIcon("C:/Users/bilal/Desktop/airport-1.jp123g");
+            ImageIcon icon;
+
+            /* Local computer path have to be put here. */
+            if( floor == 1 ) {
+                icon = new ImageIcon("");
+            } else  {
+                icon = new ImageIcon("");
+            }
+
             JLabel label = new JLabel(icon);
             frame.add(label);
             frame.setDefaultCloseOperation
