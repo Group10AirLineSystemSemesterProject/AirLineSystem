@@ -1,7 +1,5 @@
 package Client;
 
-import Airport.AirportSystemStorage;
-
 import java.util.Objects;
 
 public class User extends Person implements UserInterface  {
@@ -34,7 +32,6 @@ public class User extends Person implements UserInterface  {
 
     /**
      * Method for receiving SSN.
-     *
      * @return SSN as string.
      */
     @Override
