@@ -77,8 +77,8 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                     while (loop2){
                         System.out.printf("1- See all airlines.\n");
                         System.out.printf("2- Add an airline.\n");
-                        System.out.printf("3- Remonve an airline.\n");
-                        System.out.printf("4- SetCommision.\n");
+                        System.out.printf("3- Remove an airline.\n");
+                        System.out.printf("4- Set commission rate.\n");
                         System.out.printf("5- Exit.\n");
 
                         choice = in.nextInt();
