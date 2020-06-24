@@ -16,7 +16,6 @@ public class AirportSystemStorage {
     public AirportSystemStorage( AirportAdmin airportAdmin ) throws Exception {
 
         airlines            = new TreeMap< String , Airline>();
-        flights             = new TreeMap<Integer, Flight>();
         airportPersonnel    = new ArrayList<AirportPersonnel>();
         customers           = new TreeMap< String , Customer>();
         places              = new ArrayList<Place>();
@@ -45,7 +44,6 @@ public class AirportSystemStorage {
     double airportFund;
 
     TreeMap< String , Airline >     airlines;
-    TreeMap< Integer , Flight >     flights;
     ArrayList<AirportPersonnel>     airportPersonnel;
     TreeMap< String , Customer >    customers;
     ArrayList<Place>                places;         /* included shops */
@@ -57,8 +55,6 @@ public class AirportSystemStorage {
     public boolean isWay(Destination destination){
         return ways.isEdge(0,destinations.indexOf(destination));
     }
-
-    /* Destination  MapGraph */
 
     public boolean isValidSSN( String SSN ){
 
@@ -86,14 +82,6 @@ public class AirportSystemStorage {
 
     public void setAirlines(TreeMap< String , Airline > airlines) {
         this.airlines = airlines;
-    }
-
-    public TreeMap< Integer , Flight> getFlights() {
-        return flights;
-    }
-
-    public void setFlights(TreeMap< Integer , Flight > flights) {
-        this.flights = flights;
     }
 
     public ArrayList<AirportPersonnel> getAirportPersonnel() {
