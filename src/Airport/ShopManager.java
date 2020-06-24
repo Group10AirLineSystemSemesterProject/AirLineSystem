@@ -1,22 +1,14 @@
 package Airport;
 
 import Client.Person;
+import Client.User;
 import Client.UserInterface;
-
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Objects;
 import java.util.Scanner;
 
 /**ShopManager class, Manager of shops uses this class' methods.*/
-public class ShopManager extends Person
+public class ShopManager extends User
         implements UserInterface , ShopManagerInterface {
-
-    /**Social security number, stored as String.*/
-    private String SSN;
-
-    /**Password to log in, stored as String.*/
-    private String password;
 
     /**Fee of the manager.*/
     private Double managedFee;
@@ -46,11 +38,14 @@ public class ShopManager extends Person
      * */
     public ShopManager( String name, String surname , final String SSN , final String password , Double managedFee
             , final AirportSystemStorage airportSystemStorage ) throws Exception {
-        super(name, surname);
+        super(name, surname , SSN , password );
 
-        this.SSN = SSN;
-        this.password = password;
-        this.airportSystemStorage = airportSystemStorage;
+        if ( airportSystemStorage == null ) {
+            throw new Exception("airportSystemStorage cannot be null.");
+        } else {
+            this.airportSystemStorage = airportSystemStorage;
+        }
+
 
         if( managedFee < 0 ) {
             throw new Exception("ManagedFee cannot be negative.");
@@ -133,6 +128,11 @@ public class ShopManager extends Person
         this.managedFee = managedFee;
     }
 
+    /**
+     * Open the shop.
+     * @param shop to open it.
+     * @throws Exception
+     */
     @Override
     public void openShop( Shop shop ) throws Exception {
 
@@ -148,6 +148,11 @@ public class ShopManager extends Person
         }
     }
 
+    /**
+     * Close the shop.
+     * @param shop to close it.
+     * @throws Exception
+     */
     @Override
     public void closeShop( Shop shop ) throws Exception {
 
@@ -164,6 +169,12 @@ public class ShopManager extends Person
 
     }
 
+    /**
+     * Set the name of store.
+     * @param shop to edit.
+     * @param newName for its new name.
+     * @throws Exception
+     */
     @Override
     public void setName( Shop shop  , final String newName ) throws Exception {
 
@@ -179,57 +190,11 @@ public class ShopManager extends Person
         }
     }
 
-    @Override
-    public String getSSN() {
-        return SSN;
-    }
-
-    @Override
-    public void setSSN( String SSN ) throws Exception {
-
-        if( SSN == null ) {
-            throw new Exception("SSN cannot be null.");
-        }
-
-        this.SSN = SSN;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public void setPassword( String password ) throws Exception {
-
-        if( password == null ) {
-            throw new Exception("Password cannot be null.");
-        }
-
-        this.password = password;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-
-        if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass()) return false;
-
-        if (!super.equals(o)) return false;
-
-        ShopManager that = (ShopManager) o;
-
-        return SSN.equals(that.SSN);
-
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), SSN);
-    }
-
-
+    /**
+     * To compare shopManager
+     * @param person Object to compare.
+     * @return
+     */
     @Override
     public int compareTo(Person person) {
 
