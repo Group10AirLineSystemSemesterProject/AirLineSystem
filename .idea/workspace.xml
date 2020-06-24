@@ -8,9 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="18568" />
-    <option name="gitIntegration" value="true" />
-    <option name="naggedAbout" value="1" />
+    <option name="totalTimeSeconds" value="18510" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -54,9 +52,7 @@
       <workItem from="1592926641125" duration="12795000" />
       <workItem from="1592970870357" duration="7834000" />
       <workItem from="1592984779205" duration="1980000" />
-      <workItem from="1592999966662" duration="1296000" />
-      <workItem from="1593001860730" duration="779000" />
-      <workItem from="1593004050918" duration="352000" />
+      <workItem from="1592999966662" duration="1879000" />
     </task>
     <servers />
   </component>
