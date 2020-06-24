@@ -1,22 +1,12 @@
 package Airport;
 
-import Client.Person;
 import Client.UserInterface;
 import Client.User;
-import DataStructures.MapGraph;
-
 import java.util.Map;
-import java.util.Objects;
 import java.util.Scanner;
 
 /**AirportPersonnel class, The class that administrates users.*/
 public class AirportPersonnel extends User implements UserInterface , AirportPersonnelInterface {
-
-    /**Social security number, stored as String.*/
-    private String SSN;
-
-    /**Password to log in, stored as String.*/
-    private String password;
 
     /**Helps to reach AirportSystemStorage class' data.*/
     private AirportSystemStorage airportSystemStorage;
@@ -29,17 +19,20 @@ public class AirportPersonnel extends User implements UserInterface , AirportPer
      * @param airportSystemStorage As current airport to be in.
      * */
     public AirportPersonnel( String name , String surname , final String SSN , final String password
-            , final AirportSystemStorage airportSystemStorage  ) {
-        super(name, surname);
+            , final AirportSystemStorage airportSystemStorage  ) throws Exception {
+        super(name, surname ,SSN , password);
 
+        if( airportSystemStorage == null ) {
+            throw new Exception("airlineSystemStorage cannot be null.");
+        } else {
+            this.airportSystemStorage = airportSystemStorage;
+        }
 
-        this.SSN = SSN;
-        this.password = password;
-
-        this.airportSystemStorage = airportSystemStorage;
     }
 
-
+    /**
+     * AirportPersonnel Menu
+     */
     public void menu(){
 
         int choice;
@@ -69,7 +62,7 @@ public class AirportPersonnel extends User implements UserInterface , AirportPer
                 case 4:
                     for(Map.Entry<String,Customer> ele :airportSystemStorage.getCustomers().entrySet())
                         System.out.println(ele.getValue());
-                    System.out.print("Entern SSN of the customer: ");
+                    System.out.print("Enter the SSN of the customer: ");
                     String removeSSN = in.nextLine();
                     User temp = airportSystemStorage.getUserWithSSN(removeSSN);
                     if(temp!=null){
@@ -91,6 +84,12 @@ public class AirportPersonnel extends User implements UserInterface , AirportPer
         }
     }
 
+    /**
+     * Dismiissing customer.
+     * @param SSN SSN of customer
+     * @return true if customer have been removed.
+     * @throws Exception
+     */
     @Override
     public boolean dismissCustomer( final String SSN ) throws Exception {
 
@@ -108,59 +107,6 @@ public class AirportPersonnel extends User implements UserInterface , AirportPer
         } else {
             return false;
         }
-    }
-
-    @Override
-    public String getSSN() {
-        return SSN;
-    }
-
-
-    @Override
-    public void setSSN( String SSN ) {
-        this.SSN = SSN;
-    }
-
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-
-    @Override
-    public void setPassword( String password ) throws Exception {
-        if( password == null ) {
-            throw new Exception("Password cannot be null.");
-        }
-
-        this.password = password;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-
-        if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass()) return false;
-
-        if (!super.equals(o)) return false;
-
-        AirportPersonnel that = (AirportPersonnel) o;
-
-        return SSN.equals(that.SSN);
-    }
-
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), SSN);
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 
 }
