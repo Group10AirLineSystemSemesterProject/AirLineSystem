@@ -151,8 +151,10 @@ public class Customer extends User
                                 System.out.print("Company Name : ");
                                 String companyName =  in.nextLine();
 
-
-
+                                while( companyName == null || companyName.equals("")) {
+                                    System.out.print("Company Name : ");
+                                    companyName =  in.nextLine();
+                                }
 
                                 break;
 
