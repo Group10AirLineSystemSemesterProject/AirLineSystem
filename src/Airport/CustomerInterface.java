@@ -11,9 +11,4 @@ public interface CustomerInterface {
     * @param flight to buy ticket from.
     * @return a Ticket, represents a ticket from that flight.*/
    Ticket buyTickets( Flight flight );
-
-   /** Method to search with PNR.
-    * @param PNR to search on.*/
-   Flight searchWithPNR( final int PNR ) throws Exception;
-
 }

@@ -162,19 +162,13 @@ public class Customer extends User
                                 String index =  in.nextLine();
 
 
-                                while( index == null || index.equals("") || !isNumeric( index )
-                                        || Integer.getInteger( index ) < 0 || Integer.getInteger( index ) > airportSystemStorage.getAirlines()
+                                while( index == null || index.equals("") || !isNumeric( index ) || Integer.getInteger( index ) < 0 || Integer.getInteger( index ) > airportSystemStorage.getAirlines()
                                         .get(companyName).getAirlineSystemStorage().getListOfFlight().size()) {
                                     System.out.print("FLight Index : ");
                                     index =  in.nextLine();
                                 }
-                                break;
 
-                                if( index == null || index.equals("") || !isNumeric( index ) || Integer.getInteger( index ) < 0 || Integer.getInteger( index ) > airportSystemStorage.getAirlines().get(companyName).getAirlineSystemStorage().getListOfFlight().size())
-                                    System.out.println("Given index is not proper!");
-                                else
-                                    buyTickets(airportSystemStorage.getAirlines().get(companyName).getAirlineSystemStorage().getListOfFlight().get(Integer.parseInt(index)));
-
+                                buyTickets(airportSystemStorage.getAirlines().get(companyName).getAirlineSystemStorage().getListOfFlight().get(Integer.parseInt(index)));
                                 break;
                             case 4:
                                 loop2 = false;
