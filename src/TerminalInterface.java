@@ -165,11 +165,11 @@ public class TerminalInterface {
                         break;
 
                     case 3:
-                        ShowPicture.viewStorey( 1 );
+                        ShowPicture.viewFoor( 1 );
                         break;
 
                     case 4:
-                        ShowPicture.viewStorey( 2 );
+                        ShowPicture.viewFoor( 2 );
                         break;
 
                     case 5: loginPageLoop = false;
@@ -185,7 +185,7 @@ public class TerminalInterface {
     }
 
     public static class ShowPicture {
-        public static void viewStorey( int floor ) {
+        public static void viewFoor( int floor ) {
             JFrame frame = new JFrame();
             ImageIcon icon;
 
