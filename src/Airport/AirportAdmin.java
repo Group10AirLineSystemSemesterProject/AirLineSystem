@@ -6,6 +6,7 @@ import Client.User;
 import Client.UserInterface;
 import DataStructures.Edge;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -63,10 +64,13 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
 
             switch (choice){
                 case 1:
+                    System.out.println(this);
                     break;
                 case 2:
+                    airportSystemStorage.changeSSNwithMenu(in);
                     break;
                 case 3:
+                    airportSystemStorage.changePasswordwithMenu(in);
                     break;
                 case 4:
                     loop2 = true;
@@ -81,7 +85,8 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
 
                         switch (choice){
                             case 1:
-                                break;
+                                for(Map.Entry<String,Airline> ele:airportSystemStorage.getAirlines().entrySet())
+                                    System.out.println(ele);
                             case 2:
                                 break;
                             case 3:

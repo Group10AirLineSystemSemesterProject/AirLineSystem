@@ -117,7 +117,7 @@ public class AirlineSystemStorage {
      * Ticket container.
      * @return Ticket container.
      */
-    public Map<Integer,Ticket> getMaphOfTicket() {
+    public Map<Integer,Ticket> getMapOfTicket() {
         return mapOfTicket;
     }
 

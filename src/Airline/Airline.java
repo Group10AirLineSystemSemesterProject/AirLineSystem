@@ -52,9 +52,6 @@ public class Airline {
     }
 
 
-    /**
-     * No parameter constructor.
-     */
     public Airline(Destination localAirport , double commissionRate, AirlineAdmin admin , String nameOfTrademarkAsIdentifier, final String uaid_key,
                    MapGraph ways, ArrayList<Destination> dests) {
 
@@ -162,4 +159,8 @@ public class Airline {
         return localAirport;
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
