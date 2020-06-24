@@ -99,12 +99,16 @@ public class Shop extends Place implements ShopInterface {
                 shopManager.equals(shop.shopManager);
     }
 
-    /** Method that retursn hashcode of object.
+    /** Method that returns hashcode of object.
      * @return hashCode, as integer.*/
     public int hashCode() {
         return Objects.hash(super.hashCode(), name, fee, shopManager);
     }
 
+    /**
+     * Return the type of
+     * @return
+     */
     @Override
     public String getType() {
         return super.getType();
