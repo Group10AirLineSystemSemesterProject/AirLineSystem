@@ -98,9 +98,8 @@ public class User extends Person implements UserInterface  {
 
     @Override
     public String toString() {
-        return "User{" +
+        return super.toString()+"User" +
                 "SSN='" + SSN + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+                ", password='" + password + '\'';
     }
 }

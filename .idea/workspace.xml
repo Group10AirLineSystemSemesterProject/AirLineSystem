@@ -8,7 +8,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="18510" />
+    <option name="totalTimeSeconds" value="19531" />
+    <option name="naggedAbout" value="1" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -53,6 +54,7 @@
       <workItem from="1592970870357" duration="7834000" />
       <workItem from="1592984779205" duration="1980000" />
       <workItem from="1592999966662" duration="1879000" />
+      <workItem from="1593004799782" duration="1374000" />
     </task>
     <servers />
   </component>
@@ -104,9 +106,9 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="745" y="248" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1592933060254" />
-    <state x="539" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1592974369052">
+    <state x="539" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1593005530783">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="539" y="45" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1592974369052" />
+    <state x="539" y="45" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1593005530783" />
   </component>
 </project>

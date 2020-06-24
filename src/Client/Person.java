@@ -74,8 +74,7 @@ public class Person implements PersonInterface , Comparable<Person> {
     @Override
     public String toString() {
 
-        return "Person{" +
-                "name='" + name + '\'' +
+        return name + '\'' +
                 ", surname='" + surname + '\'' +
                 '}';
     }

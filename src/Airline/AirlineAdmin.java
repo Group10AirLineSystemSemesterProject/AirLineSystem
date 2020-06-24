@@ -2,16 +2,16 @@ package Airline;
 
 import Airport.AirportSystemStorage;
 import Client.UserInterface;
-
+import Client.User;
 import java.util.*;
 
-public class AirlineAdmin extends AirlinePersonnel implements AirlineAdminDomain , UserInterface {
+public class AirlineAdmin extends User implements AirlineAdminDomain , UserInterface {
 
     AirlineSystemStorage airlineSystemStorage;
 
     public AirlineAdmin( String name , String surname , AirlineSystemStorage airlineSystemStorage ) throws Exception {
 
-        super( name , surname , false );
+        super( name , surname );
         if( airlineSystemStorage == null ) {
             throw new Exception("AirlineSystemStorage cannot be null.");
         }

@@ -10,60 +10,67 @@ import java.util.concurrent.atomic.AtomicReference;
 public class TerminalInterface {
 
 
-    public static void main(String[] args) {
+    public static Airport buildSystem(){
+        Scanner in = new Scanner(System.in);
 
+        System.out.print("Name of airport : ");
+        String nameOfAirport = in.nextLine();
+        while( nameOfAirport ==null || nameOfAirport.equals("") ) {
+            System.out.print("Name of airport : ");
+            nameOfAirport = in.nextLine();
+        }
+        System.out.println();
+
+        System.out.print("Admin Name : ");
+        String nameOfAdmin = in.nextLine();
+        while( nameOfAdmin ==null || nameOfAdmin.equals("") ) {
+            System.out.print("Admin Name : ");
+            nameOfAdmin = in.nextLine();
+        }
+
+        System.out.print("Admin Surname : ");
+        String surnameOfAdmin = in.nextLine();
+        while( surnameOfAdmin ==null || surnameOfAdmin.equals("") ) {
+            System.out.print("Admin Surname : ");
+            surnameOfAdmin = in.nextLine();
+        }
+
+        System.out.print("SSN of Admin : ");
+        String SSNofAdmin = in.nextLine();
+        while ( SSNofAdmin ==null || SSNofAdmin.equals("") ) {
+            System.out.print("SSN Surname : ");
+            SSNofAdmin = in.nextLine();
+        }
+
+        System.out.print("Password of Admin : ");
+        String passwordOfAdmin = in.nextLine();
+        while( passwordOfAdmin ==null || passwordOfAdmin.equals("") ) {
+            System.out.print("Password of Admin : ");
+            passwordOfAdmin = in.next();
+        }
+
+        System.out.println();
+        try {
+            User portAdmin = new User(nameOfAdmin,surnameOfAdmin,SSNofAdmin,passwordOfAdmin);
+            Airport airport = new Airport( nameOfAirport , portAdmin);
+            System.out.println("System has been initialized.");
+            System.out.println();
+            return airport;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public static void main(String[] args) {
 
         try{
 
             Scanner in = new Scanner(System.in);
-
-            System.out.print("Name of airport : ");
-            String nameOfAirport = in.nextLine();
-            while( nameOfAirport ==null || nameOfAirport.equals("") ) {
-                System.out.print("Name of airport : ");
-                nameOfAirport = in.nextLine();
-            }
-            System.out.println();
-
-            System.out.print("Admin Name : ");
-            String nameOfAdmin = in.nextLine();
-            while( nameOfAdmin ==null || nameOfAdmin.equals("") ) {
-                System.out.print("Admin Name : ");
-                nameOfAdmin = in.nextLine();
-            }
-
-            System.out.print("Admin Surname : ");
-            String surnameOfAdmin = in.nextLine();
-            while( surnameOfAdmin ==null || surnameOfAdmin.equals("") ) {
-                System.out.print("Admin Surname : ");
-                surnameOfAdmin = in.nextLine();
-            }
-
-            System.out.print("SSN of Admin : ");
-            String SSNofAdmin = in.nextLine();
-            while ( SSNofAdmin ==null || SSNofAdmin.equals("") ) {
-                System.out.print("SSN Surname : ");
-                SSNofAdmin = in.nextLine();
-            }
-
-            System.out.print("Password of Admin : ");
-            String passwordOfAdmin = in.nextLine();
-            while( passwordOfAdmin ==null || passwordOfAdmin.equals("") ) {
-                System.out.print("Password of Admin : ");
-                passwordOfAdmin = in.next();
-            }
-
-            System.out.println();
-            Airport airport = new Airport( nameOfAirport , new User(nameOfAdmin , surnameOfAdmin , SSNofAdmin , passwordOfAdmin));
-            System.out.println("System has been initialized.");
-            System.out.println();
-
-
+            Airport airport = buildSystem();
 
             boolean loginPageLoop = true;
             while(loginPageLoop){
-
-                System.out.printf("\nWelcome to the Airport-Management-System Logic Page, %s.\n",nameOfAdmin+" "+surnameOfAdmin);
 
                 System.out.println("1- Login ");
                 System.out.println("2- Enroll the system.");
