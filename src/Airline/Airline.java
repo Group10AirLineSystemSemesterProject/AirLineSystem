@@ -1,5 +1,6 @@
 package Airline;
 
+import Airport.AirportSystemStorage;
 import Airport.Customer;
 import DataStructures.MapGraph;
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ public class Airline {
      * General data storage of airline
      */
     private final AirlineSystemStorage airlineSystemStorage;
+
+    private final AirportSystemStorage airportSystemStorage;
 
     /**
      * Local commition rate.
@@ -52,10 +55,11 @@ public class Airline {
     }
 
 
-    public Airline(Destination localAirport , double commissionRate, AirlineAdmin admin , String nameOfTrademarkAsIdentifier, final String uaid_key,
-                   MapGraph ways, ArrayList<Destination> dests) {
+    public Airline(Destination localAirport, double commissionRate, AirlineAdmin admin, String nameOfTrademarkAsIdentifier, final String uaid_key,
+                   MapGraph ways, ArrayList<Destination> dests, AirportSystemStorage airportSystemStorage) {
 
         this.localAirport = localAirport;
+        this.airportSystemStorage = airportSystemStorage;
         airlineSystemStorage = new AirlineSystemStorage(admin,nameOfTrademarkAsIdentifier,uaid_key,ways,dests);
         this.commissionRate = commissionRate;
 
@@ -157,6 +161,10 @@ public class Airline {
      */
     public Destination getLocalAirport() {
         return localAirport;
+    }
+
+    public AirportSystemStorage getAirportSystemStorage() {
+        return airportSystemStorage;
     }
 
     @Override

@@ -17,11 +17,12 @@ public class AirlinePersonnel extends User implements UserInterface {
     private String SSN;
     private String password;
     boolean isPilot;
+    AirlineSystemStorage airlineSystemStorage;
 
-
-    public AirlinePersonnel(String name, String surname , boolean isPilot) {
+    public AirlinePersonnel(String name, String surname , boolean isPilot, AirlineSystemStorage airlineSystemStorage) {
         super(name, surname);
         this.isPilot = isPilot;
+        this.airlineSystemStorage = airlineSystemStorage;
     }
 
     public AirlinePersonnel(String name, String surname , boolean isPilot , String SSN , String password ) throws Exception {
@@ -51,20 +52,19 @@ public class AirlinePersonnel extends User implements UserInterface {
         while(loop){
 
             System.out.printf("1- Personal info menu \n");
-            System.out.printf("2- Change ssn\n");
-            System.out.printf("3- Change password.\n");
-            System.out.printf("4- Exit.\n");
+            System.out.printf("2- Change password.\n");
+            System.out.printf("3- Exit.\n");
 
             choice = in.nextInt();
 
             switch (choice){
                 case 1:
+                    System.out.println(this);
                     break;
                 case 2:
+                    airlineSystemStorage.changePasswordwithMenu(in);
                     break;
-                case 3:
-                    break;
-                case 4: loop = false;
+                case 3: loop = false;
                     break;
                 default: System.out.printf("Error. Your input is invalid..\n");
             }
@@ -117,11 +117,7 @@ public class AirlinePersonnel extends User implements UserInterface {
 
     @Override
     public String toString() {
-        return "AirlinePersonnel{" +
-                "SSN='" + SSN + '\'' +
-                ", password='" + password + '\'' +
-                ", isPilot=" + isPilot +
-                '}';
+        return super.toString() + "is pilot:"+isPilot;
     }
 
 }

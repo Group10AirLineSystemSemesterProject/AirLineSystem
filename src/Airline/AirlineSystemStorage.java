@@ -189,5 +189,21 @@ public class AirlineSystemStorage {
     public ArrayList<Destination> getListOfDestination(){
         return dests;
     }
+
+    /** Overall menu to change password for User type UI
+     * @param in Scanner (must be System.in)
+     * @return new Password.
+     */
+    public String changePasswordwithMenu( Scanner in ) {
+
+        System.out.print("Enter the new password : ");
+        String password = in.nextLine();
+        while ( password == null || password.equals("") ) {
+            System.out.print("Enter the new password : ");
+            password = in.nextLine();
+        }
+        return password;
+
+    }
     
 }
