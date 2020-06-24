@@ -74,52 +74,77 @@ public class Aircraft {
 
     }
 
+    /**Returns the compareScore.
+     * @return compareScore, as integer.*/
     public int getCompareScore() {
         return compareScore;
     }
 
+    /**Returns the flightScore.
+     * @return flightScore, as integer.*/
     public static int getFlightScore() {
         return flightScore;
     }
 
+    /**Returns the emptyWeightAsKg.
+     * @return emptyWeightAsKg, as double.*/
     public Double getEmptyWeightAsKg() {
         return emptyWeightAsKg;
     }
 
+    /**Returns the passengerCapacity.
+     * @return passengerCapacity, as double.*/
     public Double getPassengerCapacity() {
         return passengerCapacity;
     }
 
+    /**Returns the wingspan.
+     * @return wingspan, as double.*/
     public Double getWingspan() {
         return wingspan;
     }
 
+    /**Returns the manufacturerInfo.
+     * @return manufacturerInfo, as String.*/
     public String getManufacturerInfo() {
         return manufacturerInfo;
     }
 
+    /**Returns the originAsCountry.
+     * @return originAsCountry, as String.*/
     public String getOriginAsCountry() {
         return originAsCountry;
     }
 
+    /**Returns the serialInfo.
+     * @return serialInfo, as String.*/
     public String getSerialInfo() {
         return serialInfo;
     }
 
+    /**Returns the manufacturingDate.
+     * @return manufacturingDate, as String.*/
     public String getManufacturingDate() {
         return manufacturingDate;
     }
 
+    /**Returns the registrationInfo.
+     * @return registrationInfo, as integer.*/
     public int getRegistrationInfo() {
         return registrationInfo;
     }
 
+    /**Returns the type.
+     * @return this.typeInfo, as string.*/
     public String getTypeInfo() {
         return typeInfo;
     }
 
+    /**Sets a new score to aircraft's score.
+     * @param flightScore to set.*/
     public static void setFlightScore(int flightScore) {Aircraft.flightScore = flightScore;}
 
+    /**Method to see compare score to flight score.*/
     public void assignCompare(){
         compareScore=Math.abs(getFlightScore()-getScore());
     }
@@ -175,6 +200,10 @@ public class Aircraft {
                 ((Aircraft) obj).maxFuelCapacity.equals( this.maxFuelCapacity );
     }
 
+    /**Method for getting score.
+     * Score is calculated from wingspan, capacity etc.
+     * it is between 0 and 30.
+     * @return the total score.*/
     public int getScore(){
 
         int score = 0;
