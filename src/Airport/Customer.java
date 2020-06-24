@@ -161,6 +161,7 @@ public class Customer extends User
                                 System.out.print("Flight Index : ");
                                 String index =  in.nextLine();
 
+
                                 while( index == null || index.equals("") || !isNumeric( index )
                                         || Integer.getInteger( index ) < 0 || Integer.getInteger( index ) > airportSystemStorage.getAirlines()
                                         .get(companyName).getAirlineSystemStorage().getListOfFlight().size()) {
@@ -169,6 +170,12 @@ public class Customer extends User
                                 }
                                 break;
 
+                                if( index == null || index.equals("") || !isNumeric( index ) || Integer.getInteger( index ) < 0 || Integer.getInteger( index ) > airportSystemStorage.getAirlines().get(companyName).getAirlineSystemStorage().getListOfFlight().size())
+                                    System.out.println("Given index is not proper!");
+                                else
+                                    buyTickets(airportSystemStorage.getAirlines().get(companyName).getAirlineSystemStorage().getListOfFlight().get(Integer.parseInt(index)));
+
+                                break;
                             case 4:
                                 loop2 = false;
                                 break;
@@ -222,7 +229,7 @@ public class Customer extends User
     public Ticket buyTickets( Flight flight ) {
 
         try {
-            return airportSystemStorage.getAirlines().get( flight.getUAID_KEY() ).createTicket(this,flight);
+            return airportSystemStorage.getAirlines().get( flight.getNameTrademark() ).createTicket(this,flight);
         }catch (Exception e){
             System.out.print( e );
             return null;

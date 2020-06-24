@@ -65,10 +65,17 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
                     System.out.println("Is the employee who will be removed pilot ?");
                     for(AirlinePersonnel ele:getAirline().getAirlineSystemStorage().getCabin_crew())
                         System.out.println(ele);
-                    getAirline().getAirlineSystemStorage().getCabin_crew().removeIf(k->{
+                    System.out.print("Please enter the SSN of the employee who is gonna be removed: ");
+                    String remSSN = in.nextLine();
+                    try{
+                        AirlinePersonnel airTemp = new AirlinePersonnel("","",false,remSSN,"");
+                        getAirline().getAirlineSystemStorage().getCabin_crew().removeIf( k-> {
 
-                        return false;
-                    });
+                        });
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
+
 
                     break;
                 case 3:
@@ -206,12 +213,12 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
         if( airline.getAirlineSystemStorage().ways.isEdge(0,airline.getAirlineSystemStorage().dests.indexOf(target)));
 
         String company = airline.getAirlineSystemStorage().getNameOfTrademarkAsIdentifier();
-        String UAID_KEY = airline.getAirlineSystemStorage().getNameOfTrademarkAsIdentifier();
+        String nameTrademark = airline.getAirlineSystemStorage().getNameOfTrademarkAsIdentifier();
         DateTime dateTime = new DateTime();
         Aircraft aircraft;
         // Collection<AirlinePersonnel> pilots, cabin_crew;
 
-        Flight flight = new Flight(company,UAID_KEY,airline.getAirlineSystemStorage().dests.get(0),target,dateTime,capacity,price,assignPilot(),assingCabincrew());
+        Flight flight = new Flight(company,nameTrademark,airline.getAirlineSystemStorage().dests.get(0),target,dateTime,capacity,price,assignPilot(),assingCabincrew());
         try {
             flight.setAircraft(assignAircraft(flight));
 
