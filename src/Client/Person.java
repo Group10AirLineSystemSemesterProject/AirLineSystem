@@ -14,7 +14,11 @@ public class Person implements PersonInterface , Comparable<Person> {
     /**Constructor of the Person
      * @param name As the name of the user.
      * @param surname as the surname of the user.*/
-    public Person( final String name , final String surname ) {
+    public Person( final String name , final String surname ) throws Exception {
+
+        if( name == null || surname == null ) {
+            throw new Exception("name of surname cannot be null.");
+        }
 
         this.name = name;
         this.surname = surname;
@@ -22,7 +26,7 @@ public class Person implements PersonInterface , Comparable<Person> {
     }
 
     /**
-     * Return the name of name.
+     * Return the name of person.
      * @return name of the person.
      */
     @Override
@@ -30,16 +34,28 @@ public class Person implements PersonInterface , Comparable<Person> {
         return name;
     }
 
+    /**
+     * Return the surname of the person.
+     * @return surname of the person.
+     */
     @Override
     public String getSurname() {
         return surname;
     }
 
+    /**
+     * Set the name of the person.
+     * @param name as a new name to assign.
+     */
     @Override
     public void setName( String name ) {
         this.name = name;
     }
 
+    /**
+     * Set the surname of the person.
+     * @param surname as a new surname to assign.
+     */
     @Override
     public void setSurname( String surname ) {
         this.surname = surname;
@@ -66,20 +82,22 @@ public class Person implements PersonInterface , Comparable<Person> {
                 Objects.equals(surname, person.surname);
     }
 
+
     /** Method that retursn hashcode of object.
      * @return hashCode, as integer.*/
     @Override
     public int hashCode() {
         return Objects.hash(name, surname);
     }
+    
 
     /** toString method to represent the object in form of string.
      * @return String format.*/
     @Override
     public String toString() {
-
         return name +"  " + surname ;
     }
+
 
     /** Method to compare an object to this.
      * @param person Object to compare.
