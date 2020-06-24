@@ -65,7 +65,7 @@ public class AirportAdmin extends Person implements UserInterface , AirportAdmin
             choice = in.nextInt();
 
             switch (choice){
-                case 1: super.menu(); // person's menu
+                case 1:
                     break;
                 case 2:
                     break;

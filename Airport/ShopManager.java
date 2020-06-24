@@ -80,7 +80,7 @@ public class ShopManager extends Person
             choice = in.nextInt();
 
             switch (choice){
-                case 1: super.menu();
+                case 1:
                     break;
                 case 2:
                     break;

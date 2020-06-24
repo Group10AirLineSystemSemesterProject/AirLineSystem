@@ -1,9 +1,14 @@
 package Airport;
 
+import Client.Person;
+import Client.User;
+
 import java.util.Objects;
 
 /**Airport Class that holds various information about airline.*/
 public class Airport {
+
+
 
     /**Each airport has an AirportSystemStorage.*/
     AirportSystemStorage airportSystemStorage;
@@ -14,15 +19,18 @@ public class Airport {
     /**Airport Constructor.
      * @throws if given name is not avaiable.
      * @param name as name of the Airport.*/
-    Airport(String name) throws Exception {
+    public Airport(String name , User airportAdmin) throws Exception {
         if(name!=null && !name.equals("")){
             this.name=name;
-            airportSystemStorage = new AirportSystemStorage();
+            airportSystemStorage = new AirportSystemStorage( new AirportAdmin( airportAdmin.getName() , airportAdmin.getSurname(),airportAdmin.getSSN()
+                    ,airportAdmin.getPassword() , airportSystemStorage) );
         }
-
-        throw (new Exception("Given name is not proper!"));
+        else  {
+            throw (new Exception("Given name is not proper!"));
+        }
     }
 
+    // made public
     /**get method of Name,
      *  @return name.*/
     public String getName() {

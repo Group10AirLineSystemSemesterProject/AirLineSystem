@@ -5,6 +5,8 @@ import DataStructures.MapGraph;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Airline management class.
@@ -33,6 +35,17 @@ public class Airline {
     private final AirlineSystemStorage airlineSystemStorage;
 
     private double commissionRate;
+
+
+    public Queue<AirlinePersonnel> getPilots() {
+        return airlineSystemStorage.getPilots();
+    }
+    public  Queue<AirlinePersonnel> getCabinCrew() {
+        return airlineSystemStorage.getCabin_crew();
+    }
+    public  AirlineAdmin getAdmin() {
+        return airlineSystemStorage.getAdmin();
+    }
 
 
     /**

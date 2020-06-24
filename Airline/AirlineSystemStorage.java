@@ -19,7 +19,6 @@ public class AirlineSystemStorage {
         pilots = new LinkedList<AirlinePersonnel>();
         cabin_crew = new LinkedList<AirlinePersonnel>();
         listOfAirCraft = new ArrayList<Aircraft>();
-        /* Destionation initialization */
 
         this.UAID_KEY = uaid_key;
         this.nameOfTrademarkAsIdentifier = nameOfTrademarkAsIdentifier;
@@ -124,4 +123,7 @@ public class AirlineSystemStorage {
         this.nameOfTrademarkAsIdentifier = nameOfTrademarkAsIdentifier;
     }
 
+    public AirlineAdmin getAdmin() {
+        return admin;
+    }
 }

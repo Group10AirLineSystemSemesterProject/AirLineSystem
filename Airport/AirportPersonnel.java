@@ -43,7 +43,6 @@ public class AirportPersonnel extends Person implements UserInterface , AirportP
         Scanner in = new Scanner(System.in);
         boolean loop = true;
 
-
         while(loop){
 
             System.out.printf("\nWelcome to airport personnel page, %s.\n",getName());
@@ -57,7 +56,7 @@ public class AirportPersonnel extends Person implements UserInterface , AirportP
             choice = in.nextInt();
 
             switch (choice){
-                case 1: super.menu();
+                case 1:
                     break;
                 case 2:
                     break;

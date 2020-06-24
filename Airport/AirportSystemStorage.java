@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class AirportSystemStorage {
 
     /**AirportSystemStorage constructor.*/
-    public AirportSystemStorage() {
+    public AirportSystemStorage( AirportAdmin airportAdmin ) throws Exception {
 
         airlines            = new TreeMap< String , Airline>();
         flights             = new TreeMap<Integer, Flight>();
@@ -27,7 +27,16 @@ public class AirportSystemStorage {
        destinations.add(new Destination("Izmir",80.0,10.0));
 
        ways = new MapGraph(15,false);
+
+       if( airportAdmin == null ) {
+           throw new Exception("AirportAdmin cannot be null.");
+       }
+
+       this.airportAdmin = airportAdmin;
     }
+
+
+    AirportAdmin airportAdmin;
 
     /**airportFund, represents airport's total money.*/
     double airportFund;
@@ -116,4 +125,7 @@ public class AirportSystemStorage {
         this.shopManagers = shopManagers;
     }
 
+    public AirportAdmin getAirportAdmin() {
+        return airportAdmin;
+    }
 }

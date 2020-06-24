@@ -24,6 +24,23 @@ public class AirlinePersonnel extends Person implements UserInterface {
         this.isPilot = isPilot;
     }
 
+    public AirlinePersonnel(String name, String surname , boolean isPilot , String SSN , String password ) throws Exception {
+
+        super(name, surname);
+        this.isPilot = isPilot;
+
+        if( SSN == null ) {
+            throw new Exception("SSN cannot be null.");
+        }
+
+        if( password == null ) {
+            throw new Exception("Password cannot be null.");
+        }
+
+        this.SSN = SSN;
+        this.password = password;
+    }
+
     public void menu(){
 
         int choice;
@@ -43,7 +60,7 @@ public class AirlinePersonnel extends Person implements UserInterface {
             choice = in.nextInt();
 
             switch (choice){
-                case 1: super.menu();
+                case 1:
                     break;
                 case 2:
                     break;
@@ -62,7 +79,12 @@ public class AirlinePersonnel extends Person implements UserInterface {
     }
 
     @Override
-    public void setSSN(String SSN) {
+    public void setSSN(String SSN) throws Exception {
+
+        if( SSN == null ) {
+            throw new Exception("SSN cannot be null.");
+        }
+
         this.SSN = SSN;
     }
 
@@ -72,7 +94,12 @@ public class AirlinePersonnel extends Person implements UserInterface {
     }
 
     @Override
-    public void setPassword(String password) {
+    public void setPassword(String password) throws Exception {
+
+        if( password == null ) {
+            throw new Exception("Password cannot be null.");
+        }
+
         this.password = password;
     }
 
