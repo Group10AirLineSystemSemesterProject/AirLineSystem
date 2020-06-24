@@ -41,7 +41,7 @@ public class AirportAdmin extends Person implements UserInterface , AirportAdmin
 
     }
 
-    public void menu(){
+    public static void menu(){
 
         int choice;
         Scanner in = new Scanner(System.in);
@@ -49,10 +49,6 @@ public class AirportAdmin extends Person implements UserInterface , AirportAdmin
 
 
         while(loop){
-
-            System.out.printf("\nWelcome to %s Airport's administration page.\n",getName());
-            System.out.printf("Airport's funding = %d",airportSystemStorage.getAirportFund());
-
             System.out.printf("1- Personal info menu \n");
             System.out.printf("2- Set SSN\n");
             System.out.printf("3- Set password.\n");

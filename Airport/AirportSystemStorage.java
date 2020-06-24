@@ -1,5 +1,8 @@
 package Airport;
 import Airline.*;
+import Client.Person;
+import Client.User;
+import Client.UserInterface;
 import DataStructures.Edge;
 import DataStructures.MapGraph;
 
@@ -127,5 +130,67 @@ public class AirportSystemStorage {
 
     public AirportAdmin getAirportAdmin() {
         return airportAdmin;
+    }
+
+    public AirlinePersonnel getAirlinePersonWithSSN(String SSN){
+        AirlinePersonnel temp = null;
+        for(Map.Entry<String,Airline> ele:getAirlines().entrySet())
+            temp = ele.getValue().getPersonWithSSN(SSN);
+
+        return temp;
+    }
+    public AirlineAdmin getAirlineAdminWithSSN(String SSN){
+        AirlineAdmin temp = null;
+        for(Map.Entry<String,Airline> ele:getAirlines().entrySet())
+            temp = ele.getValue().getAdminWithSSN(SSN);
+
+        return temp;
+    }
+    public AirportAdmin getAirportAdminWithSSN(String SSN){
+        if(getAirportAdmin().getSSN().equals(SSN))
+            return airportAdmin;
+        else
+            return null;
+    }
+    public AirportPersonnel getAirportPersonnelWithSSN(String SSN){
+        for(AirportPersonnel ele: getAirportPersonnel()){
+            if (ele.getSSN().equals(SSN))
+                return ele;
+        }
+        return null;
+
+    }
+    public Customer getCustomerWithSSN(String SSN){
+        for(Map.Entry<String,Customer> ele: getCustomers().entrySet()){
+            if(ele.getValue().getSSN().equals(SSN))
+                return ele.getValue();
+        }
+        return null;
+    }
+    public User getUserWithSSN(String SSN){
+        User temp = null;
+        temp = (User)(UserInterface)getCustomerWithSSN(SSN);
+        if(temp !=null)
+            return temp;
+        else{
+            temp = (User)(UserInterface)getAirlinePersonWithSSN(SSN);
+            if(temp!=null)
+                return temp;
+            else{
+                temp = (User)(UserInterface)getAirlineAdminWithSSN(SSN);
+                if (temp!=null)
+                    return temp;
+                else{
+                    temp = (User)(UserInterface)getAirportPersonnelWithSSN(SSN);
+                    if(temp!=null)
+                        return temp;
+                    else{
+                        temp = (User)(UserInterface)getAirportAdminWithSSN(SSN);
+                        return temp;
+                    }
+                }
+            }
+        }
+
     }
 }
