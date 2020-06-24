@@ -21,6 +21,10 @@ public class Person implements PersonInterface , Comparable<Person> {
 
     }
 
+    /**
+     * Return the name of name.
+     * @return name of the person.
+     */
     @Override
     public String getName() {
         return name;
