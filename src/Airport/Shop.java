@@ -32,52 +32,78 @@ public class Shop extends Place implements ShopInterface {
         this.inService = true;
     }
 
+    /**
+     * Return fee.
+     * @return fee.
+     */
     @Override
     public int getFee() {
         return fee;
     }
 
+    /**
+     * Name of shop.
+     * @return name of the shop.
+     */
     @Override
     public String getName() {
         return name;
     }
 
+    /**
+     * Return the manager of the shop.
+     * @return shop manager.
+     */
     @Override
     public ShopManager getShopManager() {
         return shopManager;
     }
 
-    @Override
-    public String getID() {
-        return super.getID();
-    }
+    /**
+     * Set name of shop.
+     * @param name name of shop
+     */
+    public void setName(String name) throws Exception {
 
-    public void setName(String name) {
+        if ( name == null || name.equals("") ) {
+            throw new Exception("Name of shop cannot be null.");
+        }
+
         this.name = name;
     }
 
-    @Override
-    public void setId(String id) {
-        super.setId(id);
-    }
-
-    @Override
-    public void setType(PlaceType type) {
-        super.setType(type);
-    }
-
+    /**
+     * Set the fee of shop.
+     * @param fee fee
+     */
     public void setFee(int fee) {
         this.fee = fee;
     }
 
+    /**
+     * Change the service status.
+     * @param inService service status.
+     */
     public void setInService(boolean inService) {
         this.inService = inService;
     }
 
-    public void setShopManager(ShopManager shopManager) {
+    /**
+     * Set shop manager of the store.
+     * @param shopManager shop manager.
+     */
+    public void setShopManager(ShopManager shopManager) throws Exception {
+
+        if( shopManager == null ) {
+            throw new Exception("shopManager cannot be null.");
+        }
         this.shopManager = shopManager;
     }
 
+    /**
+     * Return the status state of shop.
+     * @return current status of shop.
+     */
     public boolean isInService() {
         return inService;
     }
@@ -105,14 +131,6 @@ public class Shop extends Place implements ShopInterface {
         return Objects.hash(super.hashCode(), name, fee, shopManager);
     }
 
-    /**
-     * Return the type of
-     * @return
-     */
-    @Override
-    public String getType() {
-        return super.getType();
-    }
 
     /** toString method to represent the object in form of string.
      * @return String format.*/
