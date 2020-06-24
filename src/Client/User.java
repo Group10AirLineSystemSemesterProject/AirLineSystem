@@ -14,13 +14,11 @@ public class User extends Person implements UserInterface  {
      *
      * @param name    As the name of the user.
      * @param surname as the surname of the user.
+     * @param SSN     as the SSN of user
+     * @param password as login password
      */
-    public User(String name, String surname) {
-        super(name, surname);
-    }
-
     public User(String name, String surname, String SSN, String password ) throws Exception {
-        this( name , surname );
+        super( name , surname );
 
         if( SSN == null ) {
             throw new Exception("SSN cannot be null.");
