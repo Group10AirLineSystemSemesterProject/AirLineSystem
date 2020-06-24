@@ -317,19 +317,37 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                                 break;
 
                             case 2:
+                                System.out.print("Enter a name for the shop: ");
+                                String shopName = in.nextLine();
+                                System.out.print("Please enter shop manager name: ");
+                                String perName = in.nextLine();
+                                System.out.print("Please enter shop manager surname: ");
+                                String perSurname = in.nextLine();
+                                System.out.print("Please enter an SSN: ");
+                                String perSSN = in.nextLine();
+                                System.out.println("Please enter a password: ");
+                                String perPass = in.nextLine();
+                                System.out.print("Please neter fee of the shop: ");
+                                double shopFee = in.nextDouble();
+                                ShopManager temp;
+                                if(perName != null && perSurname!=null && !perName.equals("") && !perSurname.equals("")&& airportSystemStorage.getUserWithSSN(perSSN)==null){
+                                    temp = new ShopManager(perName,perSurname,SSN,perPass,shopFee,airportSystemStorage);
+                                    airportSystemStorage.getPlaces().add(new Shop(shopName,temp,(int)shopFee,"14"));
+                                }
+
                                 break;
 
                             case 3:
 
                                 System.out.print("Enter the shop name : ");
-                                String shopName = in.nextLine();
-                                while (  shopName == null || shopName.equals("") ) {
+                                String shopNameVal = in.nextLine();
+                                while (  shopNameVal == null || shopNameVal.equals("") ) {
                                     System.out.print("Enter the shop name : ");
-                                    shopName = in.nextLine();
+                                    shopNameVal = in.nextLine();
                                 }
 
                                 for( Place place : airportSystemStorage.getPlaces() ) {
-                                    if( place instanceof Shop || ((Shop)place).getName().equals(shopName)) {
+                                    if( place instanceof Shop || ((Shop)place).getName().equals(shopNameVal)) {
                                         airportSystemStorage.getPlaces().remove( place );
                                         break;
                                     }
