@@ -18,7 +18,7 @@ public class Flight implements  Comparable<Flight>{
     private Destination source;
     private Destination destination;
     private String company;
-    private String UAID_KEY;
+    private String nameTrademark;
     private DateTime dateTime;
     private int capacity;
     private int usedCapacity;
@@ -37,11 +37,11 @@ public class Flight implements  Comparable<Flight>{
      * @param crew
      * @param pilots
      */
-    public Flight(String company, String UAID_KEY, Destination source, Destination destination,DateTime dateTime, int capacity, int price,
+    public Flight(String company, String nameTrademark, Destination source, Destination destination,DateTime dateTime, int capacity, int price,
                   List<AirlinePersonnel> pilots, List<AirlinePersonnel> crew){
         this.usedCapacity = 0;
         this.company = company;
-        this.UAID_KEY = UAID_KEY;
+        this.nameTrademark = nameTrademark;
         this.source = source;
         this.destination=destination;
         this.dateTime = dateTime;
@@ -75,8 +75,8 @@ public class Flight implements  Comparable<Flight>{
         return company;
     }
 
-    public String getUAID_KEY() {
-        return UAID_KEY;
+    public String getNameTrademark() {
+        return nameTrademark;
     }
 
     public DateTime getDateTime() {
@@ -111,8 +111,8 @@ public class Flight implements  Comparable<Flight>{
         this.company = company;
     }
 
-    public void setUAID_KEY(String UAID_KEY) {
-        this.UAID_KEY = UAID_KEY;
+    public void setnameTrademark(String nameTrademark) {
+        this.nameTrademark = nameTrademark;
     }
 
     public void setAircraft(Aircraft aircraft){
@@ -148,7 +148,7 @@ public class Flight implements  Comparable<Flight>{
     public boolean equals(Object obj) {
         try{
             Flight temp = (Flight)obj;
-            if(temp.UAID_KEY.equals(UAID_KEY) && temp.aircraft.equals(aircraft) && temp.capacity ==capacity && temp.dateTime.equals(dateTime))
+            if(temp.nameTrademark.equals(nameTrademark) && temp.aircraft.equals(aircraft) && temp.capacity ==capacity && temp.dateTime.equals(dateTime))
                 return true;
             return false;
         }catch (Exception e){
