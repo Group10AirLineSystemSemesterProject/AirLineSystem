@@ -167,7 +167,6 @@ public class Customer extends User
                                     System.out.print("FLight Index : ");
                                     index =  in.nextLine();
                                 }
-
                                 buyTickets(airportSystemStorage.getAirlines().get(companyName).getAirlineSystemStorage().getListOfFlight().get(Integer.parseInt(index)));
                                 break;
                             case 4:

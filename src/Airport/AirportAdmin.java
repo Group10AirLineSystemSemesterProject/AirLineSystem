@@ -88,6 +88,8 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                                 for(Map.Entry<String,Airline> ele:airportSystemStorage.getAirlines().entrySet())
                                     System.out.println(ele);
                             case 2:
+                                for(Map.Entry<String,Airline> ele:airportSystemStorage.getAirlines().entrySet())
+                                    System.out.println(ele);
                                 break;
                             case 3:
                                 break;
