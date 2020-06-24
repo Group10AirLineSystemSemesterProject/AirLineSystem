@@ -89,7 +89,7 @@ public class Person implements PersonInterface , Comparable<Person> {
     public int hashCode() {
         return Objects.hash(name, surname);
     }
-    
+
 
     /** toString method to represent the object in form of string.
      * @return String format.*/
