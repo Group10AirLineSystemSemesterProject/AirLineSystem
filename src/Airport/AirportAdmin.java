@@ -340,14 +340,14 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                             case 3:
 
                                 System.out.print("Enter the shop name : ");
-                                String shopName = in.nextLine();
-                                while (  shopName == null || shopName.equals("") ) {
+                                String shopNameVal = in.nextLine();
+                                while (  shopNameVal == null || shopNameVal.equals("") ) {
                                     System.out.print("Enter the shop name : ");
-                                    shopName = in.nextLine();
+                                    shopNameVal = in.nextLine();
                                 }
 
                                 for( Place place : airportSystemStorage.getPlaces() ) {
-                                    if( place instanceof Shop || ((Shop)place).getName().equals(shopName)) {
+                                    if( place instanceof Shop || ((Shop)place).getName().equals(shopNameVal)) {
                                         airportSystemStorage.getPlaces().remove( place );
                                         break;
                                     }
