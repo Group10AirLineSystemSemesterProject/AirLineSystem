@@ -38,7 +38,7 @@ public class Customer extends User
     public Customer( String name , String surname , final String SSN , final String password
             , final AirportSystemStorage airportSystemStorage ) throws Exception {
 
-        super( name , surname );
+        super( name , surname,SSN,password);
         if(airportSystemStorage.isValidSSN(SSN)){
             this.SSN = SSN;
             if(password == null || password.equals(""))
@@ -295,11 +295,8 @@ public class Customer extends User
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "tickets=" + tickets +
-                ", SSN='" + SSN + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return super.toString() + "Tickets: "+tickets;
+
     }
 
     /**Compare method that works with enums,

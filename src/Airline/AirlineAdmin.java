@@ -1,21 +1,20 @@
 package Airline;
 
-import Airport.AirportSystemStorage;
 import Client.UserInterface;
 import Client.User;
 import java.util.*;
 
 public class AirlineAdmin extends User implements AirlineAdminDomain , UserInterface {
 
-    AirlineSystemStorage airlineSystemStorage;
+    Airline airline;
 
-    public AirlineAdmin( String name , String surname , AirlineSystemStorage airlineSystemStorage ) throws Exception {
+    public AirlineAdmin( String name , String surname , Airline airline ) throws Exception {
 
         super( name , surname );
-        if( airlineSystemStorage == null ) {
-            throw new Exception("AirlineSystemStorage cannot be null.");
+        if( airline == null ) {
+            throw new Exception("Airline cannot be null.");
         }
-        this.airlineSystemStorage = airlineSystemStorage;
+        this.airline = airline;
     }
 
     public void menu(){
@@ -48,11 +47,28 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
                     String perSSN = in.nextLine();
                     System.out.println("Please enter a password: ");
                     String perPass = in.nextLine();
-//                    if(perName != null && perSurname!=null && !perName.equals("") && !perSurname.equals("")&& )
-//                        AirlinePersonnel airlinePersonnel = new(perName,perSurname)
-//                    recruitPersonnel();
+                    if(perName != null && perSurname!=null && !perName.equals("") && !perSurname.equals("")&& getAirline().getAirportSystemStorage().getUserWithSSN(perSSN)==null)
+                        try{
+                            System.out.println("Is the new employee pilot? (Y/N)");
+                            String ans = in.nextLine();
+                            AirlinePersonnel airlinePersonnel;
+                            if(ans.equals("Y") || ans.equals("y"))
+                                airlinePersonnel = new AirlinePersonnel(perName,perSurname,true,perSSN,perPass);
+                            else
+                                airlinePersonnel = new AirlinePersonnel(perName,perSurname,false,perSSN,perPass);
+                                recruitPersonnel(airlinePersonnel);
+                        }catch (Exception e){
+                            System.out.println(e);
+                        }
                     break;
                 case 2:
+                    System.out.println("Is the employee who will be removed pilot ?");
+                    for(AirlinePersonnel ele:getAirline().getAirlineSystemStorage().getCabin_crew())
+                        System.out.println(ele);
+                    getAirline().getAirlineSystemStorage().getCabin_crew().removeIf(k->{
+
+                    });
+
                     break;
                 case 3:
                     break;
@@ -75,28 +91,32 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
         System.out.printf("Exiting...\n");
     }
 
-    public boolean dismissPersonnel( AirlinePersonnel airlinePersonnel ) throws Exception {
+    public Airline getAirline() {
+        return airline;
+    }
+
+    public boolean dismissPersonnel(AirlinePersonnel airlinePersonnel ) throws Exception {
 
         if( airlinePersonnel == null ) {
             throw new Exception("AirlinePersonnel cannot be null.");
         }
 
-        if( !(airlineSystemStorage.getCabin_crew().contains( airlinePersonnel ) ||
-                airlineSystemStorage.getPilots().contains( airlinePersonnel )) ) {
+        if( !(airline.getAirlineSystemStorage().getCabin_crew().contains( airlinePersonnel ) ||
+                airline.getAirlineSystemStorage().getPilots().contains( airlinePersonnel )) ) {
             return false;
         }
 
         if( airlinePersonnel.isPilot ) {
 
             try {
-                airlineSystemStorage.getPilots().remove(airlinePersonnel);
+                airline.getAirlineSystemStorage().getPilots().remove(airlinePersonnel);
             }
             catch ( Throwable t ) {
                 return false;
             }
         } else {
             try {
-                airlineSystemStorage.getCabin_crew().remove(airlinePersonnel);
+                airline.getAirlineSystemStorage().getCabin_crew().remove(airlinePersonnel);
             }
             catch ( Throwable t ) {
                 return false;
@@ -114,22 +134,22 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
             throw new Exception("AirlinePersonnel cannot be null.");
         }
 
-        if( airlineSystemStorage.getCabin_crew().contains( airlinePersonnel ) ||
-                airlineSystemStorage.getPilots().contains( airlinePersonnel ) ) {
+        if( airline.getAirlineSystemStorage().getCabin_crew().contains( airlinePersonnel ) ||
+                airline.getAirlineSystemStorage().getPilots().contains( airlinePersonnel ) ) {
             return false;
         }
 
         if( airlinePersonnel.isPilot ) {
 
             try {
-                airlineSystemStorage.getPilots().add( airlinePersonnel );
+                airline.getAirlineSystemStorage().getPilots().add( airlinePersonnel );
             }
             catch ( Throwable t ) {
                 return false;
             }
         } else {
             try {
-                airlineSystemStorage.getCabin_crew().add( airlinePersonnel );
+                airline.getAirlineSystemStorage().getCabin_crew().add( airlinePersonnel );
             }
             catch ( Throwable t ) {
                 return false;
@@ -141,12 +161,12 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
 
     @Override
     public boolean addDestination(Destination destination) {
-        return airlineSystemStorage.getListOfDestination().add(destination);
+        return airline.getAirlineSystemStorage().getListOfDestination().add(destination);
     }
 
     @Override
     public boolean removeDestination(Destination destination) {
-        return airlineSystemStorage.getListOfDestination().removeIf(ele ->ele.equals(destination));
+        return airline.getAirlineSystemStorage().getListOfDestination().removeIf(ele ->ele.equals(destination));
     }
 
     /**
@@ -157,24 +177,24 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
     @Override
     public boolean add_aircraft( String originAsCountry ,Double wingspan,Double passengerCapacity,Double emptyWeightAsKg , Double maxFuelCapacity ) {
 
-        Aircraft temp = new Aircraft(null, originAsCountry, airlineSystemStorage.increment_Aircraft_counter()
+        Aircraft temp = new Aircraft(null, originAsCountry, airline.getAirlineSystemStorage().increment_Aircraft_counter()
                 ,  null,null, null,wingspan,passengerCapacity, emptyWeightAsKg, maxFuelCapacity);
 
         if(passengerCapacity<0 || emptyWeightAsKg<0 || maxFuelCapacity>0)
             return false;
 
-        for(Aircraft ele : airlineSystemStorage.getListOfAirCraft() ){
+        for(Aircraft ele : airline.getAirlineSystemStorage().getListOfAirCraft() ){
             if(ele.equals(temp))
                 return false;
         }
 
-        return airlineSystemStorage.getListOfAirCraft().add( temp );
+        return airline.getAirlineSystemStorage().getListOfAirCraft().add( temp );
     }
 
 
     @Override
     public boolean remove_aircraft(Aircraft aircraft){
-        return airlineSystemStorage.getListOfAirCraft().removeIf(ele->ele.equals(aircraft));
+        return airline.getAirlineSystemStorage().getListOfAirCraft().removeIf(ele->ele.equals(aircraft));
     }
 
     /**
@@ -182,15 +202,15 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
      */
     public void addFlight(Destination target,int capacity,int price) {
 
-        if( airlineSystemStorage.ways.isEdge(0,airlineSystemStorage.dests.indexOf(target)));
+        if( airline.getAirlineSystemStorage().ways.isEdge(0,airline.getAirlineSystemStorage().dests.indexOf(target)));
 
-        String company = airlineSystemStorage.getNameOfTrademarkAsIdentifier();
-        String UAID_KEY = airlineSystemStorage.getNameOfTrademarkAsIdentifier();
+        String company = airline.getAirlineSystemStorage().getNameOfTrademarkAsIdentifier();
+        String UAID_KEY = airline.getAirlineSystemStorage().getNameOfTrademarkAsIdentifier();
         DateTime dateTime = new DateTime();
         Aircraft aircraft;
         // Collection<AirlinePersonnel> pilots, cabin_crew;
 
-        Flight flight = new Flight(company,UAID_KEY,airlineSystemStorage.dests.get(0),target,dateTime,capacity,price,assignPilot(),assingCabincrew());
+        Flight flight = new Flight(company,UAID_KEY,airline.getAirlineSystemStorage().dests.get(0),target,dateTime,capacity,price,assignPilot(),assingCabincrew());
         try {
             flight.setAircraft(assignAircraft(flight));
 
@@ -205,7 +225,7 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
      */
     @Override
     public boolean removeFlight(Flight flight) {
-        return airlineSystemStorage.getListOfFlight().removeIf(ele -> ele.equals(flight));
+        return airline.getAirlineSystemStorage().getListOfFlight().removeIf(ele -> ele.equals(flight));
     }
 
     /**
@@ -218,12 +238,12 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
      * @throws Exception Throws an exception when there is no aircraft in the hangar
      */
     private Aircraft assignAircraft(Flight flight) throws Exception {
-        if(airlineSystemStorage.getListOfAirCraft().size()!=0){
+        if(airline.getAirlineSystemStorage().getListOfAirCraft().size()!=0){
             Aircraft.setFlightScore(flight.getScore());
-            for(Aircraft ele:airlineSystemStorage.getListOfAirCraft())
+            for(Aircraft ele:airline.getAirlineSystemStorage().getListOfAirCraft())
                 ele.assignCompare();
-            airlineSystemStorage.getListOfAirCraft().sort(Aircraft.getComparator());
-            return airlineSystemStorage.getListOfAirCraft().get(0);
+            airline.getAirlineSystemStorage().getListOfAirCraft().sort(Aircraft.getComparator());
+            return airline.getAirlineSystemStorage().getListOfAirCraft().get(0);
         }
         else
             throw(new Exception("There is no aircraft in stock"));
@@ -233,13 +253,13 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
     private List<AirlinePersonnel> assignPilot(){
       List<AirlinePersonnel> pilots = new LinkedList<AirlinePersonnel>();
 
-      AirlinePersonnel temp = airlineSystemStorage.getPilots().poll();
+      AirlinePersonnel temp = airline.getAirlineSystemStorage().getPilots().poll();
       pilots.add(temp);
-      airlineSystemStorage.getPilots().offer(temp);
+      airline.getAirlineSystemStorage().getPilots().offer(temp);
 
-      temp = airlineSystemStorage.getPilots().poll();
+      temp = airline.getAirlineSystemStorage().getPilots().poll();
       pilots.add(temp);
-      airlineSystemStorage.getPilots().offer(temp);
+      airline.getAirlineSystemStorage().getPilots().offer(temp);
 
       return pilots;
     }
@@ -247,13 +267,13 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
     private List<AirlinePersonnel> assingCabincrew(){
         List<AirlinePersonnel> crew = new LinkedList<AirlinePersonnel>();
 
-        AirlinePersonnel temp = airlineSystemStorage.getCabin_crew().poll();
+        AirlinePersonnel temp = airline.getAirlineSystemStorage().getCabin_crew().poll();
         crew.add(temp);
-        airlineSystemStorage.getCabin_crew().offer(temp);
+        airline.getAirlineSystemStorage().getCabin_crew().offer(temp);
 
-        temp = airlineSystemStorage.getCabin_crew().poll();
+        temp = airline.getAirlineSystemStorage().getCabin_crew().poll();
         crew.add(temp);
-        airlineSystemStorage.getCabin_crew().offer(temp);
+        airline.getAirlineSystemStorage().getCabin_crew().offer(temp);
 
         return crew;
     }

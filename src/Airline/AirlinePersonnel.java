@@ -19,15 +19,9 @@ public class AirlinePersonnel extends User implements UserInterface {
     boolean isPilot;
     AirlineSystemStorage airlineSystemStorage;
 
-    public AirlinePersonnel(String name, String surname , boolean isPilot, AirlineSystemStorage airlineSystemStorage) {
-        super(name, surname);
-        this.isPilot = isPilot;
-        this.airlineSystemStorage = airlineSystemStorage;
-    }
-
     public AirlinePersonnel(String name, String surname , boolean isPilot , String SSN , String password ) throws Exception {
 
-        super(name, surname);
+        super(name, surname, SSN, password);
         this.isPilot = isPilot;
 
         if( SSN == null ) {
