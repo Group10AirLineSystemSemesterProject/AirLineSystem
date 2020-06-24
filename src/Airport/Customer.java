@@ -143,13 +143,42 @@ public class Customer extends User
                                     System.out.println( "" + ele.getValue().getAirlineSystemStorage().getNameOfTrademarkAsIdentifier()
                                             + " Flights List : ");
                                     for( int i = 0 ; i < ele.getValue().getAirlineSystemStorage().getListOfFlight().size() ; ++i ) {
-                                        System.out.println( ele.getValue().getAirlineSystemStorage().getListOfFlight().get(i) );
+                                        System.out.println( i + "" + ele.getValue().getAirlineSystemStorage().getListOfFlight().get(i) );
                                     }
                                     System.out.println();
                                 }
 
                                 System.out.print("Company Name : ");
                                 String companyName =  in.nextLine();
+
+                                while( companyName == null || companyName.equals("") || airportSystemStorage.getAirlines().containsKey() ) {
+                                    System.out.print("Company Name : ");
+                                    companyName =  in.nextLine();
+                                }
+
+                                System.out.print("Flight Index : ");
+                                String index =  in.nextLine();
+
+                                while( index == null || index.equals("") || !isNumeric( index )
+                                        || Integer.getInteger( index ) < 0 || Integer.getInteger( index ) > airportSystemStorage.getAirlines().get() ) {
+                                    System.out.print("FLight Index : ");
+                                    index =  in.nextLine();
+                                }
+
+                                Integer indexNumeric = Integer.getInteger( index );
+
+                                for(Map.Entry<String, Airline> ele: airportSystemStorage.getAirlines().entrySet()) {
+
+                                    if( ele.getValue().getAirlineSystemStorage().getNameOfTrademarkAsIdentifier().equals( companyName ) ) {
+                                        try {
+                                             ele.getValue().getAirlineSystemStorage().getListOfFlight().get( indexNumeric );
+                                        }
+                                        catch () {
+                                        }
+                                    }
+                                }
+
+
                                 break;
 
                             case 4:
@@ -173,6 +202,15 @@ public class Customer extends User
                     break;
                 default: System.out.println("Error. Your input is invalid.");
             }
+        }
+    }
+
+    private static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch(Exception e){
+            return false;
         }
     }
 
