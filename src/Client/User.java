@@ -1,7 +1,5 @@
 package Client;
 
-import Airport.AirportSystemStorage;
-
 import java.util.Objects;
 
 public class User extends Person implements UserInterface  {
@@ -34,7 +32,6 @@ public class User extends Person implements UserInterface  {
 
     /**
      * Method for receiving SSN.
-     *
      * @return SSN as string.
      */
     @Override
@@ -89,13 +86,10 @@ public class User extends Person implements UserInterface  {
         return SSN.equals(user.SSN);
     }
 
-<<<<<<< HEAD
     /**
      * Hash Code.
      * @return hashCode of user.
      */
-=======
->>>>>>> 2a23692f43fbddcde39abf823013ba43961c94de
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), SSN);
