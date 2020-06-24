@@ -8,7 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="18279" />
+    <option name="totalTimeSeconds" value="18568" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -56,6 +56,7 @@
       <workItem from="1592984779205" duration="1980000" />
       <workItem from="1592999966662" duration="1296000" />
       <workItem from="1593001860730" duration="779000" />
+      <workItem from="1593004050918" duration="352000" />
     </task>
     <servers />
   </component>
