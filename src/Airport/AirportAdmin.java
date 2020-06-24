@@ -315,9 +315,26 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                                 }
                                 System.out.println();
                                 break;
+
                             case 2:
                                 break;
+
                             case 3:
+
+                                System.out.print("Enter the shop name : ");
+                                String shopName = in.nextLine();
+                                while (  shopName == null || shopName.equals("") ) {
+                                    System.out.print("Enter the shop name : ");
+                                    shopName = in.nextLine();
+                                }
+
+                                for( Place place : airportSystemStorage.getPlaces() ) {
+                                    if( place instanceof Shop || ((Shop)place).getName().equals(shopName)) {
+                                        airportSystemStorage.getPlaces().remove( place );
+                                        break;
+                                    }
+                                }
+
                                 break;
                             case 4: loop2 = false;
                                 break;
