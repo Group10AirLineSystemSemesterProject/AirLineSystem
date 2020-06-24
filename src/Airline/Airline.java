@@ -1,8 +1,11 @@
 package Airline;
 
+import Airport.Airport;
 import Airport.AirportSystemStorage;
 import Airport.Customer;
 import DataStructures.MapGraph;
+
+import java.lang.annotation.Retention;
 import java.util.ArrayList;
 import java.util.Queue;
 
@@ -55,12 +58,11 @@ public class Airline {
     }
 
 
-    public Airline(Destination localAirport, double commissionRate, AirlineAdmin admin, String nameOfTrademarkAsIdentifier, final String uaid_key,
-                   MapGraph ways, ArrayList<Destination> dests, AirportSystemStorage airportSystemStorage) {
+    public Airline(Destination localAirport, double commissionRate, AirlineAdmin admin, String nameOfTrademarkAsIdentifier, MapGraph ways, ArrayList<Destination> dests, AirportSystemStorage airportSystemStorage) {
 
         this.localAirport = localAirport;
         this.airportSystemStorage = airportSystemStorage;
-        airlineSystemStorage = new AirlineSystemStorage(admin,nameOfTrademarkAsIdentifier,uaid_key,ways,dests);
+        airlineSystemStorage = new AirlineSystemStorage(admin,nameOfTrademarkAsIdentifier,ways,dests);
         this.commissionRate = commissionRate;
 
     }
@@ -108,13 +110,6 @@ public class Airline {
         this.commissionRate = commissionRate;
     }
 
-    /**
-     * Return UAID key.
-     * @return UAID key.
-     */
-    public String getUAID_KEY(){
-        return airlineSystemStorage.getUAID_KEY();
-    }
 
     /**
      * Return AirlineAdmin with SSN.
@@ -165,6 +160,18 @@ public class Airline {
 
     public AirportSystemStorage getAirportSystemStorage() {
         return airportSystemStorage;
+    }
+
+    public String getNameofTradeMark(){
+        return airlineSystemStorage.getNameOfTrademarkAsIdentifier();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Airline)
+            return getNameofTradeMark().equals(((Airline) obj).getNameofTradeMark());
+        else
+            return false;
     }
 
     @Override

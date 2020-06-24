@@ -48,11 +48,9 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
                     String perSSN = in.nextLine();
                     System.out.println("Please enter a password: ");
                     String perPass = in.nextLine();
-                    if(perName != null && perSurname!=null && !perName.equals("") && !perSurname.equals("")&& )
-                        AirlinePersonnel airlinePersonnel = new(perName,perSurname,)
-
-
-                    recruitPersonnel();
+//                    if(perName != null && perSurname!=null && !perName.equals("") && !perSurname.equals("")&& )
+//                        AirlinePersonnel airlinePersonnel = new(perName,perSurname)
+//                    recruitPersonnel();
                     break;
                 case 2:
                     break;
@@ -187,7 +185,7 @@ public class AirlineAdmin extends User implements AirlineAdminDomain , UserInter
         if( airlineSystemStorage.ways.isEdge(0,airlineSystemStorage.dests.indexOf(target)));
 
         String company = airlineSystemStorage.getNameOfTrademarkAsIdentifier();
-        String UAID_KEY = airlineSystemStorage.getUAID_KEY();
+        String UAID_KEY = airlineSystemStorage.getNameOfTrademarkAsIdentifier();
         DateTime dateTime = new DateTime();
         Aircraft aircraft;
         // Collection<AirlinePersonnel> pilots, cabin_crew;

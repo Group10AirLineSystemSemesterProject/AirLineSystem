@@ -23,11 +23,10 @@ public class AirlineSystemStorage {
      * General Airlien System Storage.
      * @param admin admin of airline.
      * @param nameOfTrademarkAsIdentifier trademark of airline.
-     * @param uaid_key UADI_key of airline.
      * @param ways ways
      * @param dests dests
      */
-    public AirlineSystemStorage( AirlineAdmin admin , String nameOfTrademarkAsIdentifier , final String uaid_key , MapGraph ways , ArrayList<Destination> dests)  {
+    public AirlineSystemStorage( AirlineAdmin admin , String nameOfTrademarkAsIdentifier , MapGraph ways , ArrayList<Destination> dests)  {
 
         this.admin = admin;
         aircraft_counter = 0;
@@ -39,7 +38,6 @@ public class AirlineSystemStorage {
         listOfFlight = new ArrayList<Flight>();
 
 
-        this.UAID_KEY = uaid_key;
         this.nameOfTrademarkAsIdentifier = nameOfTrademarkAsIdentifier;
 
         this.ways = ways;
@@ -60,12 +58,6 @@ public class AirlineSystemStorage {
      * MapGraph of destinations.
      * */
     public MapGraph ways;
-
-    /**
-     * <p> Unique Airline Identifier Key. </p>
-     * <p> Each airline company has matchless one for each Airport.</p>
-     */
-    private final transient String UAID_KEY;
 
     /**
      * List of flight.
@@ -160,14 +152,6 @@ public class AirlineSystemStorage {
      */
     public String getNameOfTrademarkAsIdentifier() {
         return nameOfTrademarkAsIdentifier;
-    }
-
-    /**
-     * UAID_KEY
-     * @return UAID_KEY
-     */
-    public String getUAID_KEY() {
-        return UAID_KEY;
     }
 
     /**

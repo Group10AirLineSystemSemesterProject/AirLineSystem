@@ -245,7 +245,7 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
         if( airportSystemStorage.airlines.containsValue( airline ) ) {
             return false;
         } else {
-            airportSystemStorage.airlines.put( airline.getUAID_KEY() , airline );
+            airportSystemStorage.airlines.put( airline.getAirlineSystemStorage().getNameOfTrademarkAsIdentifier() , airline );
             return true;
         }
 
@@ -257,7 +257,7 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
         if( airline == null ) {
             throw new Exception("Airline cannot be null.");
         } else {
-            return airportSystemStorage.airlines.remove( airline.getUAID_KEY() , airline );
+            return airportSystemStorage.airlines.remove( airline.getNameofTradeMark() , airline );
         }
     }
 

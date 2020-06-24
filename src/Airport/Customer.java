@@ -151,7 +151,7 @@ public class Customer extends User
                                 System.out.print("Company Name : ");
                                 String companyName =  in.nextLine();
 
-                                while( companyName == null || companyName.equals("") || airportSystemStorage.getAirlines().containsKey() ) {
+                                while( companyName == null || companyName.equals("") || airportSystemStorage.getAirlines().containsKey(companyName) ) {
                                     System.out.print("Company Name : ");
                                     companyName =  in.nextLine();
                                 }
@@ -160,24 +160,10 @@ public class Customer extends User
                                 String index =  in.nextLine();
 
                                 while( index == null || index.equals("") || !isNumeric( index )
-                                        || Integer.getInteger( index ) < 0 || Integer.getInteger( index ) > airportSystemStorage.getAirlines().get() ) {
+                                        || Integer.getInteger( index ) < 0 || Integer.getInteger( index ) > airportSystemStorage.getAirlines().get(companyName).getAirlineSystemStorage().getListOfFlight().size()) {
                                     System.out.print("FLight Index : ");
                                     index =  in.nextLine();
                                 }
-
-                                Integer indexNumeric = Integer.getInteger( index );
-
-                                for(Map.Entry<String, Airline> ele: airportSystemStorage.getAirlines().entrySet()) {
-
-                                    if( ele.getValue().getAirlineSystemStorage().getNameOfTrademarkAsIdentifier().equals( companyName ) ) {
-                                        try {
-                                             ele.getValue().getAirlineSystemStorage().getListOfFlight().get( indexNumeric );
-                                        }
-                                        catch () {
-                                        }
-                                    }
-                                }
-
 
                                 break;
 
