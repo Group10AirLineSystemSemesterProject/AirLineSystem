@@ -57,7 +57,7 @@ public class Customer extends Person
         customerCompareTo = CustomerCompareTo.ACCORDING_TO_NAME;
     }
 
-    public void menu(){
+    public static void menu(){
 
         int choice;
         Scanner in = new Scanner(System.in);
@@ -65,8 +65,6 @@ public class Customer extends Person
 
 
         while(loop){
-
-            System.out.printf("\nWelcome to our airport page, %s.\n",getName());
 
             System.out.printf("1- Personal info menu \n");
             System.out.printf("2- Change ssn\n");

@@ -37,15 +37,13 @@ public class AirportPersonnel extends Person implements UserInterface , AirportP
     }
 
 
-    public void menu(){
+    public static void menu(){
 
         int choice;
         Scanner in = new Scanner(System.in);
         boolean loop = true;
 
         while(loop){
-
-            System.out.printf("\nWelcome to airport personnel page, %s.\n",getName());
 
             System.out.printf("1- Personal info menu \n");
             System.out.printf("2- Change ssn\n");
