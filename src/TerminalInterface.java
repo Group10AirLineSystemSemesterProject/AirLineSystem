@@ -10,7 +10,8 @@ import java.util.concurrent.atomic.AtomicReference;
 public class TerminalInterface {
 
 
-    public static Airport buildSystem(){
+    public static Airport buildSystem() {
+
         Scanner in = new Scanner(System.in);
 
         System.out.print("Name of airport : ");
@@ -110,6 +111,53 @@ public class TerminalInterface {
                         }
 
                     case 2:
+                        System.out.print("Enter the name : ");
+                        String name = in.nextLine();
+
+                        while (  name == null || name.equals("") ) {
+                            System.out.print("Enter the name : ");
+                            name = in.nextLine();
+                        }
+
+                        System.out.print("Enter the surname : ");
+                        String surname = in.nextLine();
+
+                        while (  surname == null || surname.equals("") ) {
+                            System.out.print("Enter the surname : ");
+                            surname = in.nextLine();
+                        }
+
+                        System.out.print("Enter the SSN : ");
+                        String SSN = in.nextLine();
+
+                        while (  SSN == null || SSN.equals("") ) {
+                            System.out.print("Enter the SSN : ");
+                            SSN = in.nextLine();
+                        }
+
+                        User isExist = airport.getAirportSystemStorage().getUserWithSSN( SSN );
+
+                        if( isExist != null ) {
+                            System.out.println("There already exists an given SSN !");
+                            System.out.print("Enter the SSN of admin : ");
+                            SSN = in.nextLine();
+                            while (  SSN == null || SSN.equals("") ) {
+                                System.out.print("Enter the SSN : ");
+                                SSN = in.nextLine();
+                            }
+                        }
+
+                        System.out.print("Enter the password : ");
+                        String password = in.nextLine();
+
+                        while (  password == null || password.equals("") ) {
+                            System.out.print("Enter the password : ");
+                            password = in.nextLine();
+                        }
+
+                        airport.getAirportSystemStorage().getCustomers().put( SSN , new Customer( name ,surname , SSN , password , airport.getAirportSystemStorage()));
+                        System.out.println("Enrollment have been done.");
+
                         break;
 
                     case 3:
