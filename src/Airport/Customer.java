@@ -38,7 +38,7 @@ public class Customer extends User
     public Customer( String name , String surname , final String SSN , final String password
             , final AirportSystemStorage airportSystemStorage ) throws Exception {
 
-        super( name , surname,SSN,password);
+        super( name , surname , SSN , password);
         if(airportSystemStorage.isValidSSN(SSN)){
             this.SSN = SSN;
             if(password == null || password.equals(""))
@@ -50,16 +50,16 @@ public class Customer extends User
             }
         }
         else {
-            throw(new Exception("Given SSN is currently used!"));
+            throw(new Exception("Given SSN is currently in used!"));
         }
 
         customerCompareTo = CustomerCompareTo.ACCORDING_TO_NAME;
     }
 
     /**
-     * Menu.
+     * Menu of customer.
      */
-    public void menu(){
+    public void menu() throws Exception {
 
         int choice;
         Scanner in = new Scanner(System.in);
@@ -161,9 +161,17 @@ public class Customer extends User
                                 System.out.print("Flight Index : ");
                                 String index =  in.nextLine();
 
+
+                                while( index == null || index.equals("") || !isNumeric( index )
+                                        || Integer.getInteger( index ) < 0 || Integer.getInteger( index ) > airportSystemStorage.getAirlines()
+                                        .get(companyName).getAirlineSystemStorage().getListOfFlight().size()) {
+                                    System.out.print("FLight Index : ");
+                                    index =  in.nextLine();
+                                }
+                                break;
+
                                 if( index == null || index.equals("") || !isNumeric( index ) || Integer.getInteger( index ) < 0 || Integer.getInteger( index ) > airportSystemStorage.getAirlines().get(companyName).getAirlineSystemStorage().getListOfFlight().size())
                                     System.out.println("Given index is not proper!");
-
                                 else
                                     buyTickets(airportSystemStorage.getAirlines().get(companyName).getAirlineSystemStorage().getListOfFlight().get(Integer.parseInt(index)));
 
@@ -192,6 +200,11 @@ public class Customer extends User
         }
     }
 
+    /**
+     * Check whether it is numeric.
+     * @param str str
+     * @return true if given string is numeric.
+     */
     private static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
@@ -207,71 +220,28 @@ public class Customer extends User
         return tickets;
     }
 
-    @Override
-    public String getSSN() {
-        return SSN;
-    }
-
-    @Override
-    public void setSSN(String SSN) {
-       this.SSN = SSN;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public void displayFlights() {
-
-        airportSystemStorage.getFlights().forEach((k,v)->{
-            System.out.print(k+"- "+v.customerShow());
-        });
-
-    }
-
     /**
-     * displayFlight method prints all flights avaiable.
-     * with order of flightCompareTo
-     *
-     * @param flightCompareTo
+     * Buy a given ticket.
+     * @param flight to buy ticket from.
+     * @return newly created Ticket.
      */
-    @Override
-    public void displayFlights(FlightCompareTo flightCompareTo) {
-        Flight.setFlightCompareTo(flightCompareTo);
-        TreeMap<Integer,Flight> sorted = new TreeMap<>();
-        airportSystemStorage.getFlights().forEach(sorted::put);
-        airportSystemStorage.setFlights(sorted);
-        displayFlights();
-    }
-
     @Override
     public Ticket buyTickets( Flight flight ) {
 
         try {
             return airportSystemStorage.getAirlines().get( flight.getNameTrademark() ).createTicket(this,flight);
         }catch (Exception e){
-            System.out.print(e);
+            System.out.print( e );
             return null;
         }
 
     }
 
-    @Override
-    public Flight searchWithPNR( final int PNR ) throws Exception {
-
-        if(airportSystemStorage.getFlights().containsKey(PNR))
-            return airportSystemStorage.getFlights().get(PNR);
-        throw(new Exception("Given PNR has no ticket, please check your information carefully!"));
-
-    }
-
+    /**
+     * Customer equals.
+     * @param o Object to compare.
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
 
@@ -288,15 +258,12 @@ public class Customer extends User
 
     @Override
     public int hashCode() {
-
         return Objects.hash(super.hashCode(), SSN);
-
     }
 
     @Override
     public String toString() {
         return super.toString() + "Tickets: "+tickets;
-
     }
 
     /**Compare method that works with enums,
