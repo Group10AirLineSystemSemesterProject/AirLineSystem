@@ -8,7 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="20179" />
+    <option name="totalTimeSeconds" value="20965" />
     <option name="naggedAbout" value="1" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -55,6 +55,7 @@
       <workItem from="1592984779205" duration="1980000" />
       <workItem from="1592999966662" duration="1879000" />
       <workItem from="1593004799782" duration="2021000" />
+      <workItem from="1593006860415" duration="905000" />
     </task>
     <servers />
   </component>

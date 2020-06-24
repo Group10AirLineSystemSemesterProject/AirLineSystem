@@ -1,5 +1,6 @@
 package Airport;
 
+import Airline.Airline;
 import Airline.Flight;
 import Airline.FlightCompareTo;
 import Airline.Ticket;
@@ -66,30 +67,42 @@ public class Customer extends User
 
         while(loop){
 
-            System.out.printf("1- Personal info menu \n");
-            System.out.printf("2- Change ssn\n");
-            System.out.printf("3- Change password.\n");
-            System.out.printf("4- Buy Tickets.\n");
-            System.out.printf("5- See your Tickets.\n");
-            System.out.printf("6- See all shops.\n");
-            System.out.printf("7- Exit.\n");
+            System.out.println("1- Personal info menu");
+            System.out.println("2- Change ssn");
+            System.out.println("3- Change password.");
+            System.out.println("4- Buy Tickets.");
+            System.out.println("5- See your Tickets.");
+            System.out.println("6- See all shops.");
+            System.out.println("7- Exit.");
 
             choice = in.nextInt();
 
             switch (choice){
                 case 1:
+                    System.out.println(this);
                     break;
                 case 2:
+                    System.out.println("Enter the new SSN value:");
+                    String newSSN = in.nextLine();
+                    if(airportSystemStorage.getUserWithSSN(newSSN)==null)
+                        setSSN(newSSN);
+                    else
+                        System.out.println("Given SSN is currently hold by someone!.");
                     break;
                 case 3:
-                    break;
+                    System.out.println("Enter the new password");
+                    String newPassword = in.nextLine();
+                    if(newPassword!=null && !newPassword.equals(""))
+                        setPassword(newPassword);
+                    else
+                        System.out.println("Given password is empty!");
                 case 4:
                     loop2 = true;
                     while (loop2){
-                        System.out.printf("1- See all flights.\n");
-                        System.out.printf("2- Search a flight using PNR.\n");
-                        System.out.printf("3- Buy a ticket.\n");
-                        System.out.printf("4- Exit.\n");
+                        System.out.println("1- See all flights.");
+                        System.out.println("2- Search a flight using PNR.");
+                        System.out.println("3- Buy a ticket.");
+                        System.out.println("4- Exit.");
 
                         choice = in.nextInt();
 
