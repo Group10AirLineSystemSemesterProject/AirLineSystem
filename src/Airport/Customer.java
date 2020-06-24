@@ -97,7 +97,7 @@ public class Customer extends User
 
                                 for(Map.Entry<String, Airline> ele: airportSystemStorage.getAirlines().entrySet()) {
                                     System.out.println( "" + ele.getValue().getAirlineSystemStorage().getNameOfTrademarkAsIdentifier()
-                                                    + " Flights List : ");
+                                            + " Flights List : ");
                                     for( Flight flight : ele.getValue().getAirlineSystemStorage().getListOfFlight() ) {
                                         System.out.println( flight.customerShow() );
                                     }
@@ -105,13 +105,30 @@ public class Customer extends User
                                 }
 
                                 break;
+
                             case 2:
+
+                                System.out.print("Enter PNR : ");
+                                String PNR = in.nextLine();
+
+                                while ( PNR == null || PNR.equals("") ) {
+                                    System.out.print("Enter PNR : ");
+                                    PNR = in.nextLine();
+                                }
+
+                                for( Map.Entry<Integer,Ticket> ele : tickets.entrySet() ) {
+                                    if( ele.getValue().equals( PNR )) {
+                                        System.out.println( ele.getValue().toString() );
+                                        break;
+                                    }
+                                }
                                 break;
 
                             case 3:
                                 break;
 
                             case 4:
+
                                 loop2 = false;
                                 break;
 
