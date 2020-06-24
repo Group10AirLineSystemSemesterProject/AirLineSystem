@@ -37,8 +37,7 @@ public class Customer extends User
      * @param airportSystemStorage As current airport to be in.
      * @throws Exception if SSN is already used, or password is not valid.
      * */
-    public Customer( String name , String surname , final String SSN , final String password
-            , final AirportSystemStorage airportSystemStorage ) throws Exception {
+    public Customer( String name , String surname , final String SSN , final String password, final AirportSystemStorage airportSystemStorage ) throws Exception {
 
         super( name , surname );
         if(airportSystemStorage.isValidSSN(SSN)){
@@ -212,11 +211,7 @@ public class Customer extends User
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "tickets=" + tickets +
-                ", SSN='" + SSN + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return super.toString()+"\nTickets:"+tickets;
     }
 
     /**Compare method that works with enums,

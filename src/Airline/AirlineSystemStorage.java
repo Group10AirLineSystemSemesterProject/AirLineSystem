@@ -20,7 +20,6 @@ public class AirlineSystemStorage {
         cabin_crew = new LinkedList<AirlinePersonnel>();
         listOfAirCraft = new ArrayList<Aircraft>();
 
-
         this.UAID_KEY = uaid_key;
         this.nameOfTrademarkAsIdentifier = nameOfTrademarkAsIdentifier;
 
@@ -82,8 +81,13 @@ public class AirlineSystemStorage {
     public ArrayList<Aircraft> getListOfAirCraft() {
         return listOfAirCraft;
     }
-
-
+    /**
+     * Get Destination List
+     * @return list of destination.
+     */
+    public Collection<Destination> getListOfDestination() {
+        return listOfDestination;
+    } // mapGraph yapılacak
     public Map<Integer,Ticket> getListOfTicket() {
         return listOfTicket;
     }
@@ -98,6 +102,7 @@ public class AirlineSystemStorage {
     }
 
     private ArrayList<Flight> listOfFlight;
+
     public ArrayList<Flight> getListOfFlight() {
         return listOfFlight;
     }

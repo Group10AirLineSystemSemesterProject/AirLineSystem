@@ -6,7 +6,7 @@ public interface UserInterface {
     /** Method for receiving SSN.
      * @return SSN as string.
      * */
-    String getSSN() throws Exception;
+    String getSSN();
 
     /** Method for setting a new SSN.
      * @param SSN as a new SSN to assign.

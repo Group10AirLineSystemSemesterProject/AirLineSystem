@@ -40,7 +40,7 @@ public class User extends Person implements UserInterface  {
      * @return SSN as string.
      */
     @Override
-    public String getSSN() throws Exception {
+    public String getSSN(){
         return SSN;
     }
 
@@ -98,8 +98,6 @@ public class User extends Person implements UserInterface  {
 
     @Override
     public String toString() {
-        return super.toString()+"User" +
-                "SSN='" + SSN + '\'' +
-                ", password='" + password + '\'';
+        return super.toString()+" SSN:"+getSSN()+" Password:"+getPassword();
     }
 }
