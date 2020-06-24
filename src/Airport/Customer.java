@@ -4,7 +4,6 @@ import Airline.*;
 import Client.Person;
 import Client.User;
 import Client.UserInterface;
-import DataStructures.MapGraph;
 
 
 import java.util.*;
@@ -57,6 +56,9 @@ public class Customer extends User
         customerCompareTo = CustomerCompareTo.ACCORDING_TO_NAME;
     }
 
+    /**
+     * Menu.
+     */
     public void menu(){
 
         int choice;
@@ -164,7 +166,6 @@ public class Customer extends User
                                     System.out.print("FLight Index : ");
                                     index =  in.nextLine();
                                 }
-
                                 break;
 
                             case 4:
@@ -319,19 +320,14 @@ public class Customer extends User
         }
 
         switch ( customerCompareTo ) {
-
             case ACCORDING_TO_SURNAME:
                 return this.getSurname().compareTo( customer.getSurname() );
-
             case ACCORDING_TO_TICKET_NUMBER:
                 return Integer.compare(this.getTickets().size(), customer.getTickets().size());
-
             case ACCORDING_TO_SSN:
                 return this.getSSN().compareTo( customer.getSSN() );
-
             default:
                 return this.getName().compareTo( customer.getName() );
-
         }
     }
 

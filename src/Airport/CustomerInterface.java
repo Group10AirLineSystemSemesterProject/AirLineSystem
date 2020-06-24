@@ -7,10 +7,10 @@ import Airline.Ticket;
 /**Customer interface used for Customers*/
 public interface CustomerInterface {
 
-   /**displayFlight method prints all flights avaiable.*/
+   /**displayFlight method prints all flights available.*/
    void displayFlights();
 
-   /**displayFlight method prints all flights avaiable.
+   /**displayFlight method prints all flights available.
     * with order of flightCompareTo
     * */
    void displayFlights(FlightCompareTo flightCompareTo);

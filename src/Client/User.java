@@ -100,7 +100,7 @@ public class User extends Person implements UserInterface  {
 
     /**
      * Hash Code.
-     * @return
+     * @return hashCode of user.
      */
     @Override
     public int hashCode() {

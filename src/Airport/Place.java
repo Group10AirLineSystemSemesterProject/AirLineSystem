@@ -1,6 +1,4 @@
 package Airport;
-
-import javax.swing.*;
 import java.util.Objects;
 
 /**Subclass of Shop.*/
