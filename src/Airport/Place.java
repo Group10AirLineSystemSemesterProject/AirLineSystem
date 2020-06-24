@@ -23,6 +23,12 @@ public class Place implements  PlaceInterface , Comparable<Place>{
 
     }
 
+    /**toString method for Place. It just prints id and place type.
+     * @return string format.*/
+    public String toString(){
+        return type.toString() + ",id:" + getID();
+    }
+
     @Override
     public String getType() {
         return type.toString();
