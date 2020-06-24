@@ -57,14 +57,14 @@ public class Ticket {
             data = new TicketData(f_val,c_val);
             PNR = data.hashCode();
             airlineSystemStorage = s_val;
-            airlineSystemStorage.getListOfTicket().put(PNR,this); // adds new created value to map
+            airlineSystemStorage.getMapOfTicket().put(PNR,this); // adds new created value to map
         }catch (Exception e){
             System.out.println(e);
         }
     }
 
     public void deleteTicket(){
-            airlineSystemStorage.getListOfTicket().remove(this);
+            airlineSystemStorage.getMapOfTicket().remove(this);
             getData().flight.decUsedCapacity();
     }
 
