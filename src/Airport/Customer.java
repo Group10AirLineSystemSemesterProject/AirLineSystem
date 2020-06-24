@@ -4,6 +4,7 @@ import Airline.*;
 import Client.Person;
 import Client.User;
 import Client.UserInterface;
+import DataStructures.MapGraph;
 
 
 import java.util.*;
@@ -145,17 +146,22 @@ public class Customer extends User
                                 loop2 = false;
                                 break;
 
-                            default: System.out.printf("Error. Your input is invalid..\n");
+                            default:
+                                System.out.println("Error. Your input is invalid.");
                         }
                     }
                     break;
                 case 5:
+                    for(Map.Entry<Integer,Ticket> ele:tickets.entrySet())
+                        System.out.println(ele.getValue());
                     break;
                 case 6:
+                    for(Place ele : airportSystemStorage.getPlaces())
+                        System.out.println(ele);
                     break;
                 case 7: loop = false;
                     break;
-                default: System.out.printf("Error. Your input is invalid..\n");
+                default: System.out.println("Error. Your input is invalid.");
             }
         }
     }
