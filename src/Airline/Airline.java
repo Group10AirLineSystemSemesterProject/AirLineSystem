@@ -1,14 +1,8 @@
 package Airline;
 
-import Airport.AirportPersonnel;
 import Airport.Customer;
-import Client.Person;
-import Client.UserInterface;
 import DataStructures.MapGraph;
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.Queue;
 
 /**
@@ -22,31 +16,38 @@ public class Airline {
      * Current airport.
      */
     Destination localAirport;
-    // bu field'ı tutmamıza gerek yok çünkü airline uçuş ayarlarken
-    // erişebildiği destinationlarla rotasını belirlemeli.
-    // destination has a airport gibi bir yapı oluşturulabilir.
-    // veya bu class direkt airport'a append edilebilir.
-
-
-    // System storage'ın final olması daha mantıklı çünkü bu class oluştuktan
-    // sonra yalnızca kendi methodlar ı call edilerek işlem gerçekleşiyor,
-    // bu obje yerine başka obje atamsı gibi işlemler gerçekleşmiyor.
 
     /**
      * General data storage of airline
      */
     private final AirlineSystemStorage airlineSystemStorage;
 
+    /**
+     * Local commition rate.
+     */
     private double commissionRate;
 
-
+    /**
+     * Get pilots.
+     * @return pilots container.
+     */
     public Queue<AirlinePersonnel> getPilots() {
         return airlineSystemStorage.getPilots();
     }
-    public  Queue<AirlinePersonnel> getCabinCrew() {
+
+    /**
+     * Get CabinCrew.
+     * @return CabinCrew container.
+     */
+    public Queue<AirlinePersonnel> getCabinCrew() {
         return airlineSystemStorage.getCabin_crew();
     }
-    public  AirlineAdmin getAdmin() {
+
+    /**
+     * Get admin.
+     * @return admin container.
+     */
+    public AirlineAdmin getAdmin() {
         return airlineSystemStorage.getAdmin();
     }
 
@@ -63,6 +64,13 @@ public class Airline {
 
     }
 
+    /**
+     * Create ticket
+     * @param customer customer.
+     * @param flight flight.
+     * @return new ticket included pnr.
+     * @throws Exception
+     */
     public Ticket createTicket(Customer customer,Flight flight) throws Exception {
         if(flight.isTicketAble())
             return new Ticket(flight,customer,airlineSystemStorage);
@@ -70,15 +78,27 @@ public class Airline {
             throw(new Exception("Choosen filght's tickets are currently unavailable! "));
     }
 
+    /**
+     * Delete existing ticket.
+     * @param ticket ticket.
+     */
     public void deleteticket(Ticket ticket){
         ticket.deleteTicket();
     }
 
-    private AirlineSystemStorage getAirlineSystemStorage() {
+    /**
+     * General airline system storage.
+     * @return
+     */
+    public AirlineSystemStorage getAirlineSystemStorage() {
         return airlineSystemStorage;
     }
 
-
+    /**
+     * Set commission rate.
+     * @param commissionRate commission rate.
+     * @throws Exception
+     */
     public void setCommissionRate( double commissionRate ) throws Exception {
         if( commissionRate < 0 ) {
             throw new Exception("CommissionRate cannot be negative.");
@@ -87,17 +107,33 @@ public class Airline {
         this.commissionRate = commissionRate;
     }
 
+    /**
+     * Return UAID key.
+     * @return UAID key.
+     */
     public String getUAID_KEY(){
         return airlineSystemStorage.getUAID_KEY();
     }
 
-    public AirlineAdmin getAdminWithSSN(String SSN){
+    /**
+     * Return AirlineAdmin with SSN.
+     * @param SSN SSN.
+     * @return airline admin exists with matching SSN otherwise return null.
+     * @throws Exception
+     */
+    public AirlineAdmin getAdminWithSSN(String SSN) throws Exception {
         if(getAdmin().getSSN().equals(SSN))
             return getAdmin();
         else
             return null;
     }
 
+    /**
+     * Return airline personnel with SSN.
+     * @param SSN SSN.
+     * @return airline personnel exists with matching SSN otherwise return null.
+     * @throws Exception
+     */
     public AirlinePersonnel getPersonWithSSN(String SSN){
         for(AirlinePersonnel ele:airlineSystemStorage.getPilots()){
             if(ele.getSSN().equals(SSN))
@@ -108,6 +144,22 @@ public class Airline {
                 return ele;
         }
         return null;
+    }
+
+    /**
+     * Return commition rate.
+     * @return commition rate.
+     */
+    public double getCommissionRate() {
+        return commissionRate;
+    }
+
+    /**
+     * Return local airport.
+     * @return local airport.
+     */
+    public Destination getLocalAirport() {
+        return localAirport;
     }
 
 }
