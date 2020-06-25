@@ -181,7 +181,7 @@ public class Airline {
      */
     @Override
     public String toString() {
-        return "Company Name : " + airlineSystemStorage.getNameOfTrademarkAsIdentifier()+"\n"
+        return "Company Name : " + airlineSystemStorage.getNameOfTrademarkAsIdentifier()+"\t"
                 +"Commission Rate : " + this.commissionRate;
     }
 }

@@ -14,12 +14,6 @@ import java.util.Scanner;
  * This class administrates Airport business as flights, shops.. */
 public class AirportAdmin extends User implements UserInterface , AirportAdminInterface {
 
-    /**Social security number, stored as String.*/
-    private String SSN;
-
-    /**Password to log in, stored as String.*/
-    private String password;
-
     /**Helps to reach AirportSystemStorage class' data.*/
     private AirportSystemStorage airportSystemStorage;
 
@@ -42,7 +36,7 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
 
         int choice;
         Scanner in = new Scanner(System.in);
-        boolean loop = true, loop2 = true;
+        boolean loop = true, loop2;
 
 
         while(loop){
@@ -52,8 +46,7 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
             System.out.printf("4- Airline administration.\n");
             System.out.printf("5- Airport Personnel administration.\n");
             System.out.printf("6- Shop administration.\n");
-            System.out.printf("7- Destination administration.\n");
-            System.out.printf("8- Exit.\n");
+            System.out.printf("7- Exit.\n");
 
             choice = in.nextInt();
 
@@ -80,33 +73,33 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
 
                         switch (choice){
                             case 1:
+                                System.out.println(airportSystemStorage.getAirlines().size());
                                 for(Map.Entry<String,Airline> ele:airportSystemStorage.getAirlines().entrySet())
-                                    System.out.println(ele);
+                                    System.out.println(ele.getValue());
+                            break;
                             case 2:
-
-
                                 System.out.print("Enter the name of admin : ");
-                                String nameOfAdmin = in.nextLine();
+                                String nameOfAdmin = in.next();
 
                                 while (  nameOfAdmin == null || nameOfAdmin.equals("") ) {
                                     System.out.print("Enter the name of admin : ");
-                                    nameOfAdmin = in.nextLine();
+                                    nameOfAdmin = in.next();
                                 }
 
                                 System.out.print("Enter the surname of admin : ");
-                                String surnameOfAdmin = in.nextLine();
+                                String surnameOfAdmin = in.next();
 
                                 while (  surnameOfAdmin == null || surnameOfAdmin.equals("") ) {
                                     System.out.print("Enter the surname of admin : ");
-                                    surnameOfAdmin = in.nextLine();
+                                    surnameOfAdmin = in.next();
                                 }
 
                                 System.out.print("Enter the SSN of admin : ");
-                                String SSN = in.nextLine();
+                                String SSN = in.next();
 
                                 while (  SSN == null || SSN.equals("") ) {
                                     System.out.print("Enter the SSN of admin : ");
-                                    SSN = in.nextLine();
+                                    SSN = in.next();
                                 }
 
                                 User isExist = airportSystemStorage.getUserWithSSN( SSN );
@@ -114,33 +107,33 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                                 if( isExist != null ) {
                                     System.out.println("There already exists an given SSN !");
                                     System.out.print("Enter the SSN of admin : ");
-                                    SSN = in.nextLine();
+                                    SSN = in.next();
                                     while (  SSN == null || SSN.equals("") ) {
                                         System.out.print("Enter the SSN of admin : ");
-                                        SSN = in.nextLine();
+                                        SSN = in.next();
                                     }
                                 }
 
                                 System.out.print("Enter the password of admin : ");
-                                String password = in.nextLine();
+                                String password = in.next();
 
                                 while (  password == null || password.equals("") ) {
                                     System.out.print("Enter the password of admin : ");
-                                    password = in.nextLine();
+                                    password = in.next();
                                 }
 
                                 System.out.print("Enter the name of trademark of airline : ");
-                                String nameOfAirline = in.nextLine();
+                                String nameOfAirline = in.next();
 
                                 while (  nameOfAirline == null || nameOfAirline.equals("") ) {
                                     System.out.print("Enter the name of trademark of airline : ");
-                                    nameOfAirline = in.nextLine();
+                                    nameOfAirline = in.next();
                                 }
 
                                 while ( airportSystemStorage.getAirlines().containsKey( nameOfAirline ) ) {
                                     System.out.println("There is already an airline with this trademark.");
                                     System.out.print("Enter the name of trademark of airline : ");
-                                    nameOfAirline = in.nextLine();
+                                    nameOfAirline = in.next();
                                 }
 
                                 System.out.print("Enter the commission rateof airline : ");
@@ -150,22 +143,20 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                                     , nameOfAirline , airportSystemStorage.ways , airportSystemStorage.destinations , airportSystemStorage );
 
                                 newAirline.getAirlineSystemStorage().setAdmin( new AirlineAdmin(new User( nameOfAdmin , surnameOfAdmin, SSN , password ) , newAirline ));
+                                airportSystemStorage.getAirlines().put(newAirline.getNameofTradeMark(),newAirline);
                                 break;
 
                             case 3:
                                 System.out.print("Enter the name of trademark of airline : ");
-                                String removedAirlineName = in.nextLine();
+                                String removedAirlineName = in.next();
 
                                 while (  removedAirlineName == null || removedAirlineName.equals("") ) {
                                     System.out.print("Enter the name of trademark of airline : ");
-                                    removedAirlineName = in.nextLine();
+                                    removedAirlineName = in.next();
                                 }
 
-                                Airline tempAirline1 = new Airline( airportSystemStorage.destinations.get(0) , 0 , null
-                                        , removedAirlineName , airportSystemStorage.ways , airportSystemStorage.destinations , airportSystemStorage );
-
                                 if( airportSystemStorage.getAirlines().containsKey( removedAirlineName ) ) {
-                                    airportSystemStorage.getAirlines().remove( tempAirline1 );
+                                    airportSystemStorage.getAirlines().remove(removedAirlineName);
                                 } else {
                                     System.out.println("There is no airline with this name.");
                                 }
@@ -177,18 +168,15 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                                 Double commissionRate = in.nextDouble();
 
                                 System.out.print("Enter the name of trademark of airline : ");
-                                String forNewCommissionRate = in.nextLine();
+                                String nameOfTradeMark = in.next();
 
-                                while (  forNewCommissionRate == null || forNewCommissionRate.equals("") ) {
+                                while (  nameOfTradeMark == null || nameOfTradeMark.equals("") ) {
                                     System.out.print("Enter the name of trademark of airline : ");
-                                    forNewCommissionRate = in.nextLine();
+                                    nameOfTradeMark = in.next();
                                 }
 
-                                Airline tempAirline2 = new Airline( airportSystemStorage.destinations.get(0) , 0 , null
-                                        , forNewCommissionRate , airportSystemStorage.ways , airportSystemStorage.destinations , airportSystemStorage );
-
-                                if( airportSystemStorage.getAirlines().containsKey( forNewCommissionRate ) ) {
-                                    airportSystemStorage.getAirlines().remove( tempAirline2 );
+                                if( airportSystemStorage.getAirlines().containsKey( nameOfTradeMark ) ) {
+                                    airportSystemStorage.getAirlines().get(nameOfTradeMark).setCommissionRate(commissionRate);
                                 } else {
                                     System.out.println("There is no airline with this name.");
                                 }
@@ -214,27 +202,27 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                         switch (choice){
                             case 1:
                                 System.out.print("Enter the name of Airport Personnel : ");
-                                String nameOfAirportPersonnel = in.nextLine();
+                                String nameOfAirportPersonnel = in.next();
 
                                 while (  nameOfAirportPersonnel == null || nameOfAirportPersonnel.equals("") ) {
                                     System.out.print("Enter the name of Airport Personnel : ");
-                                    nameOfAirportPersonnel = in.nextLine();
+                                    nameOfAirportPersonnel = in.next();
                                 }
 
                                 System.out.print("Enter the surname of Airport Personnel : ");
-                                String surnameOfAirportPersonnel = in.nextLine();
+                                String surnameOfAirportPersonnel = in.next();
 
                                 while (  surnameOfAirportPersonnel == null || surnameOfAirportPersonnel.equals("") ) {
                                     System.out.print("Enter the surname of Airport Personnel : ");
-                                    surnameOfAirportPersonnel = in.nextLine();
+                                    surnameOfAirportPersonnel = in.next();
                                 }
 
                                 System.out.print("Enter the SSN of Airport Personnel : ");
-                                String SSN = in.nextLine();
+                                String SSN = in.next();
 
                                 while (  SSN == null || SSN.equals("") ) {
                                     System.out.print("Enter the SSN of Airport Personnel : ");
-                                    SSN = in.nextLine();
+                                    SSN = in.next();
                                 }
 
                                 User isExist = airportSystemStorage.getUserWithSSN( SSN );
@@ -242,19 +230,19 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                                 if( isExist != null ) {
                                     System.out.println("There already exists an given SSN !");
                                     System.out.print("Enter the SSN of Airport Personnel : ");
-                                    SSN = in.nextLine();
+                                    SSN = in.next();
                                     while (  SSN == null || SSN.equals("") ) {
                                         System.out.print("Enter the SSN of Airport Personnel : ");
-                                        SSN = in.nextLine();
+                                        SSN = in.next();
                                     }
                                 }
 
                                 System.out.print("Enter the password of Airport Personnel : ");
-                                String password = in.nextLine();
+                                String password = in.next();
 
                                 while (  password == null || password.equals("") ) {
                                     System.out.print("Enter the password of Airport Personnel : ");
-                                    password = in.nextLine();
+                                    password = in.next();
                                 }
 
                                 airportSystemStorage.getAirportPersonnel().add( new AirportPersonnel( nameOfAirportPersonnel , surnameOfAirportPersonnel
@@ -264,17 +252,14 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                             case 2:
 
                                 System.out.print("Enter the SSN of Airport Personnel : ");
-                                String dismissSSN = in.nextLine();
+                                String dismissSSN = in.next();
 
                                 while (  dismissSSN == null || dismissSSN.equals("") ) {
                                     System.out.print("Enter the SSN of Airport Personnel : ");
-                                    dismissSSN = in.nextLine();
+                                    dismissSSN = in.next();
                                 }
 
-                                AirportPersonnel removedPersonnel = new AirportPersonnel("null" , "null" ,dismissSSN
-                                        , "null" ,airportSystemStorage);
-
-                                if( airportSystemStorage.getAirportPersonnel().remove( removedPersonnel ) ) {
+                                if( airportSystemStorage.getAirportPersonnel().remove(airportSystemStorage.getUserWithSSN(dismissSSN)) ) {
                                     System.out.println("Airport personnel have been removed.");
                                 } else {
                                     System.out.println("There is no Airport personnel with given name.");
@@ -318,20 +303,20 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
 
                             case 2:
                                 System.out.print("Enter a name for the shop: ");
-                                String shopName = in.nextLine();
+                                String shopName = in.next();
                                 System.out.print("Please enter shop manager name: ");
-                                String perName = in.nextLine();
+                                String perName = in.next();
                                 System.out.print("Please enter shop manager surname: ");
-                                String perSurname = in.nextLine();
+                                String perSurname = in.next();
                                 System.out.print("Please enter an SSN: ");
-                                String perSSN = in.nextLine();
+                                String perSSN = in.next();
                                 System.out.println("Please enter a password: ");
-                                String perPass = in.nextLine();
+                                String perPass = in.next();
                                 System.out.print("Please neter fee of the shop: ");
                                 double shopFee = in.nextDouble();
                                 ShopManager temp;
                                 if(perName != null && perSurname!=null && !perName.equals("") && !perSurname.equals("")&& airportSystemStorage.getUserWithSSN(perSSN)==null){
-                                    temp = new ShopManager(perName,perSurname,SSN,perPass,shopFee,airportSystemStorage);
+                                    temp = new ShopManager(perName,perSurname,perSSN,perPass,shopFee,airportSystemStorage);
                                     airportSystemStorage.getPlaces().add(new Shop(shopName,temp,(int)shopFee,"14"));
                                 }
 
@@ -340,10 +325,10 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
                             case 3:
 
                                 System.out.print("Enter the shop name : ");
-                                String shopNameVal = in.nextLine();
+                                String shopNameVal = in.next();
                                 while (  shopNameVal == null || shopNameVal.equals("") ) {
                                     System.out.print("Enter the shop name : ");
-                                    shopNameVal = in.nextLine();
+                                    shopNameVal = in.next();
                                 }
 
                                 for( Place place : airportSystemStorage.getPlaces() ) {
@@ -499,31 +484,11 @@ public class AirportAdmin extends User implements UserInterface , AirportAdminIn
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-
-        if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass()) return false;
-
-        if (!super.equals(o)) return false;
-
-        AirportAdmin that = (AirportAdmin) o;
-
-        return SSN.equals(that.SSN);
-
+    public AirportSystemStorage getAirportSystemStorage() {
+        return airportSystemStorage;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), SSN);
-    }
-
-    @Override
-    public String toString() {
-        return "AirportAdmin{" +
-                "SSN='" + SSN + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public void setAirportSystemStorage(AirportSystemStorage airportSystemStorage) {
+        this.airportSystemStorage = airportSystemStorage;
     }
 }

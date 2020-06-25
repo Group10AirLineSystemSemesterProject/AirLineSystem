@@ -63,7 +63,7 @@ public class AirportPersonnel extends User implements UserInterface , AirportPer
                     for(Map.Entry<String,Customer> ele :airportSystemStorage.getCustomers().entrySet())
                         System.out.println(ele.getValue());
                     System.out.print("Enter the SSN of the customer: ");
-                    String removeSSN = in.nextLine();
+                    String removeSSN = in.next();
                     User temp = airportSystemStorage.getUserWithSSN(removeSSN);
                     if(temp!=null){
                         if(temp instanceof Customer)

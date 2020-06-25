@@ -23,7 +23,8 @@ public class Airport {
         if(name!=null && !name.equals("")){
             this.name=name;
             airportSystemStorage = new AirportSystemStorage( new AirportAdmin( airportAdmin.getName() , airportAdmin.getSurname(),airportAdmin.getSSN()
-                    ,airportAdmin.getPassword() , airportSystemStorage) );
+                    ,airportAdmin.getPassword() , null) );
+            airportSystemStorage.getAirportAdmin().setAirportSystemStorage(airportSystemStorage);
         }
         else  {
             throw (new Exception("Given name is not proper!"));

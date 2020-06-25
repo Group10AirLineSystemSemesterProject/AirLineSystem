@@ -89,11 +89,11 @@ public class TerminalInterface {
 
                     case 1:
                         System.out.print("Enter SSN:\t");
-                        String logSSN = in.nextLine();
+                        String logSSN = in.next();
                         User logUser = airport.getAirportSystemStorage().getUserWithSSN(logSSN);
                         if(logUser!=null){
-                            System.out.println("Enter password:\n");
-                            String logPas = in.nextLine();
+                            System.out.print("Enter password:\t");
+                            String logPas = in.next();
                             if(logPas.equals(logUser.getPassword())){
                                 System.out.println("Logged in Successfully");
                                 if(logUser instanceof Customer )
@@ -114,7 +114,7 @@ public class TerminalInterface {
                                 break;
                             }
                         }
-
+                        break;
                     case 2:
                         System.out.print("Enter the name : ");
                         String name = in.nextLine();

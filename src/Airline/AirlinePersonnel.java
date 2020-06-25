@@ -14,8 +14,6 @@ import java.util.Scanner;
  */
 public class AirlinePersonnel extends User implements UserInterface {
 
-    private String SSN;
-    private String password;
     boolean isPilot;
     AirlineSystemStorage airlineSystemStorage;
 
@@ -31,9 +29,6 @@ public class AirlinePersonnel extends User implements UserInterface {
         if( password == null ) {
             throw new Exception("Password cannot be null.");
         }
-
-        this.SSN = SSN;
-        this.password = password;
     }
 
     public void menu(){
@@ -63,50 +58,6 @@ public class AirlinePersonnel extends User implements UserInterface {
                 default: System.out.printf("Error. Your input is invalid..\n");
             }
         }
-    }
-
-    @Override
-    public String getSSN() {
-        return SSN;
-    }
-
-    @Override
-    public void setSSN(String SSN) throws Exception {
-
-        if( SSN == null ) {
-            throw new Exception("SSN cannot be null.");
-        }
-
-        this.SSN = SSN;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public void setPassword(String password) throws Exception {
-
-        if( password == null ) {
-            throw new Exception("Password cannot be null.");
-        }
-
-        this.password = password;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        AirlinePersonnel that = (AirlinePersonnel) o;
-        return SSN.equals(that.SSN);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), SSN);
     }
 
     @Override

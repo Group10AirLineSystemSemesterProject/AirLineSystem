@@ -40,17 +40,17 @@ public class AirlineAdmin extends User implements AirlineAdminInterface, UserInt
             switch (choice){
                 case 1:
                     System.out.print("Please enter personnel name: ");
-                    String perName = in.nextLine();
+                    String perName = in.next();
                     System.out.print("Please enter personnel surname: ");
-                    String perSurname = in.nextLine();
+                    String perSurname = in.next();
                     System.out.print("Please enter an SSN: ");
-                    String perSSN = in.nextLine();
+                    String perSSN = in.next();
                     System.out.println("Please enter a password: ");
-                    String perPass = in.nextLine();
+                    String perPass = in.next();
                     if(perName != null && perSurname!=null && !perName.equals("") && !perSurname.equals("")&& getAirline().getAirportSystemStorage().getUserWithSSN(perSSN)==null)
                         try{
                             System.out.println("Is the new employee pilot? (Y/N)");
-                            String ans = in.nextLine();
+                            String ans = in.next();
                             AirlinePersonnel airlinePersonnel;
                             if(ans.equals("Y") || ans.equals("y"))
                                 airlinePersonnel = new AirlinePersonnel(perName,perSurname,true,perSSN,perPass);
@@ -63,24 +63,24 @@ public class AirlineAdmin extends User implements AirlineAdminInterface, UserInt
                     break;
                 case 2:
                     System.out.println("Is the employee who will be removed pilot ?(Y/N)");
-                    String ans = in.nextLine();
+                    String ans = in.next();
                     if(ans.equals("Y") || ans.equals("y")){
-                        for(AirlinePersonnel ele:getAirline().getAirlineSystemStorage().getCabin_crew())
+                        for(AirlinePersonnel ele:getAirline().getAirlineSystemStorage().getPilots())
                             System.out.println(ele);
                         System.out.print("Please enter the SSN of the employee who is gonna be removed: ");
-                        String remSSN = in.nextLine();
+                        String remSSN = in.next();
                         try{
                             AirlinePersonnel airTemp = new AirlinePersonnel("","",false,remSSN,"");
-                            getAirline().getAirlineSystemStorage().getCabin_crew().removeIf( k-> (k.equals(airTemp)));
+                            getAirline().getAirlineSystemStorage().getPilots().removeIf( k-> (k.equals(airTemp)));
                         }catch (Exception e){
                             System.out.println(e);
                         }
                     }
                     else{
-                        for(AirlinePersonnel ele:getAirline().getAirlineSystemStorage().getPilots())
+                        for(AirlinePersonnel ele:getAirline().getAirlineSystemStorage().getCabin_crew())
                             System.out.println(ele);
                         System.out.print("Please enter the SSN of the employee who is gonna be removed: ");
-                        String remSSN = in.nextLine();
+                        String remSSN = in.next();
                         try{
                             AirlinePersonnel airTemp = new AirlinePersonnel("","",true,remSSN,"");
                             getAirline().getAirlineSystemStorage().getCabin_crew().removeIf( k-> (k.equals(airTemp)));
@@ -91,7 +91,7 @@ public class AirlineAdmin extends User implements AirlineAdminInterface, UserInt
                     break;
                 case 3:
                     System.out.print("Enter the name of the destination: ");
-                    String destName = in.nextLine();
+                    String destName = in.next();
                     System.out.print("Enter the latitude of destination: ");
                     Double destLat = in.nextDouble();
                     System.out.print("Enter the longtitude of destination: ");

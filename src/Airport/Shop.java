@@ -135,14 +135,12 @@ public class Shop extends Place implements ShopInterface {
     /** toString method to represent the object in form of string.
      * @return String format.*/
     public String toString() {
-        return "Shop{" +
-                "name='" + name + '\'' +
+        return  "name='" + name +
                 ", fee=" + fee +
                 ", status=" + inService +
                 ", shopManager=" + shopManager +
                 ", type=" + type +
-                ", id='" + id + '\'' +
-                '}';
+                ", id='" + id ;
     }
 
 }

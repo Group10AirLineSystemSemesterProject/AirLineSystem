@@ -84,7 +84,7 @@ public class Customer extends User
                     break;
                 case 2:
                     System.out.println("Enter the new SSN value:");
-                    String newSSN = in.nextLine();
+                    String newSSN = in.next();
                     if(airportSystemStorage.getUserWithSSN(newSSN)==null)
                         setSSN(newSSN);
                     else
@@ -92,7 +92,7 @@ public class Customer extends User
                     break;
                 case 3:
                     System.out.println("Enter the new password");
-                    String newPassword = in.nextLine();
+                    String newPassword = in.next();
                     if(newPassword!=null && !newPassword.equals(""))
                         setPassword(newPassword);
                     else
@@ -125,11 +125,11 @@ public class Customer extends User
                             case 2:
 
                                 System.out.print("Enter PNR : ");
-                                String PNR = in.nextLine();
+                                String PNR = in.next();
 
                                 while ( PNR == null || PNR.equals("") ) {
                                     System.out.print("Enter PNR : ");
-                                    PNR = in.nextLine();
+                                    PNR = in.next();
                                 }
 
                                 for( Map.Entry<Integer,Ticket> ele : tickets.entrySet() ) {
@@ -151,21 +151,21 @@ public class Customer extends User
                                 }
 
                                 System.out.print("Company Name : ");
-                                String companyName =  in.nextLine();
+                                String companyName =  in.next();
 
                                 while( companyName == null || companyName.equals("") || airportSystemStorage.getAirlines().containsKey(companyName) ) {
                                     System.out.print("Company Name : ");
-                                    companyName =  in.nextLine();
+                                    companyName =  in.next();
                                 }
 
                                 System.out.print("Flight Index : ");
-                                String index =  in.nextLine();
+                                String index =  in.next();
 
 
                                 while( index == null || index.equals("") || !isNumeric( index ) || Integer.getInteger( index ) < 0 || Integer.getInteger( index ) > airportSystemStorage.getAirlines()
                                         .get(companyName).getAirlineSystemStorage().getListOfFlight().size()) {
                                     System.out.print("FLight Index : ");
-                                    index =  in.nextLine();
+                                    index =  in.next();
                                 }
                                 buyTickets(airportSystemStorage.getAirlines().get(companyName).getAirlineSystemStorage().getListOfFlight().get(Integer.parseInt(index)));
                                 break;
