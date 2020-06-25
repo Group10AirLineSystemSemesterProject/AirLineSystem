@@ -162,6 +162,7 @@ public class Airline {
         return airportSystemStorage;
     }
 
+
     public String getNameofTradeMark(){
         return airlineSystemStorage.getNameOfTrademarkAsIdentifier();
     }
@@ -174,8 +175,13 @@ public class Airline {
             return false;
     }
 
+    /**
+     * String representation of Airline.
+     * @return
+     */
     @Override
     public String toString() {
-        return super.toString();
+        return "Company Name : " + airlineSystemStorage.getNameOfTrademarkAsIdentifier()+"\n"
+                +"Commission Rate : " + this.commissionRate;
     }
 }
