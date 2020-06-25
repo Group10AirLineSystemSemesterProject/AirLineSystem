@@ -191,9 +191,9 @@ public class TerminalInterface {
 
             /* Local computer path have to be put here. */
             if( floor == 1 ) {
-                icon = new ImageIcon("");
+                icon = new ImageIcon("C:/Users/bilal/Documents/GitHub/Airport-Management-System/Assets/airport-1.jpg");
             } else  {
-                icon = new ImageIcon("");
+                icon = new ImageIcon("C:/Users/bilal/Documents/GitHub/Airport-Management-System/Assets/airport-2.jpg");
             }
 
             JLabel label = new JLabel(icon);
